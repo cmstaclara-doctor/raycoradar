@@ -843,11 +843,28 @@ function printReport() {
 }
 
 // ── INLINE FORM ───────────────────────────────────────────
+let drumsReady = false;
 function openSheet(afterEl) {
-  setDatetimeNow();
   const form = document.getElementById('inline-form');
   form.style.display = 'block';
   if (afterEl) afterEl.insertAdjacentElement('afterend', form);
+  if (!drumsReady) {
+    drumSys = initDrum('drum-sys', 'in-sys', 60, 220, 120);
+    drumDia = initDrum('drum-dia', 'in-dia', 40, 150, 80);
+    drumHr  = initDrum('drum-hr',  'in-hr',  40, 180, 70);
+    const n = new Date();
+    const nH = n.getHours(), nAP = nH>=12?1:0, nH12 = nH%12||12;
+    drumMonth = initDrumArr('drum-month', DT_MONTHS, n.getMonth(),    syncDatetime);
+    drumDay   = initDrumArr('drum-day',   DT_DAYS,   n.getDate()-1,   syncDatetime);
+    drumYear  = initDrumArr('drum-year',  DT_YEARS,  Math.max(0,n.getFullYear()-DT_YEAR0), syncDatetime);
+    drumHour  = initDrumArr('drum-dhour', DT_HOURS,  nH12-1,          syncDatetime);
+    drumMin   = initDrumArr('drum-dmin',  DT_MINS,   n.getMinutes(),  syncDatetime);
+    drumAmpm  = initDrumArr('drum-dampm', DT_AMPM,   nAP,             syncDatetime);
+    syncDatetime();
+    drumsReady = true;
+  } else {
+    setDatetimeNow();
+  }
 }
 function closeSheet() {
   document.getElementById('inline-form').style.display = 'none';
@@ -1736,22 +1753,6 @@ function renderAll() {
 
   document.getElementById('s-notif').checked = loadSettings().notifications;
   populateSlotDropdown();
-
-  // Init BP drum pickers
-  drumSys = initDrum('drum-sys', 'in-sys', 60, 220, 120);
-  drumDia = initDrum('drum-dia', 'in-dia', 40, 150, 80);
-  drumHr  = initDrum('drum-hr',  'in-hr',  40, 180, 70);
-
-  // Init date/time drum pickers
-  const now = new Date();
-  const nowH = now.getHours(); const nowAP = nowH>=12?1:0; const nowH12 = nowH%12||12;
-  drumMonth = initDrumArr('drum-month', DT_MONTHS, now.getMonth(),      syncDatetime);
-  drumDay   = initDrumArr('drum-day',   DT_DAYS,   now.getDate()-1,     syncDatetime);
-  drumYear  = initDrumArr('drum-year',  DT_YEARS,  Math.max(0,now.getFullYear()-DT_YEAR0), syncDatetime);
-  drumHour  = initDrumArr('drum-dhour', DT_HOURS,  nowH12-1,            syncDatetime);
-  drumMin   = initDrumArr('drum-dmin',  DT_MINS,   now.getMinutes(),    syncDatetime);
-  drumAmpm  = initDrumArr('drum-dampm', DT_AMPM,   nowAP,               syncDatetime);
-  syncDatetime();
 
   // Auto-seed demo on first open
   if (!loadReadings().length) { saveReadings(buildDemoReadings()); }
