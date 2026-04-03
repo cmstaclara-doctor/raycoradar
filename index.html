@@ -194,11 +194,6 @@
       margin-top: 10px;
     }
 
-    /* ── Past data toggle ──────────────────────── */
-    .past-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; -webkit-user-select: none; user-select: none; }
-    .past-toggle:hover { color: var(--accent); }
-    #past-data-form { display: none; }
-    #past-data-form.open { display: block; }
 
     /* ── Drum Picker ──────────────────────────────── */
     .drum-row { display: flex; gap: 6px; margin-bottom: 16px; align-items: flex-start; }
@@ -577,20 +572,9 @@
       <input type="text" id="in-notes" placeholder="e.g. after coffee…" maxlength="100" style="font-size:1rem;">
     </div>
   </div>
-  <div class="past-toggle" onclick="togglePastForm()">
-    <span id="past-toggle-arrow">▶</span>
-    <span id="past-toggle-label">Log for a different date/time</span>
-  </div>
-  <div id="past-data-form">
-    <div class="qlog-grid2" style="margin-bottom:12px;margin-top:8px;">
-      <div class="form-group">
-        <label>Date &amp; Time</label>
-        <input type="datetime-local" id="in-datetime" onchange="autoDetectSlot()" style="font-size:0.9rem;">
-      </div>
-      <div class="form-group" style="display:flex;align-items:flex-end;">
-        <button type="button" class="btn-sm" onclick="setDatetimeNow()" style="width:100%;">⏱ Use Now</button>
-      </div>
-    </div>
+  <div class="form-group" style="margin-bottom:12px;">
+    <label>Date &amp; Time</label>
+    <input type="datetime-local" id="in-datetime" onchange="autoDetectSlot()" style="font-size:1.1rem;font-weight:600;width:100%;padding:14px 12px;">
   </div>
   <button type="button" class="btn btn-primary" id="submit-btn" onclick="saveReading()">✚ Log This Reading</button>
 </div>
@@ -848,6 +832,7 @@ function printReport() {
 
 // ── INLINE FORM ───────────────────────────────────────────
 function openSheet(afterEl) {
+  setDatetimeNow();
   const form = document.getElementById('inline-form');
   form.style.display = 'block';
   if (afterEl) afterEl.insertAdjacentElement('afterend', form);
@@ -898,15 +883,6 @@ function initDrum(scrollId, hiddenId, min, max, def) {
 }
 
 // ── FORM ──────────────────────────────────────────────────
-let pastFormOpen = false;
-
-function togglePastForm() {
-  pastFormOpen = !pastFormOpen;
-  document.getElementById('past-data-form').className = pastFormOpen ? 'open' : '';
-  document.getElementById('past-toggle-arrow').textContent = pastFormOpen ? '▼' : '▶';
-  document.getElementById('past-toggle-label').textContent = pastFormOpen ? 'Logging for different date/time' : 'Log for a different date/time';
-  if (pastFormOpen) setDatetimeNow();
-}
 
 function setDatetimeNow() {
   const now = new Date();
@@ -942,7 +918,7 @@ function saveReading() {
 
   // Determine timestamp
   let ts;
-  if (pastFormOpen || editId) {
+  if (true) {
     const dtVal = document.getElementById('in-datetime').value;
     if (!dtVal) { alert('Select a date and time.'); return; }
     ts = new Date(dtVal).toISOString();
@@ -952,7 +928,7 @@ function saveReading() {
 
   // Determine slot
   let slotId = document.getElementById('in-slot').value;
-  if (!slotId || !pastFormOpen) {
+  if (!slotId) {
     // Auto-detect from timestamp
     const s = loadSettings();
     const dt = new Date(ts);
@@ -987,7 +963,6 @@ function clearForm() {
   if (drumSys) drumSys.setValue(120);
   if (drumDia) drumDia.setValue(80);
   if (drumHr)  drumHr.setValue(70);
-  if (pastFormOpen) togglePastForm();
 }
 
 function editReading(id, _triggerEl) {
@@ -999,7 +974,6 @@ function editReading(id, _triggerEl) {
   if (drumHr)  drumHr.setValue(r.hr || 70);
   document.getElementById('in-notes').value = r.notes || '';
   document.getElementById('editing-id').value = String(r.id);
-  if (!pastFormOpen) togglePastForm();
   const dt = new Date(r.timestamp);
   const local = new Date(dt.getTime() - dt.getTimezoneOffset()*60000);
   document.getElementById('in-datetime').value = local.toISOString().slice(0,16);
@@ -1014,7 +988,6 @@ function editReading(id, _triggerEl) {
 
 function prefillDate(isoDateTime, _triggerEl) {
   cancelEdit();
-  if (!pastFormOpen) togglePastForm();
   document.getElementById('in-datetime').value = isoDateTime;
   autoDetectSlot();
   document.getElementById('sheet-title').textContent = '🩺 New Record';
