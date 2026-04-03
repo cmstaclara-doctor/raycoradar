@@ -713,19 +713,21 @@ function loadReadings() { return JSON.parse(localStorage.getItem('rr_readings') 
 function saveReadings(arr) { localStorage.setItem('rr_readings', JSON.stringify(arr)); }
 
 // ── DEMO DATA ─────────────────────────────────────────────
-// 90-day arc: Stage 2 → Stage 1 → Elevated → Normal
+// Demo arc: Jan 1 2026 → today — Stage 2 → Normal trend
 function buildDemoReadings() {
   const s = loadSettings();
   const now = new Date();
+  const start = new Date(2026, 0, 1); // Jan 1 2026
+  const totalDays = Math.floor((now - start) / 86400000);
   const out = [];
 
-  for (let d = 89; d >= 0; d--) {
+  for (let d = totalDays; d >= 0; d--) {
     const base = new Date(now);
     base.setDate(base.getDate() - d);
     base.setHours(0, 0, 0, 0);
 
-    // Systolic trend: 148 → 120 over 90 days + noise
-    const progress = (89 - d) / 89; // 0 to 1
+    // Systolic trend: 148 → 120 over full date range + noise
+    const progress = totalDays > 0 ? (totalDays - d) / totalDays : 1; // 0 to 1
     const baseSys = Math.round(148 - progress * 28 + (Math.random() * 8 - 4));
     const baseDia = Math.round(94 - progress * 16 + (Math.random() * 6 - 3));
     const baseHr  = Math.round(76 - progress * 8  + (Math.random() * 6 - 3));
