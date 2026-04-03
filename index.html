@@ -572,9 +572,21 @@
       <input type="text" id="in-notes" placeholder="e.g. after coffee…" maxlength="100" style="font-size:1rem;">
     </div>
   </div>
-  <div class="form-group" style="margin-bottom:12px;">
-    <label>Date &amp; Time</label>
-    <input type="datetime-local" id="in-datetime" onchange="autoDetectSlot()" style="font-size:1.1rem;font-weight:600;width:100%;padding:14px 12px;">
+  <div style="margin-bottom:12px;">
+    <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">Date</div>
+    <div class="drum-row" style="margin-bottom:8px;">
+      <div class="drum-col"><div class="drum-label">Month</div><div class="drum-wrap"><div class="drum-scroll" id="drum-month"></div></div></div>
+      <div class="drum-col"><div class="drum-label">Day</div><div class="drum-wrap"><div class="drum-scroll" id="drum-day"></div></div></div>
+      <div class="drum-col"><div class="drum-label">Year</div><div class="drum-wrap"><div class="drum-scroll" id="drum-year"></div></div></div>
+    </div>
+    <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;">Time</div>
+    <div class="drum-row" style="margin-bottom:0;">
+      <div class="drum-col"><div class="drum-label">Hour</div><div class="drum-wrap"><div class="drum-scroll" id="drum-dhour"></div></div></div>
+      <div class="drum-sep" style="padding-top:170px;font-size:2rem;font-weight:300;">:</div>
+      <div class="drum-col"><div class="drum-label">Min</div><div class="drum-wrap"><div class="drum-scroll" id="drum-dmin"></div></div></div>
+      <div class="drum-col"><div class="drum-label">AM/PM</div><div class="drum-wrap"><div class="drum-scroll" id="drum-dampm"></div></div></div>
+    </div>
+    <input type="hidden" id="in-datetime" value="">
   </div>
   <button type="button" class="btn btn-primary" id="submit-btn" onclick="saveReading()">✚ Log This Reading</button>
 </div>
@@ -843,6 +855,78 @@ function closeSheet() {
 
 // ── DRUM PICKERS ──────────────────────────────────────────
 let drumSys = null, drumDia = null, drumHr = null;
+let drumMonth = null, drumDay = null, drumYear = null, drumHour = null, drumMin = null, drumAmpm = null;
+
+const DT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DT_DAYS   = Array.from({length:31},(_,i)=>String(i+1));
+const DT_YEAR0  = 2020;
+const DT_YEARS  = Array.from({length:12},(_,i)=>String(DT_YEAR0+i));
+const DT_HOURS  = Array.from({length:12},(_,i)=>String(i+1));
+const DT_MINS   = Array.from({length:60},(_,i)=>String(i).padStart(2,'0'));
+const DT_AMPM   = ['AM','PM'];
+
+function initDrumArr(scrollId, items, defIdx, onChange) {
+  const el = document.getElementById(scrollId);
+  if (!el) return null;
+  const CELL = 60;
+  el.innerHTML = items.map(label=>`<div class="drum-item">${label}</div>`).join('');
+  const nodes = Array.from(el.querySelectorAll('.drum-item'));
+  let prevIdx = -1;
+
+  function getIdx() { return Math.min(Math.max(Math.round(el.scrollTop/CELL),0),nodes.length-1); }
+
+  function updateSelected() {
+    const idx = getIdx();
+    if (idx === prevIdx) return;
+    prevIdx = idx;
+    nodes.forEach((item,i)=>{
+      const d = Math.abs(i-idx);
+      item.className = d===0?'drum-item drum-sel':d===1?'drum-item drum-adj':'drum-item';
+    });
+    if (onChange) onChange(idx);
+  }
+
+  el.addEventListener('scroll', updateSelected, {passive:true});
+
+  function setIdx(idx) {
+    el.scrollTop = Math.max(0,Math.min(nodes.length-1,idx))*CELL;
+    prevIdx = -1;
+    updateSelected();
+  }
+
+  setIdx(defIdx);
+  return {setIdx, getIdx};
+}
+
+function syncDatetime() {
+  if (!drumMonth) return;
+  const m   = drumMonth.getIdx()+1;
+  const d   = drumDay.getIdx()+1;
+  const y   = DT_YEAR0 + drumYear.getIdx();
+  const hIdx= drumHour.getIdx();  // 0-11 → hour 1-12
+  const h12 = hIdx+1;
+  const minI= drumMin.getIdx();
+  const ap  = drumAmpm.getIdx();  // 0=AM,1=PM
+  let h24 = h12;
+  if (ap===1 && h12<12) h24 = h12+12;
+  if (ap===0 && h12===12) h24 = 0;
+  const pad = n=>String(n).padStart(2,'0');
+  document.getElementById('in-datetime').value = `${y}-${pad(m)}-${pad(d)}T${pad(h24)}:${pad(minI)}`;
+  autoDetectSlot();
+}
+
+function setDateDrums(dt) {
+  if (!drumMonth) return;
+  const h   = dt.getHours();
+  const ap  = h>=12?1:0;
+  const h12 = h%12||12;
+  drumMonth.setIdx(dt.getMonth());
+  drumDay.setIdx(Math.min(dt.getDate()-1,30));
+  drumYear.setIdx(Math.max(0,Math.min(dt.getFullYear()-DT_YEAR0, DT_YEARS.length-1)));
+  drumHour.setIdx(h12-1);
+  drumMin.setIdx(dt.getMinutes());
+  drumAmpm.setIdx(ap);
+}
 
 function initDrum(scrollId, hiddenId, min, max, def) {
   const el = document.getElementById(scrollId);
@@ -885,10 +969,8 @@ function initDrum(scrollId, hiddenId, min, max, def) {
 // ── FORM ──────────────────────────────────────────────────
 
 function setDatetimeNow() {
-  const now = new Date();
-  const local = new Date(now.getTime() - now.getTimezoneOffset()*60000);
-  document.getElementById('in-datetime').value = local.toISOString().slice(0,16);
-  autoDetectSlot();
+  setDateDrums(new Date());
+  syncDatetime();
 }
 
 function previewLive() {
@@ -974,9 +1056,7 @@ function editReading(id, _triggerEl) {
   if (drumHr)  drumHr.setValue(r.hr || 70);
   document.getElementById('in-notes').value = r.notes || '';
   document.getElementById('editing-id').value = String(r.id);
-  const dt = new Date(r.timestamp);
-  const local = new Date(dt.getTime() - dt.getTimezoneOffset()*60000);
-  document.getElementById('in-datetime').value = local.toISOString().slice(0,16);
+  setDateDrums(new Date(r.timestamp));
   document.getElementById('in-slot').value = r.slotId || '';
   previewLive();
   document.getElementById('edit-mode-bar').classList.add('show');
@@ -1657,10 +1737,21 @@ function renderAll() {
   document.getElementById('s-notif').checked = loadSettings().notifications;
   populateSlotDropdown();
 
-  // Init drum pickers — Systolic: 60–220, Diastolic: 40–150, Pulse: 40–180
+  // Init BP drum pickers
   drumSys = initDrum('drum-sys', 'in-sys', 60, 220, 120);
   drumDia = initDrum('drum-dia', 'in-dia', 40, 150, 80);
   drumHr  = initDrum('drum-hr',  'in-hr',  40, 180, 70);
+
+  // Init date/time drum pickers
+  const now = new Date();
+  const nowH = now.getHours(); const nowAP = nowH>=12?1:0; const nowH12 = nowH%12||12;
+  drumMonth = initDrumArr('drum-month', DT_MONTHS, now.getMonth(),      syncDatetime);
+  drumDay   = initDrumArr('drum-day',   DT_DAYS,   now.getDate()-1,     syncDatetime);
+  drumYear  = initDrumArr('drum-year',  DT_YEARS,  Math.max(0,now.getFullYear()-DT_YEAR0), syncDatetime);
+  drumHour  = initDrumArr('drum-dhour', DT_HOURS,  nowH12-1,            syncDatetime);
+  drumMin   = initDrumArr('drum-dmin',  DT_MINS,   now.getMinutes(),    syncDatetime);
+  drumAmpm  = initDrumArr('drum-dampm', DT_AMPM,   nowAP,               syncDatetime);
+  syncDatetime();
 
   // Auto-seed demo on first open
   if (!loadReadings().length) { saveReadings(buildDemoReadings()); }
