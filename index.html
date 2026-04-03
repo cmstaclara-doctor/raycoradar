@@ -1,1 +1,1829 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRGLTgiPgogIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KICA8dGl0bGU+UmF5Y29SYWRhciDigJQgQlAgTW9uaXRvcjwvdGl0bGU+CiAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vY2hhcnQuanNANC40LjIvZGlzdC9jaGFydC51bWQubWluLmpzIj48L3NjcmlwdD4KICA8c3R5bGU+CiAgICA6cm9vdCB7CiAgICAgIC0tbm9ybWFsOiAgICMyMmM1NWU7ICAtLWVsZXZhdGVkOiAjZWFiMzA4OwogICAgICAtLXN0YWdlMTogICAjZjk3MzE2OyAgLS1zdGFnZTI6ICAgI2VmNDQ0NDsKICAgICAgLS1jcmlzaXM6ICAgIzdmMWQxZDsKICAgICAgLS1iZzogICAgICAgI2Y4ZmFmYzsgIC0tY2FyZDogICAgICNmZmZmZmY7CiAgICAgIC0tYm9yZGVyOiAgICNlMmU4ZjA7ICAtLXRleHQ6ICAgICAjMWUyOTNiOwogICAgICAtLW11dGVkOiAgICAjNGI1NTYzOyAgLS1hY2NlbnQ6ICAgIzBlYTVlOTsKICAgICAgLS1yYWRpdXM6ICAgMTJweDsKICAgIH0KICAgICogeyBib3gtc2l6aW5nOiBib3JkZXItYm94OyBtYXJnaW46IDA7IHBhZGRpbmc6IDA7IH0KICAgIGJvZHkgeyBmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBzYW5zLXNlcmlmOyBiYWNrZ3JvdW5kOiB2YXIoLS1iZyk7IGNvbG9yOiB2YXIoLS10ZXh0KTsgbWluLWhlaWdodDogMTAwdmg7IGZvbnQtc2l6ZTogMThweDsgbGluZS1oZWlnaHQ6IDEuNjsgfQoKICAgIC8qIOKUgOKUgCBCZXRhIEJhbm5lciDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgICNiZXRhLWJhciB7CiAgICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgIzdjM2FlZCwgIzBlYTVlOSk7CiAgICAgIGNvbG9yOiB3aGl0ZTsgZm9udC1zaXplOiAwLjdyZW07IGZvbnQtd2VpZ2h0OiA2MDA7CiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjsgcGFkZGluZzogNXB4IDE2cHg7IGxldHRlci1zcGFjaW5nOiAwLjVweDsKICAgIH0KCiAgICAvKiDilIDilIAgSGVhZGVyIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCAqLwogICAgaGVhZGVyIHsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDEzNWRlZywgIzBjMTQ0NSAwJSwgIzFhMjg3NSA1MCUsICMwZTNhNmUgMTAwJSk7CiAgICAgIGNvbG9yOiB3aGl0ZTsgcGFkZGluZzogMTRweCAyMHB4IDEycHg7CiAgICAgIHBvc2l0aW9uOiBzdGlja3k7IHRvcDogMDsgei1pbmRleDogMTAwOwogICAgICBib3gtc2hhZG93OiAwIDJweCAxMnB4IHJnYmEoMCwwLDAsMC4zKTsKICAgIH0KICAgIC5oZWFkZXItaW5uZXIgeyBkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IDE0cHg7IH0KICAgIC5yYWRhci1pY29uIHsKICAgICAgd2lkdGg6IDM4cHg7IGhlaWdodDogMzhweDsgYmFja2dyb3VuZDogcmdiYSgxNCwxNjUsMjMzLDAuMik7CiAgICAgIGJvcmRlcjogMnB4IHNvbGlkIHJnYmEoMTQsMTY1LDIzMywwLjUpOyBib3JkZXItcmFkaXVzOiA1MCU7CiAgICAgIGRpc3BsYXk6IGZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGp1c3RpZnktY29udGVudDogY2VudGVyOwogICAgICBmb250LXNpemU6IDEuMnJlbTsgYW5pbWF0aW9uOiBycHVsc2UgMi41cyBlYXNlLWluLW91dCBpbmZpbml0ZTsKICAgIH0KICAgIEBrZXlmcmFtZXMgcnB1bHNlIHsKICAgICAgMCUsMTAwJSB7IGJveC1zaGFkb3c6IDAgMCAwIDAgcmdiYSgxNCwxNjUsMjMzLDAuNCk7IH0KICAgICAgNTAlICAgICAgeyBib3gtc2hhZG93OiAwIDAgMCA4cHggcmdiYSgxNCwxNjUsMjMzLDApOyB9CiAgICB9CiAgICAuaGVhZGVyLXRleHQgaDEgeyBmb250LXNpemU6IDEuMnJlbTsgZm9udC13ZWlnaHQ6IDgwMDsgfQogICAgLmhlYWRlci10ZXh0IGgxIHNwYW4geyBjb2xvcjogIzM4YmRmODsgfQogICAgLmhlYWRlci10ZXh0IHAgeyBmb250LXNpemU6IDAuNjhyZW07IG9wYWNpdHk6IDAuNTsgbWFyZ2luLXRvcDogMXB4OyB9CgogICAgLyog4pSA4pSAIFJlbWluZGVyIEJhbm5lciDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgICNyZW1pbmRlci1iYW5uZXIgewogICAgICBiYWNrZ3JvdW5kOiAjZmVmM2M3OyBib3JkZXItbGVmdDogNHB4IHNvbGlkICNmNTllMGI7CiAgICAgIHBhZGRpbmc6IDEwcHggMTZweDsgZm9udC1zaXplOiAwLjg0cmVtOwogICAgICBkaXNwbGF5OiBub25lOyBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IDEwcHg7CiAgICB9CiAgICAjcmVtaW5kZXItYmFubmVyLnNob3cgeyBkaXNwbGF5OiBmbGV4OyB9CiAgICAjcmVtaW5kZXItYmFubmVyIHNwYW4geyBmbGV4OiAxOyB9CiAgICAjcmVtaW5kZXItZGlzbWlzcyB7IGJhY2tncm91bmQ6IG5vbmU7IGJvcmRlcjogbm9uZTsgY3Vyc29yOiBwb2ludGVyOyBmb250LXNpemU6IDFyZW07IHBhZGRpbmc6IDJweCA4cHg7IGNvbG9yOiAjOTI0MDBlOyBmb250LXdlaWdodDogNzAwOyB9CgogICAgLyog4pSA4pSAIE5hdiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgIG5hdiB7IGRpc3BsYXk6IGZsZXg7IGJhY2tncm91bmQ6IHZhcigtLWNhcmQpOyBib3JkZXItYm90dG9tOiAxcHggc29saWQgdmFyKC0tYm9yZGVyKTsgb3ZlcmZsb3cteDogYXV0bzsgfQogICAgbmF2IGJ1dHRvbiB7CiAgICAgIGZsZXg6IDE7IHBhZGRpbmc6IDE3cHggOHB4OyBib3JkZXI6IG5vbmU7IGJhY2tncm91bmQ6IG5vbmU7IGN1cnNvcjogcG9pbnRlcjsKICAgICAgZm9udC1zaXplOiAxLjA1cmVtOyBmb250LXdlaWdodDogNzAwOyBjb2xvcjogdmFyKC0tbXV0ZWQpOwogICAgICBib3JkZXItYm90dG9tOiA0cHggc29saWQgdHJhbnNwYXJlbnQ7IHdoaXRlLXNwYWNlOiBub3dyYXA7IHRyYW5zaXRpb246IGFsbCAwLjE1czsgbWluLXdpZHRoOiA4MHB4OyBtaW4taGVpZ2h0OiA1OHB4OwogICAgfQogICAgbmF2IGJ1dHRvbi5hY3RpdmUgeyBjb2xvcjogdmFyKC0tYWNjZW50KTsgYm9yZGVyLWJvdHRvbS1jb2xvcjogdmFyKC0tYWNjZW50KTsgfQogICAgbmF2IGJ1dHRvbjpob3Zlcjpub3QoLmFjdGl2ZSkgeyBjb2xvcjogdmFyKC0tdGV4dCk7IGJhY2tncm91bmQ6IHZhcigtLWJnKTsgfQoKICAgIC8qIOKUgOKUgCBUYWJzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCAqLwogICAgLnRhYiB7IGRpc3BsYXk6IG5vbmU7IHBhZGRpbmc6IDE2cHg7IG1heC13aWR0aDogODAwcHg7IG1hcmdpbjogMCBhdXRvOyBwYWRkaW5nLWJvdHRvbTogNTBweDsgfQogICAgLnRhYi5hY3RpdmUgeyBkaXNwbGF5OiBibG9jazsgfQoKICAgIC8qIOKUgOKUgCBDYXJkcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgIC5jYXJkIHsgYmFja2dyb3VuZDogdmFyKC0tY2FyZCk7IGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWJvcmRlcik7IGJvcmRlci1yYWRpdXM6IHZhcigtLXJhZGl1cyk7IHBhZGRpbmc6IDIwcHg7IG1hcmdpbi1ib3R0b206IDE0cHg7IH0KICAgIC5jYXJkLXRpdGxlIHsgZm9udC1zaXplOiAwLjg4cmVtOyBmb250LXdlaWdodDogNzAwOyBjb2xvcjogdmFyKC0tbXV0ZWQpOyB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyBsZXR0ZXItc3BhY2luZzogMC42cHg7IG1hcmdpbi1ib3R0b206IDE0cHg7IH0KCiAgICAvKiDilIDilIAgVG9kYXkgU3RhdHVzIEJhciDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgIC5kYXNoLW1haW4gewogICAgICBkaXNwbGF5OiBibG9jazsgbWFyZ2luLWJvdHRvbTogMTBweDsKICAgIH0KICAgIC5kYXNoLWNoYXJ0LWNhcmQgeyBtYXJnaW4tYm90dG9tOiAwICFpbXBvcnRhbnQ7IGRpc3BsYXk6IGZsZXg7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IHBhZGRpbmc6IDhweCAhaW1wb3J0YW50OyB9CiAgICAjdG9kYXktc3RhdHVzIHsgZGlzcGxheTogZmxleDsgZmxleC1kaXJlY3Rpb246IGNvbHVtbjsgZ2FwOiA4cHg7IH0KICAgICN0b2RheS1zdGF0dXMgLnN0YXR1cy10aWxlIHsgZmxleC1zaHJpbms6IDA7IH0KICAgICNkYXNoLXRyZW5kLW92ZXJsYXkgewogICAgICBtYXJnaW4tdG9wOiA4cHg7IGJvcmRlci10b3A6IDFweCBzb2xpZCB2YXIoLS1ib3JkZXIpOyBwYWRkaW5nLXRvcDogN3B4OwogICAgfQogICAgLyog4pSA4pSAIENhbGVuZGFyIEdyb3VwcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgIC5kYXRlLWdyb3VwIHsgbWFyZ2luLWJvdHRvbTogM3B4OyB9CiAgICAuZGF0ZS1oZWFkZXIgewogICAgICBkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IDEycHg7IHBhZGRpbmc6IDE4cHggMTZweDsKICAgICAgYmFja2dyb3VuZDogdmFyKC0tYmcpOyBib3JkZXItcmFkaXVzOiAxMHB4OyBjdXJzb3I6IHBvaW50ZXI7CiAgICAgIHVzZXItc2VsZWN0OiBub25lOyAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lOyB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kIDAuMTVzOyBtaW4taGVpZ2h0OiA2NnB4OwogICAgfQogICAgLmRhdGUtaGVhZGVyOmhvdmVyIHsgYmFja2dyb3VuZDogI2U4ZjBlZTsgfQogICAgLmRnLWFycm93IHsgZm9udC1zaXplOiAxcmVtOyBjb2xvcjogdmFyKC0tbXV0ZWQpOyB3aWR0aDogMTZweDsgZmxleC1zaHJpbms6IDA7IH0KICAgIC5kZy1kYXRlICB7IGZvbnQtd2VpZ2h0OiA3MDA7IGZvbnQtc2l6ZTogMS4ycmVtOyBjb2xvcjogdmFyKC0tdGV4dCk7IH0KICAgIC5kZy1jb3VudCB7IGZvbnQtc2l6ZTogMC45NXJlbTsgY29sb3I6IHZhcigtLW11dGVkKTsgfQogICAgLmRnLWF2ZyAgIHsgZm9udC1zaXplOiAxLjA1cmVtOyBmb250LXdlaWdodDogNzAwOyBtYXJnaW4tbGVmdDogYXV0bzsgfQogICAgLmRhdGUtYm9keSB7IHBhZGRpbmc6IDZweCAwIDZweCA2cHg7IH0KICAgIC5kYXRlLWJvZHkuY29sbGFwc2VkIHsgZGlzcGxheTogbm9uZTsgfQoKICAgIC8qIOKUgOKUgCBSZWFkaW5nIG1pbmktY2FyZCDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgIC5jYWwtcm93IHsKICAgICAgZGlzcGxheTogYmxvY2s7CiAgICAgIHBhZGRpbmc6IDE0cHggMTZweCAxMnB4OwogICAgICBib3JkZXItbGVmdDogNXB4IHNvbGlkIHZhcigtLWJvcmRlcik7CiAgICAgIG1hcmdpbi1ib3R0b206IDhweDsKICAgICAgYm9yZGVyLXJhZGl1czogMCAxMnB4IDEycHggMDsKICAgICAgYmFja2dyb3VuZDogdmFyKC0tY2FyZCk7CiAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDRweCByZ2JhKDAsMCwwLDAuMDYpOwogICAgfQogICAgLmNhbC1yb3c6aG92ZXIgeyBiYWNrZ3JvdW5kOiAjZjhmYWZjOyB9CiAgICAuY3ItdG9wIHsgZGlzcGxheTogZmxleDsganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuOyBhbGlnbi1pdGVtczogY2VudGVyOyBtYXJnaW4tYm90dG9tOiA2cHg7IH0KICAgIC5jci10aW1lIHsgZm9udC1zaXplOiAwLjk1cmVtOyBjb2xvcjogdmFyKC0tbXV0ZWQpOyBmb250LXdlaWdodDogNjAwOyB9CiAgICAuY3ItYWN0aW9ucyB7IGRpc3BsYXk6IGZsZXg7IGdhcDogMnB4OyBtYXJnaW4tcmlnaHQ6IC02cHg7IH0KICAgIC5jci1tYWluIHsgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGJhc2VsaW5lOyBnYXA6IDE2cHg7IG1hcmdpbi1ib3R0b206IDhweDsgfQogICAgLmNyLWJwIHsgZm9udC1zaXplOiAycmVtOyBmb250LXdlaWdodDogODAwOyBjb2xvcjogdmFyKC0tdGV4dCk7IGxpbmUtaGVpZ2h0OiAxOyB9CiAgICAuY3ItaHIgeyBmb250LXNpemU6IDEuMDVyZW07IGNvbG9yOiB2YXIoLS1tdXRlZCk7IGZvbnQtd2VpZ2h0OiA1MDA7IH0KICAgIC5jci1tZXRhIHsgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiA4cHg7IGZsZXgtd3JhcDogd3JhcDsgfQogICAgLmNyLXNsb3QgeyBmb250LXNpemU6IDAuOTJyZW07IGNvbG9yOiB2YXIoLS1tdXRlZCk7IH0KICAgIC5jci1ub3RlcyB7IGZvbnQtc2l6ZTogMC44OHJlbTsgY29sb3I6IHZhcigtLW11dGVkKTsgZm9udC1zdHlsZTogaXRhbGljOyB9CgogICAgLyog4pSA4pSAIE1vbnRobHkgQ2FsZW5kYXIgR3JpZCDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgKi8KICAgIC5tb250aC1jYXJkIHsgYmFja2dyb3VuZDogdmFyKC0tY2FyZCk7IGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWJvcmRlcik7IGJvcmRlci1yYWRpdXM6IDEycHg7IHBhZGRpbmc6IDE0cHg7IG1hcmdpbi1ib3R0b206IDhweDsgfQogICAgLm1vbnRoLW5hdiB7IGRpc3BsYXk6IGZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjsgbm..........+CjxodG1sIGxhbmc9ImVuIj4K
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RaycoRadar — BP Monitor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --normal:   #22c55e;  --elevated: #eab308;
+      --stage1:   #f97316;  --stage2:   #ef4444;
+      --crisis:   #7f1d1d;
+      --bg:       #f8fafc;  --card:     #ffffff;
+      --border:   #e2e8f0;  --text:     #1e293b;
+      --muted:    #4b5563;  --accent:   #0ea5e9;
+      --radius:   12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 18px; line-height: 1.6; }
+
+    /* ── Beta Banner ──────────────────────────── */
+    #beta-bar {
+      background: linear-gradient(90deg, #7c3aed, #0ea5e9);
+      color: white; font-size: 0.7rem; font-weight: 600;
+      text-align: center; padding: 5px 16px; letter-spacing: 0.5px;
+    }
+
+    /* ── Header ───────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #0c1445 0%, #1a2875 50%, #0e3a6e 100%);
+      color: white; padding: 14px 20px 12px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .header-inner { display: flex; align-items: center; gap: 14px; }
+    .radar-icon {
+      width: 38px; height: 38px; background: rgba(14,165,233,0.2);
+      border: 2px solid rgba(14,165,233,0.5); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; animation: rpulse 2.5s ease-in-out infinite;
+    }
+    @keyframes rpulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(14,165,233,0.4); }
+      50%      { box-shadow: 0 0 0 8px rgba(14,165,233,0); }
+    }
+    .header-text h1 { font-size: 1.2rem; font-weight: 800; }
+    .header-text h1 span { color: #38bdf8; }
+    .header-text p { font-size: 0.68rem; opacity: 0.5; margin-top: 1px; }
+
+    /* ── Reminder Banner ──────────────────────── */
+    #reminder-banner {
+      background: #fef3c7; border-left: 4px solid #f59e0b;
+      padding: 10px 16px; font-size: 0.84rem;
+      display: none; align-items: center; gap: 10px;
+    }
+    #reminder-banner.show { display: flex; }
+    #reminder-banner span { flex: 1; }
+    #reminder-dismiss { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 2px 8px; color: #92400e; font-weight: 700; }
+
+    /* ── Nav ──────────────────────────────────── */
+    nav { display: flex; background: var(--card); border-bottom: 1px solid var(--border); overflow-x: auto; }
+    nav button {
+      flex: 1; padding: 17px 8px; border: none; background: none; cursor: pointer;
+      font-size: 1.05rem; font-weight: 700; color: var(--muted);
+      border-bottom: 4px solid transparent; white-space: nowrap; transition: all 0.15s; min-width: 80px; min-height: 58px;
+    }
+    nav button.active { color: var(--accent); border-bottom-color: var(--accent); }
+    nav button:hover:not(.active) { color: var(--text); background: var(--bg); }
+
+    /* ── Tabs ─────────────────────────────────── */
+    .tab { display: none; padding: 16px; max-width: 800px; margin: 0 auto; padding-bottom: 50px; }
+    .tab.active { display: block; }
+
+    /* ── Cards ────────────────────────────────── */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 14px; }
+    .card-title { font-size: 0.88rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 14px; }
+
+    /* ── Today Status Bar ─────────────────────── */
+    .dash-main {
+      display: block; margin-bottom: 10px;
+    }
+    .dash-chart-card { margin-bottom: 0 !important; display: flex; flex-direction: column; padding: 8px !important; }
+    #today-status { display: flex; flex-direction: column; gap: 8px; }
+    #today-status .status-tile { flex-shrink: 0; }
+    #dash-trend-overlay {
+      margin-top: 8px; border-top: 1px solid var(--border); padding-top: 7px;
+    }
+    /* ── Calendar Groups ─────────────────────────── */
+    .date-group { margin-bottom: 3px; }
+    .date-header {
+      display: flex; align-items: center; gap: 12px; padding: 18px 16px;
+      background: var(--bg); border-radius: 10px; cursor: pointer;
+      user-select: none; -webkit-user-select: none; transition: background 0.15s; min-height: 66px;
+    }
+    .date-header:hover { background: #e8f0fe; }
+    .dg-arrow { font-size: 1rem; color: var(--muted); width: 16px; flex-shrink: 0; }
+    .dg-date  { font-weight: 700; font-size: 1.2rem; color: var(--text); }
+    .dg-count { font-size: 0.95rem; color: var(--muted); }
+    .dg-avg   { font-size: 1.05rem; font-weight: 700; margin-left: auto; }
+    .date-body { padding: 6px 0 6px 6px; }
+    .date-body.collapsed { display: none; }
+
+    /* ── Reading mini-card ───────────────────────── */
+    .cal-row {
+      display: block;
+      padding: 14px 16px 12px;
+      border-left: 5px solid var(--border);
+      margin-bottom: 8px;
+      border-radius: 0 12px 12px 0;
+      background: var(--card);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .cal-row:hover { background: #f8fafc; }
+    .cr-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .cr-time { font-size: 0.95rem; color: var(--muted); font-weight: 600; }
+    .cr-actions { display: flex; gap: 2px; margin-right: -6px; }
+    .cr-main { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; }
+    .cr-bp { font-size: 2rem; font-weight: 800; color: var(--text); line-height: 1; }
+    .cr-hr { font-size: 1.05rem; color: var(--muted); font-weight: 500; }
+    .cr-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .cr-slot { font-size: 0.92rem; color: var(--muted); }
+    .cr-notes { font-size: 0.88rem; color: var(--muted); font-style: italic; }
+
+    /* ── Monthly Calendar Grid ───────────────────── */
+    .month-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 8px; }
+    .month-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .month-nav-title { font-size: 1rem; font-weight: 800; color: var(--text); }
+    .month-nav-btn { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+    .month-nav-btn:hover { background: #e2e8f0; }
+    .month-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
+    .cal-dow { font-size: 0.65rem; text-align: center; color: var(--muted); font-weight: 700; padding: 4px 0; }
+    .cal-cell {
+      aspect-ratio: 1; border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; cursor: pointer; position: relative;
+      transition: transform 0.1s, box-shadow 0.1s; min-height: 40px;
+    }
+    .cal-cell:hover { transform: scale(1.12); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .cal-cell.empty { background: transparent; cursor: default; pointer-events: none; }
+    .cal-cell.no-data { cursor: pointer; }
+    .cal-cell.has-data { font-weight: 700; color: white; }
+    .cal-cell.has-data .cday { font-size: 0.8rem; font-weight: 800; line-height: 1; }
+    .cal-cell.has-data .cavg { font-size: 0.45rem; opacity: 0.9; line-height: 1.3; }
+    .cal-cell.no-data { background: var(--bg); color: var(--muted); }
+    .cal-cell.no-data .cday { font-size: 0.75rem; font-weight: 400; }
+    .cal-cell.selected { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cal-day-detail { display: none; background: #f1f5f9; border-radius: 10px; padding: 10px; margin-top: 8px; }
+    .cal-day-detail.open { display: block; }
+
+    .status-bar {
+      display: flex; gap: 8px; align-items: flex-start; margin-bottom: 12px; flex-wrap: nowrap; overflow-x: auto;
+    }
+    .status-tile {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 8px 12px; flex: 1; min-width: 130px;
+    }
+    .status-tile .st-label { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); margin-bottom: 4px; }
+    .status-tile .st-value { font-size: 1.6rem; font-weight: 800; line-height: 1; }
+    .status-tile .st-sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── Quick Log Form ───────────────────────── */
+    .qlog-grid { display: grid; grid-template-columns: 1fr 1fr 80px; gap: 10px; margin-bottom: 10px; }
+    .qlog-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    .form-group label { display: block; font-size: 0.68rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 10px 11px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 0.95rem; background: var(--bg); color: var(--text); transition: border-color 0.15s;
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent); }
+    .form-group input[type="datetime-local"] { font-size: 0.84rem; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    /* live preview */
+    #bp-preview-display {
+      text-align: center; font-size: 2.3rem; font-weight: 800; letter-spacing: -1.5px;
+      color: var(--text); padding: 6px 0 2px; min-height: 50px;
+    }
+    #bp-preview-display .sep { color: var(--muted); font-weight: 300; }
+    #bp-preview-display .unit { font-size: 1rem; color: var(--muted); font-weight: 400; }
+    #preview-badge { text-align: center; margin-bottom: 8px; min-height: 20px; }
+
+    /* edit bar */
+    #edit-mode-bar { display: none; background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; margin-bottom: 10px; font-size: 0.82rem; color: #1d4ed8; align-items: center; gap: 10px; }
+    #edit-mode-bar.show { display: flex; }
+    #edit-mode-bar span { flex: 1; }
+    #cancel-edit { background: none; border: none; cursor: pointer; font-size: 0.82rem; color: #1d4ed8; font-weight: 700; text-decoration: underline; }
+
+    /* ── Past data toggle ──────────────────────── */
+    .past-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; -webkit-user-select: none; user-select: none; }
+    .past-toggle:hover { color: var(--accent); }
+    #past-data-form { display: none; }
+    #past-data-form.open { display: block; }
+
+    /* ── Drum Picker ──────────────────────────────── */
+    .drum-row { display: flex; gap: 6px; margin-bottom: 16px; align-items: flex-start; }
+    .drum-col { flex: 1; text-align: center; min-width: 0; }
+    .drum-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .drum-wrap {
+      position: relative; height: 300px; overflow: hidden;
+      border-radius: 16px; border: 1.5px solid var(--border);
+    }
+    .drum-scroll {
+      height: 100%; overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none; -ms-overflow-style: none;
+      padding: 120px 0;
+    }
+    .drum-scroll::-webkit-scrollbar { display: none; }
+    .drum-item {
+      height: 60px; scroll-snap-align: center;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; font-weight: 400; color: rgba(30,41,59,0.18);
+      user-select: none; -webkit-user-select: none;
+    }
+    .drum-item.drum-adj { font-size: 1.5rem; font-weight: 600; color: rgba(30,41,59,0.42); }
+    .drum-item.drum-sel { font-size: 2.5rem; font-weight: 800; color: var(--text); }
+    .drum-wrap::before {
+      content: '';
+      position: absolute; left: 6%; right: 6%;
+      top: calc(50% - 30px); height: 60px;
+      background: rgba(14,165,233,0.08);
+      border: 2px solid rgba(14,165,233,0.38);
+      border-radius: 12px; pointer-events: none; z-index: 2;
+    }
+    .drum-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        #ffffff 0%, rgba(255,255,255,0.75) 22%, transparent 38%,
+        transparent 62%, rgba(255,255,255,0.75) 78%, #ffffff 100%);
+      pointer-events: none; z-index: 1;
+    }
+    .drum-sep { display: flex; align-items: center; padding-top: 168px; font-size: 2rem; font-weight: 300; color: var(--muted); flex-shrink: 0; }
+
+    /* ── Buttons ──────────────────────────────── */
+    .btn { padding: 16px 22px; border-radius: 10px; border: none; cursor: pointer; font-size: 1.05rem; font-weight: 700; transition: all 0.15s; }
+    .btn-primary { background: var(--accent); color: white; width: 100%; }
+    .btn-primary:hover { background: #0284c7; }
+    .btn-primary.editing { background: #7c3aed; }
+    .btn-primary.editing:hover { background: #6d28d9; }
+    .btn-sm { background: none; border: 2px solid var(--border); color: var(--muted); font-size: 1rem; padding: 12px 20px; border-radius: 8px; cursor: pointer; min-height: 52px; font-weight: 600; }
+    .btn-sm:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-danger { background: none; border: 1.5px solid #fee2e2; color: var(--stage2); font-size: 1rem; padding: 12px 20px; border-radius: 8px; cursor: pointer; min-height: 52px; font-weight: 600; }
+    .btn-danger:hover { background: #fee2e2; }
+    .btn-icon { background: none; border: none; cursor: pointer; padding: 10px; font-size: 1.15rem; border-radius: 8px; color: var(--muted); transition: all 0.12s; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+    .btn-icon:hover { background: var(--bg); color: var(--text); }
+    .btn-icon.del:hover { background: #fee2e2; color: var(--stage2); }
+
+    /* ── Badges ───────────────────────────────── */
+    .badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.92rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+    .badge-normal   { background: #dcfce7; color: #166534; }
+    .badge-elevated { background: #fef9c3; color: #854d0e; }
+    .badge-stage1   { background: #ffedd5; color: #9a3412; }
+    .badge-stage2   { background: #fee2e2; color: #991b1b; }
+    .badge-crisis   { background: #7f1d1d; color: white; }
+    .slot-pill { display: inline-block; padding: 4px 11px; border-radius: 20px; font-size: 0.88rem; background: #f1f5f9; color: var(--muted); }
+
+    /* ── Reading List ─────────────────────────── */
+    .reading-item { display: flex; align-items: center; gap: 14px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+    .reading-item:last-child { border-bottom: none; }
+    .reading-item.highlight { background: #eff6ff; border-radius: 8px; padding: 10px; margin: 0 -10px; }
+    .ri-icon { font-size: 1.8rem; width: 36px; text-align: center; flex-shrink: 0; }
+    .ri-body { flex: 1; min-width: 0; }
+    .ri-bp { font-size: 1.75rem; font-weight: 800; line-height: 1.2; }
+    .ri-meta { font-size: 1rem; color: var(--muted); margin-top: 4px; }
+    .ri-right { text-align: right; flex-shrink: 0; }
+    .ri-pp { font-size: 0.9rem; color: var(--muted); margin-top: 5px; }
+    .ri-actions { display: flex; gap: 2px; margin-top: 3px; justify-content: flex-end; }
+
+    /* ── Chart Controls ───────────────────────── */
+    .chart-toggle { display: flex; gap: 0; margin-bottom: 14px; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; width: fit-content; }
+    .chart-toggle button { padding: 7px 18px; font-size: 0.8rem; font-weight: 600; border: none; background: none; cursor: pointer; color: var(--muted); transition: all 0.15s; }
+    .chart-toggle button.active { background: var(--accent); color: white; }
+    .chart-canvas-wrap { position: relative; height: 260px; }
+    .legend-row { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.95rem; margin-top: 12px; }
+    .legend-row label { display: flex; align-items: center; gap: 6px; cursor: pointer; -webkit-user-select: none; user-select: none; }
+    .zone-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; font-size: 0.76rem; }
+    .zone-legend-item { display: flex; align-items: center; gap: 7px; }
+    .zone-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+
+    /* ── Analysis / AI ────────────────────────── */
+    .summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
+    .stat-box { background: var(--bg); border-radius: 8px; padding: 12px 14px; }
+    .stat-box .slabel { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 3px; }
+    .stat-box .sval { font-size: 1.45rem; font-weight: 800; line-height: 1; }
+    .stat-box .ssub { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+    .trend-up { color: var(--stage2); } .trend-down { color: var(--normal); } .trend-stable { color: var(--muted); }
+    .slot-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .slot-table th { text-align: left; padding: 7px 6px; font-size: 0.66rem; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .slot-table td { padding: 9px 6px; border-bottom: 1px solid var(--border); }
+    .slot-table tr:last-child td { border-bottom: none; }
+    .slot-highest td { background: #fff7ed; }
+    .advisory { background: #fff7ed; border-left: 4px solid var(--stage1); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 0.82rem; color: #7c2d12; margin-top: 12px; line-height: 1.6; }
+    .good-news { background: #f0fdf4; border-left: 4px solid var(--normal); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 0.82rem; color: #14532d; margin-top: 12px; line-height: 1.6; }
+    .class-display { display: flex; align-items: center; gap: 14px; padding: 6px 0; }
+    .class-display .big-reading { font-size: 2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+
+    /* AI report block */
+    .ai-report {
+      background: var(--bg); color: var(--text); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px 18px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.78rem;
+      line-height: 1.8; white-space: pre-wrap; overflow-x: auto;
+    }
+    .ai-report .ai-head { color: #0369a1; font-weight: 700; font-size: 0.85rem; }
+    .ai-report .ai-label { color: var(--muted); }
+    .ai-report .ai-ok { color: #15803d; font-weight: 600; }
+    .ai-report .ai-warn { color: #c2410c; font-weight: 600; }
+    .ai-report .ai-bad { color: #b91c1c; font-weight: 700; }
+    .ai-report .ai-line { color: #cbd5e1; }
+
+    /* ── Settings Slot Manager ────────────────── */
+    .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border); gap: 12px; }
+    .setting-row:last-child { border-bottom: none; }
+    .setting-label { font-size: 1rem; font-weight: 600; }
+    .setting-sub { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+    .slot-row { display: grid; grid-template-columns: 34px 1fr 96px 30px; gap: 8px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
+    .slot-row:last-child { border-bottom: none; }
+    .slot-emoji-input { width: 40px; height: 44px; text-align: center; font-size: 1.1rem; border: 1.5px solid var(--border); border-radius: 7px; background: var(--bg); }
+    .slot-name-input, .slot-time-input { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: 1rem; background: var(--bg); color: var(--text); width: 100%; }
+    .slot-name-input:focus, .slot-time-input:focus, .slot-emoji-input:focus { outline: none; border-color: var(--accent); }
+    .btn-remove-slot { background: none; border: none; cursor: pointer; font-size: 0.95rem; color: #fca5a5; padding: 4px 5px; border-radius: 5px; }
+    .btn-remove-slot:hover { background: #fee2e2; color: var(--stage2); }
+    .count-stepper { display: flex; align-items: center; gap: 10px; }
+    .count-stepper button { width: 30px; height: 30px; border-radius: 7px; border: 1.5px solid var(--border); background: var(--bg); font-size: 1.1rem; cursor: pointer; font-weight: 700; color: var(--text); }
+    .count-stepper button:hover { border-color: var(--accent); color: var(--accent); }
+    .count-stepper span { font-size: 1.1rem; font-weight: 700; min-width: 20px; text-align: center; }
+    .toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #cbd5e1; border-radius: 24px; transition: 0.3s; }
+    .toggle-slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+    .toggle input:checked + .toggle-slider { background: var(--accent); }
+    .toggle input:checked + .toggle-slider:before { transform: translateX(20px); }
+
+    .empty-state { text-align: center; padding: 32px 20px; color: var(--muted); }
+    .empty-state .big { font-size: 2rem; }
+    .empty-state p { margin-top: 8px; font-size: 0.82rem; line-height: 1.5; }
+    .brand-footer { text-align: center; font-size: 0.66rem; color: var(--muted); margin-top: 6px; padding-bottom: 6px; letter-spacing: 0.3px; }
+
+    /* ── Print styles ────────────────────────────── */
+    #print-report { display: none; }
+    @media print {
+      body > *:not(#print-report) { display: none !important; }
+      #print-report { display: block !important; font-family: Arial, sans-serif; font-size: 11pt; color: #000; padding: 12pt; }
+      .pr-header { text-align: center; margin-bottom: 14pt; border-bottom: 2px solid #000; padding-bottom: 8pt; }
+      .pr-header h2 { font-size: 16pt; margin: 0 0 3pt; }
+      .pr-header p  { font-size: 9pt; color: #555; margin: 0; }
+      .pr-summary { display: flex; gap: 24pt; margin-bottom: 10pt; font-size: 10pt; flex-wrap: wrap; }
+      .pr-summary span { flex: 1; min-width: 100pt; }
+      .pr-table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 10pt; }
+      .pr-table th { background: #eee; border: 1px solid #bbb; padding: 4pt 5pt; text-align: left; font-size: 8pt; text-transform: uppercase; }
+      .pr-table td { border: 1px solid #ddd; padding: 3pt 5pt; }
+      .pr-table tr:nth-child(even) td { background: #f8f8f8; }
+      .pr-zones { display: grid; grid-template-columns: repeat(4,1fr); gap: 6pt; margin-top: 10pt; font-size: 8pt; }
+      .pr-zone  { border: 1px solid #ddd; border-radius: 4pt; padding: 4pt 6pt; }
+      .pr-footer { font-size: 8pt; color: #777; text-align: center; margin-top: 10pt; border-top: 1px solid #ddd; padding-top: 6pt; }
+    }
+
+    @media (max-width: 500px) {
+      .qlog-grid { grid-template-columns: 1fr 1fr; }
+      .qlog-grid2 { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      .status-bar { flex-wrap: wrap; }
+      .dash-main { grid-template-columns: 1fr; }
+      .slot-row { grid-template-columns: 40px 1fr 90px 36px; }
+      .tab { padding: 12px; }
+      .card { padding: 18px; }
+      nav button { font-size: 1rem; padding: 16px 4px; }
+      .dg-date { font-size: 1.15rem; }
+      .ri-bp { font-size: 1.75rem; }
+      .reading-item { padding: 20px 0; }
+      .btn-sm, .btn-danger { width: 100%; margin-top: 8px; }
+      .setting-row { flex-wrap: wrap; }
+      .cal-row { padding: 14px 12px; }
+      .date-header { padding: 16px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Beta Banner ──────────────────────────────── -->
+<div id="beta-bar">🧪 RaycoRadar Beta &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; Ends April 30</div>
+
+<!-- ── Header ────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <div class="radar-icon">📡</div>
+    <div class="header-text">
+      <h1>Rayco<span>Radar</span></h1>
+      <p>BLOOD PRESSURE MONITOR &nbsp;·&nbsp; by Doc Kalodski</p>
+    </div>
+  </div>
+</header>
+
+<!-- ── Reminder Banner ───────────────────────────── -->
+<div id="reminder-banner">
+  <span id="reminder-text"></span>
+  <button type="button" id="reminder-dismiss" onclick="dismissReminder()">✕</button>
+</div>
+
+<!-- ── Nav ───────────────────────────────────────── -->
+<nav>
+  <button type="button" class="active" onclick="switchTab('dash', this)">🏠 Dashboard</button>
+  <button type="button" onclick="switchTab('analysis', this)">🤖 Analysis</button>
+  <button type="button" onclick="switchTab('settings', this)">⚙️ Settings</button>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     DASHBOARD TAB
+════════════════════════════════════════════════ -->
+<div id="tab-dash" class="tab active">
+
+  <!-- New Record Form -->
+  <div class="card" id="record-card">
+    <div id="edit-mode-bar" style="display:none;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:0.95rem;color:#1d4ed8;align-items:center;gap:10px;">
+      <span style="flex:1;">✏️ Editing this reading</span>
+      <button id="cancel-edit" onclick="cancelEdit()">Cancel</button>
+    </div>
+    <div class="card-title">🩺 New Record</div>
+    <!-- Drum pickers -->
+    <div class="drum-row">
+      <div class="drum-col">
+        <div class="drum-label">Systolic</div>
+        <div class="drum-wrap"><div class="drum-scroll" id="drum-sys"></div></div>
+      </div>
+      <div class="drum-sep">/</div>
+      <div class="drum-col">
+        <div class="drum-label">Diastolic</div>
+        <div class="drum-wrap"><div class="drum-scroll" id="drum-dia"></div></div>
+      </div>
+      <div class="drum-sep" style="font-size:1.4rem;padding-top:174px;">♥</div>
+      <div class="drum-col">
+        <div class="drum-label">Pulse</div>
+        <div class="drum-wrap"><div class="drum-scroll" id="drum-hr"></div></div>
+      </div>
+    </div>
+    <!-- hidden inputs for saveReading / editReading compatibility -->
+    <input type="hidden" id="in-sys" value="120">
+    <input type="hidden" id="in-dia" value="80">
+    <input type="hidden" id="in-hr" value="70">
+    <input type="hidden" id="editing-id" value="">
+    <!-- live BP preview -->
+    <div id="bp-preview-display" style="text-align:center;font-size:2.3rem;font-weight:800;letter-spacing:-1.5px;color:var(--text);padding:4px 0;min-height:48px;"></div>
+    <div id="preview-badge" style="text-align:center;margin-bottom:14px;min-height:28px;"></div>
+    <!-- slot & notes -->
+    <div class="qlog-grid2" style="margin-bottom:12px;">
+      <div class="form-group">
+        <label>Reading Slot</label>
+        <select id="in-slot" style="font-size:1rem;"></select>
+      </div>
+      <div class="form-group">
+        <label>Notes <span style="font-weight:400;text-transform:none;">(optional)</span></label>
+        <input type="text" id="in-notes" placeholder="e.g. after coffee…" maxlength="100" style="font-size:1rem;">
+      </div>
+    </div>
+    <!-- past date toggle -->
+    <div class="past-toggle" onclick="togglePastForm()">
+      <span id="past-toggle-arrow">▶</span>
+      <span id="past-toggle-label">Log for a different date/time</span>
+    </div>
+    <div id="past-data-form">
+      <div class="qlog-grid2" style="margin-bottom:12px;margin-top:8px;">
+        <div class="form-group">
+          <label>Date &amp; Time</label>
+          <input type="datetime-local" id="in-datetime" onchange="autoDetectSlot()" style="font-size:0.9rem;">
+        </div>
+        <div class="form-group" style="display:flex;align-items:flex-end;">
+          <button type="button" class="btn-sm" onclick="setDatetimeNow()" style="width:100%;">⏱ Use Now</button>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" id="submit-btn" onclick="saveReading()">✚ Log This Reading</button>
+  </div>
+
+  <!-- Today status -->
+  <div id="today-status" style="margin-bottom:10px;"></div>
+
+  <!-- Chart card with view toggles -->
+  <div class="dash-main">
+    <div class="card dash-chart-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="card-title" style="margin:0;">BP Trend</div>
+        <div class="chart-toggle" style="margin-bottom:0;">
+          <button type="button" id="dash-btn-7d" class="active" onclick="setDashView('7d',this)" style="padding:5px 11px;font-size:0.73rem;">7D</button>
+          <button type="button" id="dash-btn-4w" onclick="setDashView('4w',this)" style="padding:5px 11px;font-size:0.73rem;">4W</button>
+          <button type="button" id="dash-btn-3m" onclick="setDashView('3m',this)" style="padding:5px 11px;font-size:0.73rem;">3M</button>
+        </div>
+      </div>
+      <div id="dash-chart-wrap" style="position:relative;height:220px;"><canvas id="dash-chart"></canvas></div>
+      <div class="legend-row" style="margin-top:6px;">
+        <label><input type="checkbox" id="dash-toggle-sys" checked onchange="renderDashChart()"> <span style="color:#ef4444;font-weight:700;">● Sys</span></label>
+        <label><input type="checkbox" id="dash-toggle-dia" checked onchange="renderDashChart()"> <span style="color:#3b82f6;font-weight:700;">● Dia</span></label>
+        <label><input type="checkbox" id="dash-toggle-hr" checked onchange="renderDashChart()"> <span style="color:#8b5cf6;font-weight:700;">● HR</span></label>
+      </div>
+      <div id="dash-trend-overlay" style="margin-top:8px;border-top:1px solid var(--border);padding-top:7px;"></div>
+    </div>
+  </div>
+
+  <!-- All readings -->
+  <div class="card">
+    <div class="card-title" style="display:flex;justify-content:space-between;align-items:center;">
+      <span>All Readings</span>
+      <span id="reading-count" style="font-weight:400;text-transform:none;font-size:0.75rem;color:var(--muted);letter-spacing:0;"></span>
+    </div>
+    <div id="reading-list"></div>
+  </div>
+
+  <div class="brand-footer">RaycoRadar · by Doc Kalodski · AHA 2017 Guidelines</div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     ANALYSIS TAB
+════════════════════════════════════════════════ -->
+<div id="tab-analysis" class="tab">
+  <div id="analysis-content"></div>
+  <div class="brand-footer">RaycoRadar · by Doc Kalodski · AHA 2017 Guidelines</div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SETTINGS TAB
+════════════════════════════════════════════════ -->
+<div id="tab-settings" class="tab">
+
+  <!-- Getting Started notice -->
+  <div class="card" style="background:#eff6ff;border-color:#bfdbfe;">
+    <div class="card-title" style="color:#1d4ed8;">👋 Welcome to RaycoRadar Beta</div>
+    <p style="font-size:0.8rem;color:#1e40af;line-height:1.6;margin-bottom:8px;">
+      <strong>Your app is pre-loaded with 3 months of sample data</strong> so you can explore all the features right away — the chart, trends, and analysis report.
+    </p>
+    <p style="font-size:0.8rem;color:#1e40af;line-height:1.6;margin-bottom:8px;">
+      When you're ready to track your <em>real</em> BP readings, go to <strong>Your Data → Erase Demo Data</strong> below and start fresh.
+    </p>
+    <p style="font-size:0.75rem;color:#3b82f6;line-height:1.5;">
+      📍 Data is saved on <strong>this device only</strong> — it does not sync to the cloud. Use <strong>Save to Spreadsheet</strong> to back up your readings.
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">My Reading Schedule</div>
+    <p style="font-size:0.76rem;color:var(--muted);margin-bottom:12px;">
+      Set the times you normally take your BP each day. RaycoRadar will show a reminder banner when it's time — keep the app open on your phone or browser.
+    </p>
+    <div class="setting-row" style="padding-bottom:14px;">
+      <div>
+        <div class="setting-label">How many times a day?</div>
+        <div class="setting-sub">Up to 6 reading slots</div>
+      </div>
+      <div class="count-stepper">
+        <button type="button" onclick="changeSlotCount(-1)">−</button>
+        <span id="slot-count-display">3</span>
+        <button type="button" onclick="changeSlotCount(+1)">+</button>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:34px 1fr 96px 30px;gap:8px;padding-bottom:5px;">
+      <span style="font-size:0.62rem;text-transform:uppercase;color:var(--muted);">Icon</span>
+      <span style="font-size:0.62rem;text-transform:uppercase;color:var(--muted);">Name</span>
+      <span style="font-size:0.62rem;text-transform:uppercase;color:var(--muted);">Time</span>
+      <span></span>
+    </div>
+    <div id="slot-list"></div>
+    <button type="button" class="btn-sm" id="add-slot-btn" onclick="addSlot()" style="width:100%;margin-top:8px;text-align:center;">+ Add Slot</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Reminders</div>
+    <div class="setting-row">
+      <div><div class="setting-label">Enable Reminder Banners</div><div class="setting-sub">Shows a reminder at the top of the app when it's time to take a reading. Keep the app open on your device.</div></div>
+      <label class="toggle"><input type="checkbox" id="s-notif" title="Enable browser notifications" aria-label="Enable browser notifications" onchange="toggleNotifications()"><span class="toggle-slider"></span></label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Your Data</div>
+    <div class="setting-row">
+      <div><div class="setting-label">🖨️ Print Report</div><div class="setting-sub">Prints a full summary of your readings — save as PDF to bring to your doctor</div></div>
+      <button type="button" class="btn-sm" onclick="printReport()">Print</button>
+    </div>
+    <div class="setting-row">
+      <div><div class="setting-label">📥 Save to Spreadsheet</div><div class="setting-sub">Downloads all your readings as a file you can open in Excel or Google Sheets</div></div>
+      <button type="button" class="btn-sm" onclick="exportCSV()">Download</button>
+    </div>
+    <div class="setting-row">
+      <div><div class="setting-label">🔄 Reload Sample Data</div><div class="setting-sub">Restores the 3-month demo dataset — replaces your current readings</div></div>
+      <button type="button" class="btn-sm" onclick="loadDemoData()">Reload Demo</button>
+    </div>
+    <div class="setting-row">
+      <div><div class="setting-label">🗑️ Erase All &amp; Start Fresh</div><div class="setting-sub">Deletes everything — use this when you're ready to log your real BP readings</div></div>
+      <button type="button" class="btn-danger" onclick="clearAllData()">Erase All</button>
+    </div>
+  </div>
+
+  <div class="brand-footer">RaycoRadar Beta v1.1 · by Doc Kalodski · Beta ends April 30, 2026</div>
+</div>
+
+<!-- hidden print container -->
+<div id="print-report"></div>
+
+<!-- ════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════ -->
+<script>
+'use strict';
+
+// ── CLASSIFICATION ────────────────────────────────────────
+function classify(sys, dia) {
+  if (sys > 180 || dia > 120) return { key:'crisis',   label:'DANGER — Seek help now', cls:'badge-crisis'   };
+  if (sys >= 140 || dia >= 90) return { key:'stage2',   label:'Very High',              cls:'badge-stage2'   };
+  if (sys >= 130 || dia >= 80) return { key:'stage1',   label:'High',                   cls:'badge-stage1'   };
+  if (sys >= 120 && dia <  80) return { key:'elevated', label:'A little high',           cls:'badge-elevated' };
+  return                              { key:'normal',   label:'Normal',                 cls:'badge-normal'   };
+}
+function badgeHTML(sys, dia) { const c = classify(sys,dia); return `<span class="badge ${c.cls}">${c.label}</span>`; }
+function pulsePressure(sys, dia) {
+  const pp = sys - dia;
+  return { pp, note: pp > 60 ? ' · Wide PP ⚠' : pp < 25 ? ' · Narrow PP ⚠' : '' };
+}
+
+// ── SETTINGS ──────────────────────────────────────────────
+const DEFAULT_SLOTS = [
+  { id:'s1', emoji:'🌅', name:'After Breakfast', time:'07:00' },
+  { id:'s2', emoji:'🌞', name:'After Lunch',     time:'12:00' },
+  { id:'s3', emoji:'🌙', name:'After Dinner',    time:'18:00' },
+];
+
+function loadSettings() {
+  const raw = localStorage.getItem('rr_settings2');
+  if (raw) return JSON.parse(raw);
+  return { slots: DEFAULT_SLOTS.map(s=>({...s})), notifications: false };
+}
+function persistSettings(s) { localStorage.setItem('rr_settings2', JSON.stringify(s)); }
+
+function saveSlots() {
+  const s = loadSettings();
+  s.slots = Array.from(document.querySelectorAll('.slot-row')).map(row => ({
+    id:    row.dataset.id,
+    emoji: row.querySelector('.slot-emoji-input').value.trim() || '💊',
+    name:  row.querySelector('.slot-name-input').value.trim() || 'Reading',
+    time:  row.querySelector('.slot-time-input').value,
+  }));
+  persistSettings(s);
+  populateSlotDropdown();
+  checkReminders();
+}
+
+function renderSlotList() {
+  const s = loadSettings();
+  document.getElementById('slot-list').innerHTML = s.slots.map(sl => `
+    <div class="slot-row" data-id="${sl.id}">
+      <input class="slot-emoji-input" type="text" value="${sl.emoji}" maxlength="2" oninput="saveSlots()">
+      <input class="slot-name-input" type="text" value="${sl.name}" placeholder="Name" oninput="saveSlots()">
+      <input class="slot-time-input" type="time" value="${sl.time}" onchange="saveSlots()">
+      <button class="btn-remove-slot" onclick="removeSlot('${sl.id}')" title="Remove">✕</button>
+    </div>`).join('');
+  document.getElementById('slot-count-display').textContent = s.slots.length;
+  document.getElementById('add-slot-btn').style.display = s.slots.length >= 6 ? 'none' : '';
+}
+
+function addSlot() {
+  const s = loadSettings();
+  if (s.slots.length >= 6) return;
+  s.slots.push({ id:'sx'+Date.now(), emoji:'💊', name:'Reading '+(s.slots.length+1), time:'09:00' });
+  persistSettings(s); renderSlotList(); populateSlotDropdown();
+}
+
+function removeSlot(id) {
+  const s = loadSettings();
+  if (s.slots.length <= 1) { alert('Need at least 1 slot.'); return; }
+  s.slots = s.slots.filter(sl => sl.id !== id);
+  persistSettings(s); renderSlotList(); populateSlotDropdown();
+}
+
+function changeSlotCount(delta) {
+  const s = loadSettings();
+  const n = Math.min(6, Math.max(1, s.slots.length + delta));
+  if (n > s.slots.length) addSlot();
+  else if (n < s.slots.length) removeSlot(s.slots[s.slots.length-1].id);
+}
+
+function populateSlotDropdown() {
+  const s = loadSettings();
+  const sel = document.getElementById('in-slot');
+  if (!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">— select slot —</option>' +
+    s.slots.map(sl => `<option value="${sl.id}">${sl.emoji} ${sl.name}</option>`).join('');
+  if (cur) sel.value = cur;
+}
+
+function autoDetectSlot() {
+  const s = loadSettings();
+  const dtVal = document.getElementById('in-datetime').value;
+  if (!dtVal) return;
+  const dt = new Date(dtVal);
+  const hhmm = dt.getHours()*60 + dt.getMinutes();
+  let best = null, bestDist = 90;
+  s.slots.forEach(sl => {
+    const dist = Math.abs(hhmm - toMin(sl.time));
+    if (dist < bestDist) { bestDist = dist; best = sl.id; }
+  });
+  if (best) document.getElementById('in-slot').value = best;
+}
+
+function getSlot(id) {
+  return loadSettings().slots.find(s=>s.id===id) || { id:'other', emoji:'💊', name:'Manual', time:'00:00' };
+}
+
+function toggleNotifications() {
+  const on = document.getElementById('s-notif').checked;
+  const s  = loadSettings();
+  if (on) {
+    Notification.requestPermission().then(perm => {
+      if (perm !== 'granted') { alert('Permission denied. Enable in browser settings.'); document.getElementById('s-notif').checked=false; return; }
+      s.notifications = true; persistSettings(s);
+    });
+  } else { s.notifications = false; persistSettings(s); }
+}
+
+// ── STORAGE ───────────────────────────────────────────────
+function loadReadings() { return JSON.parse(localStorage.getItem('rr_readings') || '[]'); }
+function saveReadings(arr) { localStorage.setItem('rr_readings', JSON.stringify(arr)); }
+
+// ── DEMO DATA ─────────────────────────────────────────────
+// 90-day arc: Stage 2 → Stage 1 → Elevated → Normal
+function buildDemoReadings() {
+  const s = loadSettings();
+  const now = new Date();
+  const out = [];
+
+  for (let d = 89; d >= 0; d--) {
+    const base = new Date(now);
+    base.setDate(base.getDate() - d);
+    base.setHours(0, 0, 0, 0);
+
+    // Systolic trend: 148 → 120 over 90 days + noise
+    const progress = (89 - d) / 89; // 0 to 1
+    const baseSys = Math.round(148 - progress * 28 + (Math.random() * 8 - 4));
+    const baseDia = Math.round(94 - progress * 16 + (Math.random() * 6 - 3));
+    const baseHr  = Math.round(76 - progress * 8  + (Math.random() * 6 - 3));
+
+    s.slots.forEach((sl, si) => {
+      // Morning slightly higher, evening slightly lower
+      const offset = [3, 0, -2][si] || 0;
+      const [h, m] = sl.time.split(':').map(Number);
+      const t = new Date(base);
+      t.setHours(h, m + Math.floor(Math.random() * 8 - 4), 0, 0);
+      if (t > now) return;
+
+      out.push({
+        id: 3000000 + d * 100 + si,
+        timestamp: t.toISOString(),
+        sys:   Math.max(100, baseSys + offset + Math.floor(Math.random()*6 - 3)),
+        dia:   Math.max(60,  baseDia + Math.floor(offset/2) + Math.floor(Math.random()*4 - 2)),
+        hr:    Math.max(55,  baseHr  + Math.floor(Math.random()*4 - 2)),
+        notes: ['','','stressful day','after walk','rested','after meds',''][Math.floor(Math.random()*7)],
+        slotId: sl.id,
+      });
+    });
+  }
+  return out;
+}
+
+function loadDemoData() {
+  if (!confirm('Replace all data with a 3-month demo dataset?')) return;
+  localStorage.removeItem('rr_readings');
+  saveReadings(buildDemoReadings());
+  renderAll();
+  alert('Demo data loaded — 3 months of BP readings.');
+}
+
+function clearAllData() {
+  if (!confirm('Delete ALL readings? Cannot be undone.')) return;
+  localStorage.removeItem('rr_readings'); renderAll();
+}
+
+function exportCSV() {
+  const r = loadReadings();
+  if (!r.length) { alert('No data to export.'); return; }
+  const header = ['Date','Time','Systolic','Diastolic','Heart Rate','Slot','Status','Notes'];
+  const rows = r.slice().sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp)).map(rd => {
+    const dt = new Date(rd.timestamp);
+    const sl = getSlot(rd.slotId);
+    return [
+      dt.toLocaleDateString('en-PH'),
+      dt.toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'}),
+      rd.sys, rd.dia, rd.hr||'',
+      sl.name, classify(rd.sys,rd.dia).label,
+      rd.notes||''
+    ];
+  });
+  const csv = [header,...rows].map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download = 'RaycoRadar_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+function printReport() {
+  const readings = loadReadings();
+  if (!readings.length) { alert('No data to print.'); return; }
+  const now = new Date();
+  const sorted = readings.slice().sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
+  const cut7 = new Date(now); cut7.setDate(cut7.getDate()-7);
+  const week7 = readings.filter(r=>new Date(r.timestamp)>=cut7);
+  const avg7Sys = week7.length ? Math.round(week7.reduce((a,r)=>a+r.sys,0)/week7.length) : null;
+  const avg7Dia = week7.length ? Math.round(week7.reduce((a,r)=>a+r.dia,0)/week7.length) : null;
+  const first = new Date(sorted[sorted.length-1].timestamp);
+  const last  = new Date(sorted[0].timestamp);
+  const fmt   = d => d.toLocaleDateString('en-PH',{year:'numeric',month:'short',day:'numeric'});
+
+  const tableRows = sorted.map(r => {
+    const dt = new Date(r.timestamp);
+    const sl = getSlot(r.slotId);
+    const cl = classify(r.sys,r.dia);
+    return `<tr>
+      <td>${fmt(dt)}</td>
+      <td>${dt.toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'})}</td>
+      <td><strong>${r.sys}/${r.dia}</strong></td>
+      <td>${r.hr||'—'}</td>
+      <td>${sl.name}</td>
+      <td>${cl.label}</td>
+      <td>${r.notes||''}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('print-report').innerHTML = `
+    <div class="pr-header">
+      <h2>📡 RaycoRadar — Blood Pressure Report</h2>
+      <p>Printed: ${now.toLocaleString('en-PH')} &nbsp;·&nbsp; AHA 2017 Guidelines &nbsp;·&nbsp; by Doc Kalodski</p>
+    </div>
+    <div class="pr-summary">
+      <span><strong>Total Readings:</strong> ${readings.length}</span>
+      <span><strong>Date Range:</strong> ${fmt(first)} – ${fmt(last)}</span>
+      ${avg7Sys ? `<span><strong>7-Day Avg:</strong> ${avg7Sys}/${avg7Dia} mmHg &nbsp;(${classify(avg7Sys,avg7Dia).label})</span>` : ''}
+    </div>
+    <table class="pr-table">
+      <thead><tr><th>Date</th><th>Time</th><th>BP (mmHg)</th><th>HR</th><th>Slot</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>${tableRows}</tbody>
+    </table>
+    <div class="pr-zones">
+      <div class="pr-zone">🟢 <strong>Normal</strong> &lt;120/80</div>
+      <div class="pr-zone">🟡 <strong>A little high</strong> 120–129/&lt;80</div>
+      <div class="pr-zone">🟠 <strong>High</strong> 130–139/80–89</div>
+      <div class="pr-zone">🔴 <strong>Very High</strong> ≥140/≥90</div>
+    </div>
+    <p class="pr-footer">For personal monitoring only. Not a substitute for professional medical diagnosis or treatment.</p>`;
+  window.print();
+}
+
+// ── DRUM PICKERS ──────────────────────────────────────────
+let drumSys = null, drumDia = null, drumHr = null;
+
+function initDrum(scrollId, hiddenId, min, max, def) {
+  const el = document.getElementById(scrollId);
+  if (!el) return null;
+  const CELL = 60;
+
+  // Build item list
+  let html = '';
+  for (let v = min; v <= max; v++) html += `<div class="drum-item" data-v="${v}">${v}</div>`;
+  el.innerHTML = html;
+
+  const items = Array.from(el.querySelectorAll('.drum-item'));
+  let prevIdx = -1;
+
+  function updateSelected() {
+    const idx = Math.min(Math.max(Math.round(el.scrollTop / CELL), 0), items.length - 1);
+    if (idx === prevIdx) return;
+    prevIdx = idx;
+    document.getElementById(hiddenId).value = min + idx;
+    items.forEach((item, i) => {
+      const d = Math.abs(i - idx);
+      const cls = d === 0 ? 'drum-item drum-sel' : d === 1 ? 'drum-item drum-adj' : 'drum-item';
+      if (item.className !== cls) item.className = cls;
+    });
+    previewLive();
+  }
+
+  el.addEventListener('scroll', updateSelected, { passive: true });
+
+  function setValue(val) {
+    el.scrollTop = (Math.max(min, Math.min(max, val)) - min) * CELL;
+    prevIdx = -1;
+    updateSelected();
+  }
+
+  setValue(def);
+  return { setValue };
+}
+
+// ── FORM ──────────────────────────────────────────────────
+let pastFormOpen = false;
+
+function togglePastForm() {
+  pastFormOpen = !pastFormOpen;
+  document.getElementById('past-data-form').className = pastFormOpen ? 'open' : '';
+  document.getElementById('past-toggle-arrow').textContent = pastFormOpen ? '▼' : '▶';
+  document.getElementById('past-toggle-label').textContent = pastFormOpen ? 'Logging for different date/time' : 'Log for a different date/time';
+  if (pastFormOpen) setDatetimeNow();
+}
+
+function setDatetimeNow() {
+  const now = new Date();
+  const local = new Date(now.getTime() - now.getTimezoneOffset()*60000);
+  document.getElementById('in-datetime').value = local.toISOString().slice(0,16);
+  autoDetectSlot();
+}
+
+function previewLive() {
+  const sys = parseInt(document.getElementById('in-sys').value);
+  const dia = parseInt(document.getElementById('in-dia').value);
+  const disp = document.getElementById('bp-preview-display');
+  const badge = document.getElementById('preview-badge');
+  if (sys > 60 && dia > 40) {
+    disp.innerHTML = `${sys} <span class="sep">/</span> ${dia} <span class="unit">mmHg</span>`;
+    badge.innerHTML = badgeHTML(sys, dia);
+  } else if (sys > 60) {
+    disp.innerHTML = `${sys} <span class="sep">/</span> <span style="color:var(--muted)">—</span> <span class="unit">mmHg</span>`;
+    badge.innerHTML = '';
+  } else {
+    disp.innerHTML = badge.innerHTML = '';
+  }
+}
+
+function saveReading() {
+  const sys   = parseInt(document.getElementById('in-sys').value);
+  const dia   = parseInt(document.getElementById('in-dia').value);
+  const hr    = parseInt(document.getElementById('in-hr').value) || null;
+  const notes = document.getElementById('in-notes').value.trim();
+  const editId = document.getElementById('editing-id').value;
+
+  if (isNaN(sys)||isNaN(dia)||sys<60||dia<40) { alert('Enter valid systolic and diastolic values.'); return; }
+
+  // Determine timestamp
+  let ts;
+  if (pastFormOpen || editId) {
+    const dtVal = document.getElementById('in-datetime').value;
+    if (!dtVal) { alert('Select a date and time.'); return; }
+    ts = new Date(dtVal).toISOString();
+  } else {
+    ts = new Date().toISOString();
+  }
+
+  // Determine slot
+  let slotId = document.getElementById('in-slot').value;
+  if (!slotId || !pastFormOpen) {
+    // Auto-detect from timestamp
+    const s = loadSettings();
+    const dt = new Date(ts);
+    const hhmm = dt.getHours()*60 + dt.getMinutes();
+    let best = null, bestDist = 90;
+    s.slots.forEach(sl => {
+      const dist = Math.abs(hhmm - toMin(sl.time));
+      if (dist < bestDist) { bestDist = dist; best = sl.id; }
+    });
+    slotId = best || s.slots[0].id;
+  }
+
+  let readings = loadReadings();
+  if (editId) {
+    const idx = readings.findIndex(r => String(r.id) === editId);
+    if (idx !== -1) readings[idx] = { ...readings[idx], sys, dia, hr, notes, slotId, timestamp: ts };
+    cancelEdit();
+  } else {
+    readings.push({ id: Date.now(), timestamp: ts, sys, dia, hr, notes, slotId });
+  }
+
+  saveReadings(readings);
+  clearForm();
+  renderAll();
+  checkReminders();
+}
+
+function clearForm() {
+  document.getElementById('in-notes').value = '';
+  document.getElementById('editing-id').value = '';
+  if (drumSys) drumSys.setValue(120);
+  if (drumDia) drumDia.setValue(80);
+  if (drumHr)  drumHr.setValue(70);
+  if (pastFormOpen) togglePastForm();
+}
+
+function editReading(id) {
+  const r = loadReadings().find(x => String(x.id) === String(id));
+  if (!r) return;
+  // Drive drum pickers to the reading's values
+  if (drumSys) drumSys.setValue(r.sys);
+  if (drumDia) drumDia.setValue(r.dia);
+  if (drumHr)  drumHr.setValue(r.hr || 70);
+  document.getElementById('in-notes').value = r.notes || '';
+  document.getElementById('editing-id').value = String(r.id);
+  if (!pastFormOpen) togglePastForm();
+  const dt = new Date(r.timestamp);
+  const local = new Date(dt.getTime() - dt.getTimezoneOffset()*60000);
+  document.getElementById('in-datetime').value = local.toISOString().slice(0,16);
+  document.getElementById('in-slot').value = r.slotId || '';
+  previewLive();
+  document.getElementById('edit-mode-bar').classList.add('show');
+  document.getElementById('submit-btn').textContent = '✏️ Update Reading';
+  document.getElementById('submit-btn').classList.add('editing');
+  switchTab('dash', document.querySelectorAll('nav button')[0]);
+  document.getElementById('record-card').scrollIntoView({behavior:'smooth'});
+}
+
+function prefillDate(isoDateTime) {
+  cancelEdit();
+  if (!pastFormOpen) togglePastForm();
+  document.getElementById('in-datetime').value = isoDateTime;
+  switchTab('dash', document.querySelectorAll('nav button')[0]);
+  document.getElementById('tab-dash').querySelector('.card').scrollIntoView({behavior:'smooth'});
+  document.getElementById('in-sys').focus();
+}
+
+function showCalInlineForm(panelId, dateISO, readingId) {
+  const panel = document.getElementById(panelId);
+  if (!panel) return;
+  panel.querySelectorAll('.cal-inline-form').forEach(f=>f.remove());
+  const slots = loadSettings().slots;
+  const r = readingId ? loadReadings().find(x=>x.id===readingId) : null;
+  const fid = 'cif-' + panelId;
+  const defDt = r ? new Date(new Date(r.timestamp).getTime()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16) : dateISO;
+  const slotOpts = slots.map(s=>`<option value="${s.id}" ${r?r.slotId===s.id?'selected':'':s===slots[0]?'selected':''}>${s.emoji||''} ${s.name}</option>`).join('');
+  panel.insertAdjacentHTML('beforeend',`
+    <div class="cal-inline-form" id="${fid}" style="background:#fff;border:2px solid var(--accent);border-radius:10px;padding:12px;margin-top:8px;">
+      <div style="font-size:0.7rem;font-weight:800;color:var(--accent);margin-bottom:8px;">${r?'✏️ Edit Reading':'✚ Add Reading'}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 70px;gap:8px;margin-bottom:8px;">
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Systolic</label>
+          <input type="number" id="${fid}-sys" value="${r?r.sys:''}" placeholder="120" min="60" max="250" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:1rem;font-weight:700;"></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Diastolic</label>
+          <input type="number" id="${fid}-dia" value="${r?r.dia:''}" placeholder="80" min="40" max="150" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:1rem;font-weight:700;"></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">HR</label>
+          <input type="number" id="${fid}-hr" value="${r&&r.hr?r.hr:''}" placeholder="70" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:1rem;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Date &amp; Time</label>
+          <input type="datetime-local" id="${fid}-dt" value="${defDt}" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.78rem;"></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Slot</label>
+          <select id="${fid}-slot" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.78rem;">${slotOpts}</select></div>
+      </div>
+      <div style="margin-bottom:10px;"><label style="font-size:0.78rem;color:var(--muted);display:block;">Notes</label>
+        <input type="text" id="${fid}-notes" value="${r?r.notes||'':''}" placeholder="e.g. after coffee…" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.85rem;"></div>
+      <div style="display:flex;gap:8px;">
+        <button type="button" class="btn btn-primary" style="font-size:0.72rem;padding:6px 16px;" onclick="saveCalInline('${fid}',${readingId||'null'})">💾 Save</button>
+        <button type="button" style="font-size:0.72rem;padding:6px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="document.getElementById('${fid}').remove()">Cancel</button>
+      </div>
+    </div>`);
+  document.getElementById(`${fid}-sys`).focus();
+}
+
+function saveCalInline(fid, readingId) {
+  const sys  = parseInt(document.getElementById(`${fid}-sys`).value);
+  const dia  = parseInt(document.getElementById(`${fid}-dia`).value);
+  const hr   = parseInt(document.getElementById(`${fid}-hr`).value)||null;
+  const dt   = document.getElementById(`${fid}-dt`).value;
+  const slot = document.getElementById(`${fid}-slot`).value;
+  const notes= document.getElementById(`${fid}-notes`).value.trim();
+  if (!sys||!dia||sys<60||sys>250||dia<40||dia>150) { alert('Enter valid BP values.'); return; }
+  const readings = loadReadings();
+  if (readingId) {
+    const i = readings.findIndex(r=>r.id===readingId);
+    if (i>-1) readings[i]={...readings[i],sys,dia,hr,notes,slotId:slot,timestamp:new Date(dt).toISOString()};
+  } else {
+    readings.push({id:Date.now(),sys,dia,hr,notes,slotId:slot,timestamp:new Date(dt).toISOString()});
+  }
+  localStorage.setItem('rr_readings',JSON.stringify(readings));
+  renderCalendarOnly();
+  renderDashboard();
+}
+
+function cancelEdit() {
+  document.getElementById('editing-id').value='';
+  document.getElementById('edit-mode-bar').classList.remove('show');
+  document.getElementById('submit-btn').textContent='✚ Log This Reading';
+  document.getElementById('submit-btn').classList.remove('editing');
+  clearForm();
+}
+
+function deleteReading(id) {
+  if (!confirm('Delete this reading?')) return;
+  saveReadings(loadReadings().filter(r=>String(r.id)!==String(id)));
+  renderAll();
+}
+
+// ── RENDER DASHBOARD ──────────────────────────────────────
+function renderDashboard() {
+  const readings = loadReadings();
+  const now = new Date();
+  const today = now.toDateString();
+
+  renderDashChart();
+
+  // ── Status tiles
+  const sevenCutoff = new Date(now); sevenCutoff.setDate(sevenCutoff.getDate()-7);
+  const week7 = readings.filter(r => new Date(r.timestamp) >= sevenCutoff);
+  const todayReadings = readings.filter(r => new Date(r.timestamp).toDateString() === today);
+
+  const statusEl = document.getElementById('today-status');
+  if (statusEl && week7.length > 0) {
+    const avg7Sys = Math.round(week7.reduce((a,r)=>a+r.sys,0)/week7.length);
+    const avg7Dia = Math.round(week7.reduce((a,r)=>a+r.dia,0)/week7.length);
+    const sorted3  = readings.slice().sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
+    const lastR    = sorted3[0];
+    const last3    = sorted3.slice(0,3);
+    const lastTs = new Date(lastR.timestamp);
+    const sevenStart = new Date(now); sevenStart.setDate(sevenStart.getDate()-6);
+    const dotColors = {normal:'#22c55e',elevated:'#eab308',stage1:'#f97316',stage2:'#ef4444',crisis:'#7f1d1d'};
+    const dotLabels = {normal:'Normal',elevated:'A little high',stage1:'High',stage2:'Very High',crisis:'DANGER'};
+    const slotsNow = loadSettings().slots;
+    const nowMins = now.getHours()*60 + now.getMinutes();
+    const loggedSlotIds = new Set(todayReadings.map(r=>r.slotId));
+    const upcomingSlots = slotsNow
+      .map(sl=>{ const [h,m]=sl.time.split(':').map(Number); return {...sl,mins:h*60+m}; })
+      .filter(sl=>sl.mins>nowMins || !loggedSlotIds.has(sl.id))
+      .sort((a,b)=>a.mins-b.mins).slice(0,3);
+
+    const last7 = sorted3.slice(0,7);
+    const overallDiff = last7.length>=2 ? lastR.sys - last7[last7.length-1].sys : 0;
+    const overallAbs  = Math.abs(overallDiff);
+    let oIcon,oBg,oColor;
+    if(overallAbs<=4)       {oIcon='→';oBg='rgba(241,245,249,0.95)';oColor='var(--muted)';}
+    else if(overallDiff<0)  {oIcon='↓';oBg='rgba(220,252,231,0.95)';oColor='#15803d';}
+    else                    {oIcon='↑';oBg='rgba(254,226,226,0.95)';oColor='#b91c1c';}
+    const oLabel = oIcon==='→'?'About the same':oIcon==='↓'?'Going down — good!':'Going up — watch this';
+
+    // ── Trend strip below chart
+    const overlayEl = document.getElementById('dash-trend-overlay');
+    if (overlayEl) overlayEl.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:5px;background:${oBg};border-radius:7px;padding:3px 8px;">
+          <span style="font-size:1.1rem;font-weight:900;color:${oColor};line-height:1;">${oIcon}</span>
+          <span style="font-size:0.68rem;font-weight:700;color:${oColor};">${oLabel}</span>
+        </div>
+        <span style="font-size:0.65rem;color:var(--muted);">7-Day Avg: <strong style="color:var(--text);">${avg7Sys}/${avg7Dia}</strong> ${badgeHTML(avg7Sys,avg7Dia)}</span>
+        <div style="display:flex;gap:2px;margin-left:auto;">
+          ${['M','T','W','T','F','S','S'].map((d,i)=>{
+            const day=new Date(now); day.setDate(day.getDate()-(6-i));
+            const dayR=week7.filter(r=>new Date(r.timestamp).toDateString()===day.toDateString());
+            if(!dayR.length) return `<div style="width:18px;height:18px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:0.48rem;color:var(--muted);">${d}</div>`;
+            const avgS=Math.round(dayR.reduce((a,r)=>a+r.sys,0)/dayR.length);
+            const avgD=Math.round(dayR.reduce((a,r)=>a+r.dia,0)/dayR.length);
+            const key=classify(avgS,avgD).key;
+            return `<div title="${day.toLocaleDateString('en-PH',{month:'short',day:'numeric'})}: ${avgS}/${avgD} · ${dotLabels[key]}" style="width:18px;height:18px;border-radius:50%;background:${dotColors[key]};display:flex;align-items:center;justify-content:center;font-size:0.48rem;font-weight:700;color:white;">${d}</div>`;
+          }).join('')}
+        </div>
+      </div>
+      `;
+
+    // ── Right column: today's slots only
+    statusEl.innerHTML = `
+      <div class="status-tile">
+        <div class="st-label">Today's Readings</div>
+        <div style="display:flex;gap:8px;align-items:flex-start;margin-top:2px;">
+          <div style="flex-shrink:0;">
+            <div class="st-value">${todayReadings.length}</div>
+            <div style="font-size:0.6rem;color:var(--muted);margin-top:3px;">of ${slotsNow.length} slots</div>
+          </div>
+          <div style="flex:1;padding-top:3px;">
+            ${upcomingSlots.length
+              ? upcomingSlots.map(sl=>`<div style="display:flex;align-items:center;gap:4px;font-size:0.62rem;margin-bottom:3px;">
+                  <span>${sl.emoji||'💊'}</span>
+                  <span style="font-weight:600;color:var(--text);">${sl.time}</span>
+                  <span style="color:var(--muted);">${sl.name}</span>
+                  ${loggedSlotIds.has(sl.id)?`<span style="margin-left:auto;color:#22c55e;font-size:0.7rem;">✓</span>`:''}
+                </div>`).join('')
+              : `<div style="font-size:0.62rem;color:#22c55e;font-weight:600;padding-top:2px;">All done ✓</div>`
+            }
+          </div>
+        </div>
+      </div>`;
+  } else if (statusEl) {
+    statusEl.innerHTML = '';
+  }
+
+  // ── Today's list (card removed — skip)
+  const todayEl = document.getElementById('today-list');
+  if (todayEl) {
+    if (!todayReadings.length) {
+      todayEl.innerHTML = `<div class="empty-state" style="padding:20px;"><p>No readings logged today yet.</p></div>`;
+    } else {
+      const sorted = todayReadings.slice().sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+      todayEl.innerHTML = sorted.map(r => readingItemHTML(r)).join('');
+    }
+  }
+
+  // ── All readings
+  const allEl = document.getElementById('reading-list');
+  const editingId = document.getElementById('editing-id')?.value || '';
+  const sorted = readings.slice().sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
+  document.getElementById('reading-count').textContent = sorted.length + ' total';
+
+  if (!sorted.length) {
+    allEl.innerHTML = `<div class="empty-state"><div class="big">📋</div><p>No readings yet. Log above or load demo data in Settings.</p></div>`;
+  } else {
+    const cut7 = new Date(now); cut7.setDate(cut7.getDate()-7); cut7.setHours(0,0,0,0);
+    const recent = sorted.filter(r => new Date(r.timestamp) >= cut7);
+    const older  = sorted.filter(r => new Date(r.timestamp) <  cut7);
+    const today  = now.toDateString();
+    const yday   = new Date(now); yday.setDate(yday.getDate()-1);
+    const yStr   = yday.toDateString();
+    // ── Last 7 days: accordion
+    const groups7 = {};
+    recent.forEach(r => { const d=new Date(r.timestamp).toDateString(); if(!groups7[d])groups7[d]=[]; groups7[d].push(r); });
+    const accordionHTML = Object.entries(groups7).map(([dStr,dayR])=>{
+      const dt = new Date(dStr);
+      const lbl = dStr===today?'Today':dStr===yStr?'Yesterday':dt.toLocaleDateString('en-PH',{weekday:'short',month:'short',day:'numeric'});
+      const avgS=Math.round(dayR.reduce((a,r)=>a+r.sys,0)/dayR.length);
+      const avgD=Math.round(dayR.reduce((a,r)=>a+r.dia,0)/dayR.length);
+      const cl=classify(avgS,avgD);
+      const open=dStr===today||dStr===yStr;
+      const bodyId = `dg-${dStr.replace(/\s/g,'-')}`;
+      const dayISO = `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}T07:00`;
+      return `<div class="date-group">
+        <div class="date-header" onclick="this.nextElementSibling.classList.toggle('collapsed');this.querySelector('.dg-arrow').textContent=this.nextElementSibling.classList.contains('collapsed')?'▶':'▼';">
+          <span class="dg-arrow">${open?'▼':'▶'}</span>
+          <span class="dg-date">${lbl}</span>
+          <span class="dg-count">${dayR.length} reading${dayR.length!==1?'s':''}</span>
+          <span class="dg-avg" style="margin-left:auto;color:${DOT_C[cl.key]};">${avgS}/${avgD}</span>
+          ${badgeHTML(avgS,avgD)}
+        </div>
+        <div id="${bodyId}" class="date-body${open?'':' collapsed'}">${dayR.map(r=>calRowHTML(r,bodyId)).join('')}${calAddBtn(bodyId,dayISO)}</div>
+      </div>`;
+    }).join('');
+
+    allEl.innerHTML = accordionHTML
+      + (older.length ? `<div style="font-size:0.7rem;font-weight:700;color:var(--muted);margin:12px 0 6px;padding-left:4px;">OLDER — tap a day to see readings</div><div id="cal-grid-container"></div>` : '');
+
+    if (older.length) {
+      // Start calendar on most recent month with older data
+      const lastOld = new Date(older[0].timestamp);
+      calYear  = lastOld.getFullYear();
+      calMonth = lastOld.getMonth();
+      renderCalendarOnly();
+    }
+  }
+}
+
+function readingItemHTML(r, editingId='') {
+  const dt = new Date(r.timestamp);
+  const dateStr = dt.toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
+  const timeStr = dt.toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'});
+  const sl = getSlot(r.slotId);
+  const { pp, note } = pulsePressure(r.sys, r.dia);
+  const isEditing = String(r.id) === editingId;
+  return `<div class="reading-item${isEditing?' highlight':''}">
+    <div class="ri-icon" title="${sl.name}">${sl.emoji}</div>
+    <div class="ri-body">
+      <span class="ri-bp">${r.sys}/${r.dia}</span>${r.hr?` <span style="color:var(--muted);font-size:0.82rem;">· ${r.hr} bpm</span>`:''}
+      <div class="ri-meta">${dateStr} ${timeStr}${r.notes?` · <em>${r.notes}</em>`:''}</div>
+      <span class="slot-pill">${sl.emoji} ${sl.name}</span>
+    </div>
+    <div class="ri-right">
+      ${badgeHTML(r.sys,r.dia)}
+      <div class="ri-pp">PP ${pp}${note}</div>
+      <div class="ri-actions">
+        <button class="btn-icon" onclick="editReading(${r.id})" title="Edit">✏️</button>
+        <button class="btn-icon del" onclick="deleteReading(${r.id})" title="Delete">🗑️</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── SHARED: reading row used in both 7-day accordion and monthly calendar ──
+const DOT_C = {normal:'#22c55e',elevated:'#eab308',stage1:'#f97316',stage2:'#ef4444',crisis:'#7f1d1d'};
+
+function calRowHTML(r, panelId) {
+  const ts = new Date(r.timestamp);
+  const c  = classify(r.sys, r.dia);
+  const sl = getSlot(r.slotId);
+  const timeStr = ts.toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'});
+  return `<div class="cal-row" style="border-left-color:${DOT_C[c.key]};">
+    <div class="cr-top">
+      <span class="cr-time">${timeStr}</span>
+      <span class="cr-actions">
+        <button type="button" class="btn-icon" onclick="showCalInlineForm('${panelId}',null,${r.id})">✏️</button>
+        <button type="button" class="btn-icon del" onclick="deleteReading(${r.id})">🗑️</button>
+      </span>
+    </div>
+    <div class="cr-main">
+      <span class="cr-bp">${r.sys}/${r.dia}</span>
+      ${r.hr?`<span class="cr-hr">❤️ ${r.hr} bpm</span>`:''}
+    </div>
+    <div class="cr-meta">
+      <span class="badge ${c.cls}">${c.label}</span>
+      <span class="cr-slot">${sl.emoji||''} ${sl.name}</span>
+      ${r.notes?`<span class="cr-notes">· ${r.notes}</span>`:''}
+    </div>
+  </div>`;
+}
+
+function calAddBtn(panelId, dayISO) {
+  return `<button type="button" class="btn btn-primary" style="margin-top:10px;width:100%;" onclick="showCalInlineForm('${panelId}','${dayISO}',null)">✚ Add Reading for this Day</button>`;
+}
+
+// ── CHART ─────────────────────────────────────────────────
+let chartInstance = null;
+let calYear  = new Date().getFullYear();
+let calMonth = new Date().getMonth(); // 0-indexed
+
+function changeCalMonth(delta) {
+  calMonth += delta;
+  if (calMonth > 11) { calMonth = 0;  calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  renderCalendarOnly();
+}
+
+function renderCalendarOnly() {
+  const el = document.getElementById('cal-grid-container');
+  if (!el) return;
+  const readings = loadReadings();
+  const cut7 = new Date(); cut7.setDate(cut7.getDate()-7); cut7.setHours(0,0,0,0);
+  const older = readings.filter(r => new Date(r.timestamp) < cut7);
+  // Build day map for current cal month
+  const dayMap = {};
+  older.forEach(r => {
+    const d = new Date(r.timestamp);
+    if (d.getFullYear()===calYear && d.getMonth()===calMonth) {
+      const day = d.getDate();
+      if (!dayMap[day]) dayMap[day] = [];
+      dayMap[day].push(r);
+    }
+  });
+
+  const monthName  = new Date(calYear,calMonth,1).toLocaleDateString('en-PH',{month:'long',year:'numeric'});
+  const firstDow   = new Date(calYear,calMonth,1).getDay();
+  const daysInMo   = new Date(calYear,calMonth+1,0).getDate();
+  const dowLabels  = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+  let cells = dowLabels.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  for(let i=0;i<firstDow;i++) cells+=`<div class="cal-cell empty"></div>`;
+  for(let d=1;d<=daysInMo;d++){
+    const dr=dayMap[d];
+    const detId=`cd-${calYear}-${calMonth}-${d}`;
+    const dayDateISO = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}T07:00`;
+    const toggleFn = `(()=>{const det=document.getElementById('${detId}');const open=det.classList.toggle('open');document.querySelectorAll('.cal-cell.selected').forEach(c=>c.classList.remove('selected'));if(open)this.classList.add('selected');else this.classList.remove('selected');})()`;
+    const dayLabel = new Date(calYear,calMonth,d).toLocaleDateString('en-PH',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    if(dr){
+      const avgS=Math.round(dr.reduce((a,r)=>a+r.sys,0)/dr.length);
+      const avgD=Math.round(dr.reduce((a,r)=>a+r.dia,0)/dr.length);
+      const cl=classify(avgS,avgD);
+      cells+=`<div class="cal-cell has-data" style="background:${DOT_C[cl.key]};" onclick="${toggleFn}">
+        <span class="cday">${d}</span>
+        <span class="cavg">${avgS}/${avgD}</span>
+      </div>
+      <div id="${detId}" class="cal-day-detail" style="grid-column:1/-1;">
+        <div style="font-size:0.65rem;font-weight:700;margin-bottom:6px;">${dayLabel}</div>
+        ${dr.map(r=>calRowHTML(r,detId)).join('')}
+        ${calAddBtn(detId, dayDateISO)}
+      </div>`;
+    } else {
+      cells+=`<div class="cal-cell no-data" onclick="${toggleFn}">
+        <span class="cday">${d}</span>
+      </div>
+      <div id="${detId}" class="cal-day-detail" style="grid-column:1/-1;">
+        <div style="font-size:0.65rem;font-weight:700;margin-bottom:6px;">${dayLabel}</div>
+        <div style="font-size:0.68rem;color:var(--muted);margin-bottom:6px;">No readings logged this day.</div>
+        ${calAddBtn(detId, dayDateISO)}
+      </div>`;
+    }
+  }
+
+  el.innerHTML = `<div class="month-card">
+    <div class="month-nav">
+      <button type="button" class="month-nav-btn" onclick="changeCalMonth(-1)">‹</button>
+      <span class="month-nav-title">${monthName}</span>
+      <button type="button" class="month-nav-btn" onclick="changeCalMonth(1)">›</button>
+    </div>
+    <div class="month-grid">${cells}</div>
+  </div>`;
+}
+let dashChartInst = null;
+let chartView = '7d';
+let dashView = '7d';
+
+function setDashView(v, btn) {
+  dashView = v;
+  document.querySelectorAll('#dash-btn-7d,#dash-btn-4w,#dash-btn-3m').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDashChart();
+}
+
+function renderDashChart() {
+  const wrap = document.getElementById('dash-chart-wrap');
+  if (!wrap) return;
+  const readings = loadReadings();
+  if (!readings.length) {
+    wrap.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:0.8rem;">No data yet</div>';
+    return;
+  }
+  if (!wrap.querySelector('canvas')) wrap.innerHTML = '<canvas id="dash-chart"></canvas>';
+
+  const points = dashView === '7d' ? groupByDay(readings, 7)
+               : dashView === '4w' ? groupByDay(readings, 28)
+               : groupByWeek(readings);
+
+  const showSys = document.getElementById('dash-toggle-sys')?.checked ?? true;
+  const showDia = document.getElementById('dash-toggle-dia')?.checked ?? true;
+  const showHr  = document.getElementById('dash-toggle-hr')?.checked ?? true;
+  const dotC = (sys,dia) => sys===null?'transparent':DOT_C[classify(sys,dia).key];
+
+  const datasets = [];
+  if (showSys) datasets.push({
+    label:'Systolic', data:points.map(p=>p.sys), borderColor:'#ef4444',
+    pointBackgroundColor:points.map(p=>dotC(p.worstSys??p.sys, p.worstDia??p.dia)),
+    pointBorderColor:'#fff', pointBorderWidth:1.5,
+    pointRadius:points.map(p=>p.count?5:0), tension:0.35, borderWidth:2.5, fill:false, spanGaps:true,
+  });
+  if (showDia) datasets.push({
+    label:'Diastolic', data:points.map(p=>p.dia), borderColor:'#3b82f6',
+    pointBackgroundColor:points.map(p=>dotC(p.worstSys??p.sys, p.worstDia??p.dia)),
+    pointBorderColor:'#fff', pointBorderWidth:1.5,
+    pointRadius:points.map(p=>p.count?4:0), tension:0.35, borderWidth:2, fill:false, spanGaps:true,
+  });
+  if (showHr) datasets.push({
+    label:'Heart Rate', data:points.map(p=>p.hr), borderColor:'#8b5cf6',
+    pointBackgroundColor:'#8b5cf6', pointBorderColor:'#fff', pointBorderWidth:1.5,
+    pointRadius:points.map(p=>p.hr?3:0),
+    tension:0.35, borderWidth:1.5, borderDash:[5,4], fill:false, spanGaps:true,
+  });
+
+  const ctx = document.getElementById('dash-chart').getContext('2d');
+  if (dashChartInst) { dashChartInst.destroy(); dashChartInst = null; }
+
+  dashChartInst = new Chart(ctx, {
+    type:'line', data:{ labels:points.map(p=>p.label), datasets },
+    options:{
+      responsive:true, maintainAspectRatio:false, animation:{duration:200},
+      plugins:{
+        legend:{ display:false },
+        tooltip:{ callbacks:{ label: item => {
+          if (item.parsed.y===null) return '';
+          const suf = item.dataset.label==='Heart Rate' ? ' bpm' : ' mmHg';
+          const cnt = points[item.dataIndex].count;
+          return `${item.dataset.label}: ${item.parsed.y}${suf}${cnt?' ('+cnt+' rdg'+( cnt!==1?'s':'')+')':''}`;
+        }}}
+      },
+      scales:{
+        x:{ ticks:{ maxTicksLimit: dashView==='4w'?8:dashView==='3m'?13:7, maxRotation:40, font:{size:10} }, grid:{display:false} },
+        y:{ min:50, max:200, ticks:{font:{size:10}, stepSize:20},
+          grid:{ color: c=>{ const v=c.tick?.value; return v===120?'rgba(34,197,94,0.35)':v===130?'rgba(234,179,8,0.35)':v===140?'rgba(249,115,22,0.35)':'rgba(0,0,0,0.05)'; }, lineWidth:1.5 }
+        }
+      }
+    },
+    plugins:[{
+      id:'bpZones',
+      beforeDraw(chart) {
+        const {ctx,chartArea,scales:{y}} = chart;
+        if (!y||!chartArea) return;
+        const {left,right,top,bottom} = chartArea;
+        [{min:0,max:80,c:'rgba(34,197,94,0.06)'},{min:80,max:90,c:'rgba(249,115,22,0.07)'},
+         {min:90,max:120,c:'rgba(239,68,68,0.08)'},{min:120,max:130,c:'rgba(234,179,8,0.08)'},
+         {min:130,max:140,c:'rgba(249,115,22,0.09)'},{min:140,max:180,c:'rgba(239,68,68,0.10)'},
+         {min:180,max:250,c:'rgba(127,29,29,0.14)'}].forEach(z => {
+          const yT=y.getPixelForValue(z.max), yB=y.getPixelForValue(z.min);
+          if(yB>top&&yT<bottom){ctx.fillStyle=z.c;ctx.fillRect(left,Math.max(yT,top),right-left,Math.min(yB,bottom)-Math.max(yT,top));}
+        });
+        [{v:80,c:'#86efac'},{v:120,c:'#fde047'},{v:130,c:'#fdba74'},{v:140,c:'#fca5a5'}].forEach(({v,c})=>{
+          const py=y.getPixelForValue(v);
+          if(py>=top&&py<=bottom){ctx.save();ctx.strokeStyle=c;ctx.lineWidth=1;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(left,py);ctx.lineTo(right,py);ctx.stroke();ctx.restore();}
+        });
+      }
+    }]
+  });
+}
+
+function setChartView(v, btn) {
+  chartView = v;
+  document.querySelectorAll('.chart-toggle button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderChart();
+}
+
+function groupByDay(readings, nDays=7) {
+  // Returns array of {label, sys, dia, hr, count} for last nDays days
+  const now = new Date();
+  const result = [];
+  for (let d = nDays-1; d >= 0; d--) {
+    const day = new Date(now); day.setDate(day.getDate()-d);
+    const dayStr = day.toDateString();
+    const dayR = readings.filter(r => new Date(r.timestamp).toDateString() === dayStr);
+    const label = day.toLocaleDateString('en-PH', nDays <= 7
+      ? {weekday:'short',month:'short',day:'numeric'}
+      : {month:'short',day:'numeric'});
+    if (dayR.length > 0) {
+      const avgSys = Math.round(dayR.reduce((a,r)=>a+r.sys,0)/dayR.length);
+      const avgDia = Math.round(dayR.reduce((a,r)=>a+r.dia,0)/dayR.length);
+      // worst reading of the day drives the dot color
+      const worstR = dayR.reduce((w,r)=> classify(r.sys,r.dia).key > classify(w.sys,w.dia).key ? r : w, dayR[0]);
+      result.push({
+        label,
+        sys:     avgSys,
+        dia:     avgDia,
+        worstSys: worstR.sys,
+        worstDia: worstR.dia,
+        hr:    dayR.some(r=>r.hr) ? Math.round(dayR.filter(r=>r.hr).reduce((a,r)=>a+(r.hr||0),0)/dayR.filter(r=>r.hr).length) : null,
+        count: dayR.length,
+      });
+    } else {
+      result.push({ label, sys:null, dia:null, hr:null, count:0 });
+    }
+  }
+  return result;
+}
+
+function groupByWeek(readings) {
+  // Returns array of {label, sys, dia, hr, count} for last 13 weeks
+  const now = new Date();
+  const result = [];
+  for (let w = 12; w >= 0; w--) {
+    const weekStart = new Date(now); weekStart.setDate(weekStart.getDate() - w*7 - weekStart.getDay());
+    weekStart.setHours(0,0,0,0);
+    const weekEnd = new Date(weekStart); weekEnd.setDate(weekEnd.getDate()+7);
+    const weekR = readings.filter(r => { const t=new Date(r.timestamp); return t>=weekStart && t<weekEnd; });
+    const label = weekStart.toLocaleDateString('en-PH',{month:'short',day:'numeric'});
+    if (weekR.length > 0) {
+      result.push({
+        label,
+        sys:   Math.round(weekR.reduce((a,r)=>a+r.sys,0)/weekR.length),
+        dia:   Math.round(weekR.reduce((a,r)=>a+r.dia,0)/weekR.length),
+        hr:    weekR.some(r=>r.hr) ? Math.round(weekR.filter(r=>r.hr).reduce((a,r)=>a+(r.hr||0),0)/weekR.filter(r=>r.hr).length) : null,
+        count: weekR.length,
+      });
+    } else {
+      result.push({ label, sys:null, dia:null, hr:null, count:0 });
+    }
+  }
+  return result;
+}
+
+function renderChart() {
+  const readings = loadReadings();
+  const container = document.getElementById('chart-container');
+  if (!container.querySelector('canvas')) container.innerHTML = '<canvas id="bp-chart"></canvas>';
+
+  if (!readings.length) {
+    container.innerHTML = `<div class="empty-state"><div class="big">📈</div><p>No data yet.</p></div>`;
+    return;
+  }
+
+  const points = chartView === '7d' ? groupByDay(readings) : groupByWeek(readings);
+
+  const labels = points.map(p => p.label);
+  const showSys = document.getElementById('toggle-sys').checked;
+  const showDia = document.getElementById('toggle-dia').checked;
+  const showHr  = document.getElementById('toggle-hr').checked;
+
+  const dotColor = (sys, dia) => sys === null ? 'transparent' :
+    ({normal:'#22c55e',elevated:'#eab308',stage1:'#f97316',stage2:'#ef4444',crisis:'#7f1d1d'})[classify(sys,dia).key];
+
+  const datasets = [];
+  if (showSys) datasets.push({
+    label:'Systolic', data:points.map(p=>p.sys),
+    borderColor:'#ef4444',
+    pointBackgroundColor: points.map(p=>dotColor(p.worstSys??p.sys,p.worstDia??p.dia)),
+    pointBorderColor:'#fff', pointBorderWidth:1.5,
+    pointRadius: points.map(p=>p.count?5:0),
+    tension:0.35, borderWidth:2.5, fill:false, spanGaps:true,
+  });
+  if (showDia) datasets.push({
+    label:'Diastolic', data:points.map(p=>p.dia),
+    borderColor:'#3b82f6',
+    pointBackgroundColor: points.map(p=>dotColor(p.worstSys??p.sys,p.worstDia??p.dia)),
+    pointBorderColor:'#fff', pointBorderWidth:1.5,
+    pointRadius: points.map(p=>p.count?4:0),
+    tension:0.35, borderWidth:2, fill:false, spanGaps:true,
+  });
+  if (showHr) datasets.push({
+    label:'Heart Rate', data:points.map(p=>p.hr),
+    borderColor:'#8b5cf6', pointBackgroundColor:'#8b5cf6',
+    pointRadius: points.map(p=>p.hr?3:0),
+    tension:0.35, borderWidth:1.5, borderDash:[5,4], fill:false, spanGaps:true,
+  });
+
+  const ctx = document.getElementById('bp-chart').getContext('2d');
+  if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+
+  chartInstance = new Chart(ctx, {
+    type:'line', data:{labels, datasets},
+    options:{
+      responsive:true, maintainAspectRatio:false, animation:{duration:250},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          callbacks:{
+            label: item => {
+              if (item.parsed.y === null) return '';
+              const suf = item.dataset.label==='Heart Rate' ? ' bpm' : ' mmHg';
+              const cnt = points[item.dataIndex].count;
+              return `${item.dataset.label}: ${item.parsed.y}${suf} (${cnt} reading${cnt!==1?'s':''})`;
+            }
+          }
+        }
+      },
+      scales:{
+        x:{ ticks:{maxTicksLimit:8, maxRotation:40, font:{size:10}}, grid:{color:'#f1f5f9'} },
+        y:{ min:50, max:200, ticks:{font:{size:10}, stepSize:20}, grid:{color:'#f1f5f9'} }
+      }
+    },
+    plugins:[{
+      id:'bpZones',
+      beforeDraw(chart) {
+        const {ctx,chartArea,scales:{y}} = chart;
+        if (!y||!chartArea) return;
+        const {left,right,top,bottom} = chartArea;
+        [{min:0,max:80,c:'rgba(34,197,94,0.06)'},{min:80,max:90,c:'rgba(249,115,22,0.07)'},
+         {min:90,max:120,c:'rgba(239,68,68,0.08)'},{min:120,max:130,c:'rgba(234,179,8,0.08)'},
+         {min:130,max:140,c:'rgba(249,115,22,0.09)'},{min:140,max:180,c:'rgba(239,68,68,0.10)'},
+         {min:180,max:250,c:'rgba(127,29,29,0.14)'}].forEach(z => {
+          const yT=y.getPixelForValue(z.max), yB=y.getPixelForValue(z.min);
+          if (yB>top&&yT<bottom){ctx.fillStyle=z.c;ctx.fillRect(left,Math.max(yT,top),right-left,Math.min(yB,bottom)-Math.max(yT,top));}
+        });
+        [{v:80,c:'#86efac'},{v:120,c:'#fde047'},{v:130,c:'#fdba74'},{v:140,c:'#fca5a5'}].forEach(({v,c})=>{
+          const py=y.getPixelForValue(v);
+          if(py>=top&&py<=bottom){ctx.save();ctx.strokeStyle=c;ctx.lineWidth=1;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(left,py);ctx.lineTo(right,py);ctx.stroke();ctx.restore();}
+        });
+      }
+    }]
+  });
+}
+
+// ── ANALYSIS ──────────────────────────────────────────────
+function renderAnalysis() {
+  const readings = loadReadings();
+  const el = document.getElementById('analysis-content');
+  if (readings.length < 3) {
+    el.innerHTML = `<div class="card"><div class="empty-state"><div class="big">🤖</div>
+      <p>Need at least 3 readings.<br>Load demo data in Settings to preview analysis.</p></div></div>`;
+    return;
+  }
+
+  const now = new Date();
+  const sorted = readings.slice().sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const firstDate = new Date(sorted[0].timestamp);
+  const lastDate  = new Date(sorted[sorted.length-1].timestamp);
+  const daysCovered = Math.round((lastDate-firstDate)/(1000*60*60*24))+1;
+
+  // 7-day stats
+  const cut7 = new Date(now); cut7.setDate(cut7.getDate()-7);
+  const week7 = readings.filter(r=>new Date(r.timestamp)>=cut7);
+  const avg7Sys = week7.length ? Math.round(week7.reduce((a,r)=>a+r.sys,0)/week7.length) : null;
+  const avg7Dia = week7.length ? Math.round(week7.reduce((a,r)=>a+r.dia,0)/week7.length) : null;
+
+  // 3-month stats
+  const cut3m = new Date(now); cut3m.setDate(cut3m.getDate()-90);
+  const mo3 = readings.filter(r=>new Date(r.timestamp)>=cut3m);
+  const avg3mSys = mo3.length ? Math.round(mo3.reduce((a,r)=>a+r.sys,0)/mo3.length) : null;
+  const avg3mDia = mo3.length ? Math.round(mo3.reduce((a,r)=>a+r.dia,0)/mo3.length) : null;
+
+  // Trend (7d)
+  const s7 = week7.slice().sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const half = Math.max(1,Math.floor(s7.length/2));
+  const trendSys = s7.length >= 4 ? Math.round(
+    s7.slice(-half).reduce((a,r)=>a+r.sys,0)/half - s7.slice(0,half).reduce((a,r)=>a+r.sys,0)/half
+  ) : 0;
+
+  // 3-month trend (early vs late)
+  const third = Math.max(1,Math.floor(mo3.length/3));
+  const s3m = mo3.slice().sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const trend3mSys = mo3.length >= 6 ? Math.round(
+    s3m.slice(-third).reduce((a,r)=>a+r.sys,0)/third - s3m.slice(0,third).reduce((a,r)=>a+r.sys,0)/third
+  ) : 0;
+
+  // Slot patterns
+  const sets = loadSettings();
+  const slotStats = {};
+  sets.slots.forEach(sl => {
+    const sr = week7.filter(r=>r.slotId===sl.id);
+    if (sr.length>0) slotStats[sl.id]={name:sl.name,emoji:sl.emoji,
+      sys:Math.round(sr.reduce((a,r)=>a+r.sys,0)/sr.length),
+      dia:Math.round(sr.reduce((a,r)=>a+r.dia,0)/sr.length),count:sr.length};
+  });
+
+  const slotEntries = Object.entries(slotStats);
+  const highestSlot = slotEntries.length ? slotEntries.reduce((a,b)=>b[1].sys>a[1].sys?b:a) : null;
+  const lowestSlot  = slotEntries.length ? slotEntries.reduce((a,b)=>b[1].sys<a[1].sys?b:a) : null;
+
+  // Normal %
+  const normalPct7 = week7.length ? Math.round(week7.filter(r=>classify(r.sys,r.dia).key==='normal').length/week7.length*100) : 0;
+  const worst = readings.reduce((b,r)=>r.sys>b.sys?r:b);
+  const best  = readings.reduce((b,r)=>r.sys<b.sys?r:b);
+
+  const fmt = ts => new Date(ts).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
+  const fmtShort = ts => new Date(ts).toLocaleDateString('en-PH',{month:'short',day:'numeric'});
+  const avgClass7 = avg7Sys ? classify(avg7Sys,avg7Dia) : null;
+  const needsAlert = avgClass7 && ['stage1','stage2','crisis'].includes(avgClass7.key);
+
+  // ── AI Report text
+  const trendWord7  = trendSys>3 ? `INCREASING (+${trendSys} mmHg)` : trendSys<-3 ? `IMPROVING (${trendSys} mmHg)` : 'STABLE';
+  const trend3mWord = trend3mSys>5 ? `worsened by ${trend3mSys} mmHg` : trend3mSys<-5 ? `improved by ${Math.abs(trend3mSys)} mmHg` : 'remained relatively stable';
+  const slotPatternText = highestSlot && lowestSlot && highestSlot[0]!==lowestSlot[0]
+    ? `Time-of-day pattern detected: ${highestSlot[1].emoji} ${highestSlot[1].name} readings are highest (avg ${highestSlot[1].sys}/${highestSlot[1].dia} mmHg), while ${lowestSlot[1].emoji} ${lowestSlot[1].name} readings are lowest (avg ${lowestSlot[1].sys}/${lowestSlot[1].dia} mmHg).`
+    : 'Insufficient slot data for time-of-day pattern analysis.';
+
+  const report = [
+    `<span class="ai-head">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>`,
+    `<span class="ai-head">  RAYCORADAR — BP ANALYSIS REPORT</span>`,
+    `<span class="ai-head">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>`,
+    `<span class="ai-label">Generated   :</span> ${new Date().toLocaleString('en-PH')}`,
+    `<span class="ai-label">Data Range  :</span> ${fmt(sorted[0].timestamp)} → ${fmt(sorted[sorted.length-1].timestamp)}`,
+    `<span class="ai-label">Coverage    :</span> ${readings.length} readings over ${daysCovered} days`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `<span class="ai-head">  CURRENT STATUS (Last 7 Days)</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    avg7Sys ? `<span class="ai-label">7-Day Avg   :</span> <span class="${needsAlert?'ai-warn':'ai-ok'}">${avg7Sys}/${avg7Dia} mmHg  [${avgClass7.label.toUpperCase()}]</span>` : '  No readings in last 7 days.',
+    avg7Sys ? `<span class="ai-label">In Normal   :</span> ${normalPct7}% of ${week7.length} readings` : '',
+    avg7Sys ? `<span class="ai-label">7-Day Trend :</span> ${trendSys>3?'<span class="ai-warn">':'<span class="ai-ok">'}${trendWord7}</span>` : '',
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `<span class="ai-head">  3-MONTH OVERVIEW</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    avg3mSys ? `<span class="ai-label">3-Mo Avg    :</span> ${avg3mSys}/${avg3mDia} mmHg  [${classify(avg3mSys,avg3mDia).label.toUpperCase()}]` : '  Not enough 3-month data.',
+    avg3mSys ? `<span class="ai-label">3-Mo Trend  :</span> Systolic has ${trend3mWord} over 3 months.` : '',
+    avg7Sys && avg3mSys ? `<span class="ai-label">vs 3-Mo Avg :</span> Current week is ${avg7Sys>avg3mSys?`<span class="ai-warn">+${avg7Sys-avg3mSys} mmHg above</span>`:`<span class="ai-ok">${avg3mSys-avg7Sys} mmHg below</span>`} 3-month average.` : '',
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `<span class="ai-head">  TIME-OF-DAY PATTERN</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `  ${slotPatternText}`,
+    slotEntries.length ? `  Recommendation: ${highestSlot ? `Schedule medications or rest before your ${highestSlot[1].name} reading window.` : ''}` : '',
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `<span class="ai-head">  NOTABLE READINGS</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `<span class="ai-label">All-Time Best :</span> <span class="ai-ok">${best.sys}/${best.dia}</span> on ${fmtShort(best.timestamp)}`,
+    `<span class="ai-label">All-Time High :</span> <span class="ai-bad">${worst.sys}/${worst.dia}</span> on ${fmtShort(worst.timestamp)}`,
+    readings.filter(r=>classify(r.sys,r.dia).key==='crisis').length > 0
+      ? `<span class="ai-bad">  ⚠ ${readings.filter(r=>classify(r.sys,r.dia).key==='crisis').length} reading(s) exceeded HYPERTENSIVE CRISIS threshold — consult physician immediately.</span>`
+      : `<span class="ai-ok">  ✓ No hypertensive crisis readings detected.</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `<span class="ai-head">  ADVISORY</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    needsAlert
+      ? `<span class="ai-warn">  Your 7-day average (${avg7Sys}/${avg7Dia}) remains in ${avgClass7.label.toUpperCase()}.\n  If sustained 2+ weeks, consult your physician.\n  Do NOT self-adjust medications.</span>`
+      : avg7Sys
+        ? `<span class="ai-ok">  Your recent BP control is good. Continue current regimen\n  and maintain regular monitoring.</span>`
+        : `<span class="ai-label">  Log at least 7 days of readings for a full advisory.</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+    `<span class="ai-label">  For personal monitoring only. Not a substitute for\n  professional medical diagnosis or treatment.</span>`,
+    `<span class="ai-line">──────────────────────────────────────────────────</span>`,
+  ].filter(l=>l).join('\n');
+
+  el.innerHTML = `
+    <div class="card">
+      <div class="card-title">🤖 Analysis Report</div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Rule-based clinical pattern analysis · AHA 2017 Guidelines</p>
+      <div class="ai-report">${report}</div>
+    </div>`;
+}
+
+// ── REMINDERS ─────────────────────────────────────────────
+const _dismissed = {};
+function toMin(hhmm) { const [h,m]=hhmm.split(':').map(Number); return h*60+m; }
+
+function checkReminders() {
+  const s    = loadSettings();
+  const now  = new Date();
+  const hhmm = now.getHours()*60+now.getMinutes();
+  const today= now.toDateString();
+  const readings = loadReadings();
+  const banner   = document.getElementById('reminder-banner');
+
+  for (const sl of s.slots) {
+    const key   = sl.id+today;
+    if (_dismissed[key]) continue;
+    const start = toMin(sl.time);
+    if (hhmm>=start && hhmm<=start+120) {
+      const has = readings.some(r=>new Date(r.timestamp).toDateString()===today && r.slotId===sl.id);
+      if (!has) {
+        document.getElementById('reminder-text').textContent = `⏰ Time for your ${sl.name} BP reading!`;
+        banner.dataset.key = key;
+        banner.classList.add('show');
+        if (s.notifications && Notification.permission==='granted') new Notification('RaycoRadar',{body:`Time for your ${sl.name} BP reading!`});
+        document.getElementById('in-slot').value = sl.id;
+        return;
+      }
+    }
+  }
+  banner.classList.remove('show');
+}
+function dismissReminder() { const b=document.getElementById('reminder-banner'); _dismissed[b.dataset.key]=true; b.classList.remove('show'); }
+
+// ── TAB SWITCHING ─────────────────────────────────────────
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  else {
+    const navBtns = document.querySelectorAll('nav button');
+    const idx = ['dash','analysis','settings'].indexOf(id);
+    if (idx>=0) navBtns[idx].classList.add('active');
+  }
+  if (id==='analysis') renderAnalysis();
+  if (id==='settings') renderSlotList();
+}
+
+function renderAll() {
+  renderDashboard();
+  const active = document.querySelector('.tab.active');
+  if (active?.id==='tab-analysis') renderAnalysis();
+}
+
+// ── INIT ──────────────────────────────────────────────────
+(function init() {
+  // Migrate old settings
+  const old = localStorage.getItem('rr_settings');
+  if (old && !localStorage.getItem('rr_settings2')) {
+    try {
+      const o = JSON.parse(old);
+      persistSettings({ notifications:o.notifications||false, slots:[
+        {id:'s1',emoji:'🌅',name:'After Breakfast',time:o.breakfast||'07:00'},
+        {id:'s2',emoji:'🌞',name:'After Lunch',    time:o.lunch||'12:00'},
+        {id:'s3',emoji:'🌙',name:'After Dinner',   time:o.dinner||'18:00'},
+      ]});
+    } catch(e){}
+  }
+
+  document.getElementById('s-notif').checked = loadSettings().notifications;
+  populateSlotDropdown();
+
+  // Init drum pickers — Systolic: 60–220, Diastolic: 40–150, Pulse: 40–180
+  drumSys = initDrum('drum-sys', 'in-sys', 60, 220, 120);
+  drumDia = initDrum('drum-dia', 'in-dia', 40, 150, 80);
+  drumHr  = initDrum('drum-hr',  'in-hr',  40, 180, 70);
+
+  // Auto-seed demo on first open
+  if (!loadReadings().length) { saveReadings(buildDemoReadings()); }
+
+  renderAll();
+  checkReminders();
+  setInterval(checkReminders, 60_000);
+})();
+</script>
+</body>
+</html>
