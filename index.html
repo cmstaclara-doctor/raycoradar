@@ -318,7 +318,7 @@
     .setting-row:last-child { border-bottom: none; }
     .setting-label { font-size: 1rem; font-weight: 600; }
     .setting-sub { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
-    .slot-row { display: grid; grid-template-columns: 34px 1fr 96px 30px; gap: 8px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
+    .slot-row { display: grid; grid-template-columns: 36px 1fr 140px 40px; gap: 8px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
     .slot-row:last-child { border-bottom: none; }
     .slot-emoji-input { width: 40px; height: 44px; text-align: center; font-size: 1.1rem; border: 1.5px solid var(--border); border-radius: 7px; background: var(--bg); }
     .slot-name-input, .slot-time-input { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: 1rem; background: var(--bg); color: var(--text); width: 100%; }
@@ -366,7 +366,7 @@
       .summary-grid { grid-template-columns: 1fr 1fr; }
       .status-bar { flex-wrap: wrap; }
       .dash-main { grid-template-columns: 1fr; }
-      .slot-row { grid-template-columns: 40px 1fr 90px 36px; }
+
       .tab { padding: 12px; }
       .card { padding: 18px; }
       nav button { font-size: 1rem; padding: 16px 4px; }
@@ -414,25 +414,8 @@
 ════════════════════════════════════════════════ -->
 <div id="tab-dash" class="tab active">
 
-  <!-- Chart card with view toggles -->
-  <div class="dash-main">
-    <div class="card dash-chart-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <div class="card-title" style="margin:0;">BP Trend</div>
-        <div class="chart-toggle" style="margin-bottom:0;">
-          <button type="button" id="dash-btn-7d" class="active" onclick="setDashView('7d',this)" style="padding:5px 11px;font-size:0.73rem;">7D</button>
-          <button type="button" id="dash-btn-4w" onclick="setDashView('4w',this)" style="padding:5px 11px;font-size:0.73rem;">4W</button>
-          <button type="button" id="dash-btn-3m" onclick="setDashView('3m',this)" style="padding:5px 11px;font-size:0.73rem;">3M</button>
-        </div>
-      </div>
-      <div id="dash-chart-wrap" style="position:relative;height:220px;"><canvas id="dash-chart"></canvas></div>
-      <div class="legend-row" style="margin-top:6px;">
-        <label><input type="checkbox" id="dash-toggle-sys" checked onchange="renderDashChart()"> <span style="color:#ef4444;font-weight:700;">● Sys</span></label>
-        <label><input type="checkbox" id="dash-toggle-dia" checked onchange="renderDashChart()"> <span style="color:#3b82f6;font-weight:700;">● Dia</span></label>
-        <label><input type="checkbox" id="dash-toggle-hr" checked onchange="renderDashChart()"> <span style="color:#8b5cf6;font-weight:700;">● HR</span></label>
-      </div>
-    </div>
-  </div>
+  <!-- 7-Day Summary Card -->
+  <div id="dash-summary-card" class="card" style="margin-bottom:14px;"></div>
 
   <!-- Reading History Calendar -->
   <div class="card">
@@ -1161,15 +1144,70 @@ function deleteReading(id) {
   renderAll();
 }
 
+// ── 7-DAY SUMMARY ─────────────────────────────────────────
+function renderDashSummary() {
+  const el = document.getElementById('dash-summary-card');
+  if (!el) return;
+  const now = new Date();
+  const cut7 = new Date(now); cut7.setDate(cut7.getDate() - 7);
+  const week7 = loadReadings().filter(r => new Date(r.timestamp) >= cut7);
+
+  if (!week7.length) {
+    el.innerHTML = '<div style="color:var(--muted);font-size:0.9rem;text-align:center;padding:12px;">No readings in the last 7 days</div>';
+    return;
+  }
+
+  const avgSys = Math.round(week7.reduce((a,r) => a+r.sys, 0) / week7.length);
+  const avgDia = Math.round(week7.reduce((a,r) => a+r.dia, 0) / week7.length);
+
+  const highest = week7.reduce((w,r) => r.sys > w.sys ? r : w, week7[0]);
+  const lowest  = week7.reduce((b,r) => r.sys < b.sys ? r : b, week7[0]);
+  const highDt  = new Date(highest.timestamp);
+  const lowDt   = new Date(lowest.timestamp);
+
+  const s = loadSettings();
+  let critSlot = null, critAvg = 0;
+  s.slots.forEach(sl => {
+    const sr = week7.filter(r => r.slotId === sl.id);
+    if (!sr.length) return;
+    const avg = sr.reduce((a,r) => a+r.sys, 0) / sr.length;
+    if (avg > critAvg) { critAvg = avg; critSlot = sl; }
+  });
+
+  const fmtDate = d => d.toLocaleDateString('en-PH', {month:'short', day:'numeric'});
+  const fmtTime = d => d.toLocaleTimeString('en-PH', {hour:'2-digit', minute:'2-digit'});
+
+  el.innerHTML = `
+    <div class="card-title">Last 7 Days</div>
+    <div style="text-align:center;margin-bottom:14px;">
+      <div style="font-size:3.2rem;font-weight:800;letter-spacing:-2px;line-height:1;color:var(--text);">${avgSys}<span style="font-size:2rem;font-weight:300;color:var(--muted);margin:0 6px;">/</span>${avgDia}</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin:4px 0 10px;">mmHg · 7-day average · ${week7.length} readings</div>
+      ${badgeHTML(avgSys, avgDia)}
+    </div>
+    <div class="summary-grid" style="margin-bottom:12px;">
+      <div class="stat-box" style="border-left:4px solid #ef4444;">
+        <div class="slabel">Highest</div>
+        <div class="sval" style="color:#ef4444;">${highest.sys}/${highest.dia}</div>
+        <div class="ssub">${fmtDate(highDt)} · ${fmtTime(highDt)}</div>
+      </div>
+      <div class="stat-box" style="border-left:4px solid #22c55e;">
+        <div class="slabel">Lowest</div>
+        <div class="sval" style="color:#22c55e;">${lowest.sys}/${lowest.dia}</div>
+        <div class="ssub">${fmtDate(lowDt)} · ${fmtTime(lowDt)}</div>
+      </div>
+    </div>
+    ${critSlot ? `<div style="background:#fff7ed;border-left:4px solid #f97316;border-radius:0 8px 8px 0;padding:10px 14px;font-size:0.88rem;color:#7c2d12;">
+      ⚠️ <strong>BP runs highest at ${critSlot.emoji} ${critSlot.name}</strong> — avg ${Math.round(critAvg)} mmHg sys this week
+    </div>` : ''}`;
+}
+
 // ── RENDER DASHBOARD ──────────────────────────────────────
 function renderDashboard() {
   const now = new Date();
-  // Calendar first — always renders regardless of chart status
   calYear  = now.getFullYear();
   calMonth = now.getMonth();
   renderCalendarOnly();
-  // Chart deferred one frame so canvas has computed dimensions
-  requestAnimationFrame(() => { try { renderDashChart(); } catch(e) { console.error('chart:', e); } });
+  renderDashSummary();
 }
 
 function readingItemHTML(r, editingId='') {
@@ -1303,100 +1341,7 @@ function renderCalendarOnly() {
     <div class="month-grid">${cells}</div>
   </div>`;
 }
-let dashChartInst = null;
 let chartView = '7d';
-let dashView = '7d';
-
-function setDashView(v, btn) {
-  dashView = v;
-  document.querySelectorAll('#dash-btn-7d,#dash-btn-4w,#dash-btn-3m').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderDashChart();
-}
-
-function renderDashChart() {
-  const wrap = document.getElementById('dash-chart-wrap');
-  if (!wrap) return;
-  const readings = loadReadings();
-  if (!readings.length) {
-    wrap.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:0.8rem;">No data yet</div>';
-    return;
-  }
-  if (!wrap.querySelector('canvas')) wrap.innerHTML = '<canvas id="dash-chart"></canvas>';
-
-  const points = dashView === '7d' ? groupByDay(readings, 7)
-               : dashView === '4w' ? groupByDay(readings, 28)
-               : groupByWeek(readings);
-
-  const showSys = document.getElementById('dash-toggle-sys')?.checked ?? true;
-  const showDia = document.getElementById('dash-toggle-dia')?.checked ?? true;
-  const showHr  = document.getElementById('dash-toggle-hr')?.checked ?? true;
-  const dotC = (sys,dia) => sys===null?'transparent':DOT_C[classify(sys,dia).key];
-
-  const datasets = [];
-  if (showSys) datasets.push({
-    label:'Systolic', data:points.map(p=>p.sys), borderColor:'#ef4444',
-    pointBackgroundColor:points.map(p=>dotC(p.worstSys??p.sys, p.worstDia??p.dia)),
-    pointBorderColor:'#fff', pointBorderWidth:1.5,
-    pointRadius:points.map(p=>p.count?5:0), tension:0.35, borderWidth:2.5, fill:false, spanGaps:true,
-  });
-  if (showDia) datasets.push({
-    label:'Diastolic', data:points.map(p=>p.dia), borderColor:'#3b82f6',
-    pointBackgroundColor:points.map(p=>dotC(p.worstSys??p.sys, p.worstDia??p.dia)),
-    pointBorderColor:'#fff', pointBorderWidth:1.5,
-    pointRadius:points.map(p=>p.count?4:0), tension:0.35, borderWidth:2, fill:false, spanGaps:true,
-  });
-  if (showHr) datasets.push({
-    label:'Heart Rate', data:points.map(p=>p.hr), borderColor:'#8b5cf6',
-    pointBackgroundColor:'#8b5cf6', pointBorderColor:'#fff', pointBorderWidth:1.5,
-    pointRadius:points.map(p=>p.hr?3:0),
-    tension:0.35, borderWidth:1.5, borderDash:[5,4], fill:false, spanGaps:true,
-  });
-
-  const ctx = document.getElementById('dash-chart').getContext('2d');
-  if (dashChartInst) { dashChartInst.destroy(); dashChartInst = null; }
-
-  dashChartInst = new Chart(ctx, {
-    type:'line', data:{ labels:points.map(p=>p.label), datasets },
-    options:{
-      responsive:true, maintainAspectRatio:false, animation:{duration:200},
-      plugins:{
-        legend:{ display:false },
-        tooltip:{ callbacks:{ label: item => {
-          if (item.parsed.y===null) return '';
-          const suf = item.dataset.label==='Heart Rate' ? ' bpm' : ' mmHg';
-          const cnt = points[item.dataIndex].count;
-          return `${item.dataset.label}: ${item.parsed.y}${suf}${cnt?' ('+cnt+' rdg'+( cnt!==1?'s':'')+')':''}`;
-        }}}
-      },
-      scales:{
-        x:{ ticks:{ maxTicksLimit: dashView==='4w'?8:dashView==='3m'?13:7, maxRotation:40, font:{size:10} }, grid:{display:false} },
-        y:{ min:50, max:200, ticks:{font:{size:10}, stepSize:20},
-          grid:{ color: c=>{ const v=c.tick?.value; return v===120?'rgba(34,197,94,0.35)':v===130?'rgba(234,179,8,0.35)':v===140?'rgba(249,115,22,0.35)':'rgba(0,0,0,0.05)'; }, lineWidth:1.5 }
-        }
-      }
-    },
-    plugins:[{
-      id:'bpZones',
-      beforeDraw(chart) {
-        const {ctx,chartArea,scales:{y}} = chart;
-        if (!y||!chartArea) return;
-        const {left,right,top,bottom} = chartArea;
-        [{min:0,max:80,c:'rgba(34,197,94,0.06)'},{min:80,max:90,c:'rgba(249,115,22,0.07)'},
-         {min:90,max:120,c:'rgba(239,68,68,0.08)'},{min:120,max:130,c:'rgba(234,179,8,0.08)'},
-         {min:130,max:140,c:'rgba(249,115,22,0.09)'},{min:140,max:180,c:'rgba(239,68,68,0.10)'},
-         {min:180,max:250,c:'rgba(127,29,29,0.14)'}].forEach(z => {
-          const yT=y.getPixelForValue(z.max), yB=y.getPixelForValue(z.min);
-          if(yB>top&&yT<bottom){ctx.fillStyle=z.c;ctx.fillRect(left,Math.max(yT,top),right-left,Math.min(yB,bottom)-Math.max(yT,top));}
-        });
-        [{v:80,c:'#86efac'},{v:120,c:'#fde047'},{v:130,c:'#fdba74'},{v:140,c:'#fca5a5'}].forEach(({v,c})=>{
-          const py=y.getPixelForValue(v);
-          if(py>=top&&py<=bottom){ctx.save();ctx.strokeStyle=c;ctx.lineWidth=1;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(left,py);ctx.lineTo(right,py);ctx.stroke();ctx.restore();}
-        });
-      }
-    }]
-  });
-}
 
 function setChartView(v, btn) {
   chartView = v;
