@@ -899,7 +899,7 @@ function initDrumArr(scrollId, items, defIdx, onChange) {
 }
 
 function syncDatetime() {
-  if (!drumMonth) return;
+  if (!drumMonth || !drumDay || !drumYear || !drumHour || !drumMin || !drumAmpm) return;
   const m   = drumMonth.getIdx()+1;
   const d   = drumDay.getIdx()+1;
   const y   = DT_YEAR0 + drumYear.getIdx();
