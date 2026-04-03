@@ -184,25 +184,14 @@
     #edit-mode-bar span { flex: 1; }
     #cancel-edit { background: none; border: none; cursor: pointer; font-size: 0.82rem; color: #1d4ed8; font-weight: 700; text-decoration: underline; }
 
-    /* ── Bottom Sheet ────────────────────────────── */
-    #sheet-backdrop {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.45); z-index: 200;
-    }
-    #sheet-backdrop.open { display: block; }
-    #record-sheet {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 201;
-      background: var(--card); border-radius: 24px 24px 0 0;
-      box-shadow: 0 -4px 32px rgba(0,0,0,0.18);
-      max-height: 92vh; overflow-y: auto;
-      padding: 0 20px 32px;
-      transform: translateY(100%);
-      transition: transform 0.32s cubic-bezier(0.32,0.72,0,1);
-    }
-    #record-sheet.open { transform: translateY(0); }
-    .sheet-handle {
-      width: 44px; height: 5px; background: var(--border);
-      border-radius: 3px; margin: 14px auto 18px; flex-shrink: 0;
+    /* ── Inline Log Form ─────────────────────────── */
+    #inline-form {
+      display: none;
+      background: var(--card);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 10px;
     }
 
     /* ── Past data toggle ──────────────────────── */
@@ -431,7 +420,7 @@
 <div id="tab-dash" class="tab active">
 
   <!-- ✚ Log Reading button (always visible at top of dashboard) -->
-  <button type="button" class="btn btn-primary" style="margin-bottom:14px;" onclick="openSheet()">✚ Log New Reading</button>
+  <button type="button" class="btn btn-primary" style="margin-bottom:14px;" onclick="openSheet(this)">✚ Log New Reading</button>
 
   <!-- Chart card with view toggles -->
   <div class="dash-main">
@@ -549,12 +538,8 @@
 <!-- hidden print container -->
 <div id="print-report"></div>
 
-<!-- ── Bottom Sheet Backdrop ── -->
-<div id="sheet-backdrop" onclick="closeSheet()"></div>
-
-<!-- ── Bottom Sheet: Record Form ── -->
-<div id="record-sheet" id="record-card">
-  <div class="sheet-handle"></div>
+<!-- ── Inline Log Form (moved in DOM by JS to below clicked button) ── -->
+<div id="inline-form">
   <div id="edit-mode-bar" style="display:none;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:0.95rem;color:#1d4ed8;align-items:center;gap:10px;">
     <span style="flex:1;">✏️ Editing this reading</span>
     <button id="cancel-edit" onclick="cancelEdit()">Cancel</button>
@@ -861,14 +846,14 @@ function printReport() {
   window.print();
 }
 
-// ── BOTTOM SHEET ──────────────────────────────────────────
-function openSheet() {
-  document.getElementById('sheet-backdrop').classList.add('open');
-  document.getElementById('record-sheet').classList.add('open');
+// ── INLINE FORM ───────────────────────────────────────────
+function openSheet(afterEl) {
+  const form = document.getElementById('inline-form');
+  form.style.display = 'block';
+  if (afterEl) afterEl.insertAdjacentElement('afterend', form);
 }
 function closeSheet() {
-  document.getElementById('sheet-backdrop').classList.remove('open');
-  document.getElementById('record-sheet').classList.remove('open');
+  document.getElementById('inline-form').style.display = 'none';
 }
 
 // ── DRUM PICKERS ──────────────────────────────────────────
@@ -1005,7 +990,7 @@ function clearForm() {
   if (pastFormOpen) togglePastForm();
 }
 
-function editReading(id) {
+function editReading(id, _triggerEl) {
   const r = loadReadings().find(x => String(x.id) === String(id));
   if (!r) return;
   // Drive drum pickers to the reading's values
@@ -1024,16 +1009,16 @@ function editReading(id) {
   document.getElementById('submit-btn').textContent = '✏️ Update Reading';
   document.getElementById('submit-btn').classList.add('editing');
   document.getElementById('sheet-title').textContent = '✏️ Edit Reading';
-  openSheet();
+  openSheet(_triggerEl);
 }
 
-function prefillDate(isoDateTime) {
+function prefillDate(isoDateTime, _triggerEl) {
   cancelEdit();
   if (!pastFormOpen) togglePastForm();
   document.getElementById('in-datetime').value = isoDateTime;
   autoDetectSlot();
   document.getElementById('sheet-title').textContent = '🩺 New Record';
-  openSheet();
+  openSheet(_triggerEl);
 }
 
 function showCalInlineForm(panelId, dateISO, readingId) {
@@ -1158,7 +1143,7 @@ function calRowHTML(r, panelId) {
     <div class="cr-top">
       <span class="cr-time">${timeStr}</span>
       <span class="cr-actions">
-        <button type="button" class="btn-icon" onclick="editReading(${r.id})">✏️</button>
+        <button type="button" class="btn-icon" onclick="editReading(${r.id},this)">✏️</button>
         <button type="button" class="btn-icon del" onclick="deleteReading(${r.id})">🗑️</button>
       </span>
     </div>
@@ -1175,7 +1160,7 @@ function calRowHTML(r, panelId) {
 }
 
 function calAddBtn(panelId, dayISO) {
-  return `<button type="button" class="btn btn-primary" style="margin-top:10px;width:100%;" onclick="prefillDate('${dayISO}')">✚ Add Reading for this Day</button>`;
+  return `<button type="button" class="btn btn-primary" style="margin-top:10px;width:100%;" onclick="prefillDate('${dayISO}',this)">✚ Add Reading for this Day</button>`;
 }
 
 // ── CHART ─────────────────────────────────────────────────
