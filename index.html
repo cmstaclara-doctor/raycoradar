@@ -1164,16 +1164,13 @@ function deleteReading(id) {
 
 // ── RENDER DASHBOARD ──────────────────────────────────────
 function renderDashboard() {
-  const readings = loadReadings();
   const now = new Date();
-  const today = now.toDateString();
-
-  renderDashChart();
-
-  // ── Calendar: always show current month, all readings
+  // Calendar first — always renders regardless of chart status
   calYear  = now.getFullYear();
   calMonth = now.getMonth();
   renderCalendarOnly();
+  // Chart deferred one frame so canvas has computed dimensions
+  requestAnimationFrame(() => { try { renderDashChart(); } catch(e) { console.error('chart:', e); } });
 }
 
 function readingItemHTML(r, editingId='') {
