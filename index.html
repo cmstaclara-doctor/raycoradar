@@ -50,30 +50,30 @@
     /* ── Reminder Banner ──────────────────────── */
     #reminder-banner {
       background: #fef3c7; border-left: 4px solid #f59e0b;
-      padding: 10px 16px; font-size: 1rem;
+      padding: 10px 16px; font-size: 0.84rem;
       display: none; align-items: center; gap: 10px;
     }
     #reminder-banner.show { display: flex; }
     #reminder-banner span { flex: 1; }
-    #reminder-dismiss { background: none; border: none; cursor: pointer; font-size: 1.2rem; padding: 2px 8px; color: #92400e; font-weight: 700; }
+    #reminder-dismiss { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 2px 8px; color: #92400e; font-weight: 700; }
 
     /* ── Nav ──────────────────────────────────── */
     nav { display: flex; background: var(--card); border-bottom: 1px solid var(--border); overflow-x: auto; }
     nav button {
-      flex: 1; padding: 20px 8px; border: none; background: none; cursor: pointer;
-      font-size: 1.2rem; font-weight: 700; color: var(--muted);
-      border-bottom: 4px solid transparent; white-space: nowrap; transition: all 0.15s; min-width: 80px; min-height: 68px;
+      flex: 1; padding: 17px 8px; border: none; background: none; cursor: pointer;
+      font-size: 1.05rem; font-weight: 700; color: var(--muted);
+      border-bottom: 4px solid transparent; white-space: nowrap; transition: all 0.15s; min-width: 80px; min-height: 58px;
     }
     nav button.active { color: var(--accent); border-bottom-color: var(--accent); }
     nav button:hover:not(.active) { color: var(--text); background: var(--bg); }
 
     /* ── Tabs ─────────────────────────────────── */
-    .tab { display: none; padding: 14px; max-width: 800px; margin: 0 auto; padding-bottom: 40px; }
+    .tab { display: none; padding: 16px; max-width: 800px; margin: 0 auto; padding-bottom: 50px; }
     .tab.active { display: block; }
 
     /* ── Cards ────────────────────────────────── */
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
-    .card-title { font-size: 1rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 14px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 14px; }
+    .card-title { font-size: 0.88rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 14px; }
 
     /* ── Today Status Bar ─────────────────────── */
     .dash-main {
@@ -88,45 +88,45 @@
     /* ── Calendar Groups ─────────────────────────── */
     .date-group { margin-bottom: 3px; }
     .date-header {
-      display: flex; align-items: center; gap: 10px; padding: 16px 14px;
+      display: flex; align-items: center; gap: 12px; padding: 18px 16px;
       background: var(--bg); border-radius: 10px; cursor: pointer;
-      user-select: none; -webkit-user-select: none; transition: background 0.15s; min-height: 64px;
+      user-select: none; -webkit-user-select: none; transition: background 0.15s; min-height: 66px;
     }
     .date-header:hover { background: #e8f0fe; }
-    .dg-arrow { font-size: 1rem; color: var(--muted); width: 14px; flex-shrink: 0; }
-    .dg-date  { font-weight: 700; font-size: 1.15rem; color: var(--text); }
-    .dg-count { font-size: 1rem; color: var(--muted); }
+    .dg-arrow { font-size: 1rem; color: var(--muted); width: 16px; flex-shrink: 0; }
+    .dg-date  { font-weight: 700; font-size: 1.2rem; color: var(--text); }
+    .dg-count { font-size: 0.95rem; color: var(--muted); }
     .dg-avg   { font-size: 1.05rem; font-weight: 700; margin-left: auto; }
-    .date-body { padding: 4px 0 4px 10px; }
+    .date-body { padding: 6px 0 6px 10px; }
     .date-body.collapsed { display: none; }
     .cal-row {
-      display: flex; align-items: center; gap: 10px; padding: 14px 12px;
-      border-left: 4px solid var(--border); margin-bottom: 4px;
-      border-radius: 0 8px 8px 0; font-size: 1.05rem; min-height: 58px;
+      display: flex; align-items: center; gap: 10px; padding: 16px 14px;
+      border-left: 4px solid var(--border); margin-bottom: 6px;
+      border-radius: 0 8px 8px 0; font-size: 1rem; min-height: 62px;
     }
     .cal-row:hover { background: #f8fafc; }
 
     /* ── Monthly Calendar Grid ───────────────────── */
     .month-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 8px; }
     .month-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .month-nav-title { font-size: 1.1rem; font-weight: 800; color: var(--text); }
-    .month-nav-btn { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; width: 44px; height: 44px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+    .month-nav-title { font-size: 1rem; font-weight: 800; color: var(--text); }
+    .month-nav-btn { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
     .month-nav-btn:hover { background: #e2e8f0; }
     .month-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
-    .cal-dow { font-size: 0.75rem; text-align: center; color: var(--muted); font-weight: 700; padding: 4px 0; }
+    .cal-dow { font-size: 0.65rem; text-align: center; color: var(--muted); font-weight: 700; padding: 4px 0; }
     .cal-cell {
       aspect-ratio: 1; border-radius: 50%; display: flex; flex-direction: column;
       align-items: center; justify-content: center; cursor: pointer; position: relative;
-      transition: transform 0.1s, box-shadow 0.1s; min-height: 44px;
+      transition: transform 0.1s, box-shadow 0.1s; min-height: 40px;
     }
     .cal-cell:hover { transform: scale(1.12); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
     .cal-cell.empty { background: transparent; cursor: default; pointer-events: none; }
     .cal-cell.no-data { cursor: pointer; }
     .cal-cell.has-data { font-weight: 700; color: white; }
-    .cal-cell.has-data .cday { font-size: 0.9rem; font-weight: 800; line-height: 1; }
-    .cal-cell.has-data .cavg { font-size: 0.52rem; opacity: 0.9; line-height: 1.3; }
+    .cal-cell.has-data .cday { font-size: 0.8rem; font-weight: 800; line-height: 1; }
+    .cal-cell.has-data .cavg { font-size: 0.45rem; opacity: 0.9; line-height: 1.3; }
     .cal-cell.no-data { background: var(--bg); color: var(--muted); }
-    .cal-cell.no-data .cday { font-size: 0.85rem; font-weight: 400; }
+    .cal-cell.no-data .cday { font-size: 0.75rem; font-weight: 400; }
     .cal-cell.selected { outline: 3px solid var(--accent); outline-offset: 2px; }
     .cal-day-detail { display: none; background: #f1f5f9; border-radius: 10px; padding: 10px; margin-top: 8px; }
     .cal-day-detail.open { display: block; }
@@ -138,114 +138,114 @@
       background: var(--card); border: 1px solid var(--border); border-radius: 10px;
       padding: 8px 12px; flex: 1; min-width: 130px;
     }
-    .status-tile .st-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); margin-bottom: 4px; }
-    .status-tile .st-value { font-size: 1.8rem; font-weight: 800; line-height: 1; }
-    .status-tile .st-sub { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+    .status-tile .st-label { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); margin-bottom: 4px; }
+    .status-tile .st-value { font-size: 1.6rem; font-weight: 800; line-height: 1; }
+    .status-tile .st-sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
 
     /* ── Quick Log Form ───────────────────────── */
     .qlog-grid { display: grid; grid-template-columns: 1fr 1fr 80px; gap: 10px; margin-bottom: 10px; }
     .qlog-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .form-group label { display: block; font-size: 0.68rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
     .form-group input, .form-group select {
-      width: 100%; padding: 12px 13px; border: 1.5px solid var(--border);
-      border-radius: 8px; font-size: 1.1rem; background: var(--bg); color: var(--text); transition: border-color 0.15s;
+      width: 100%; padding: 10px 11px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 0.95rem; background: var(--bg); color: var(--text); transition: border-color 0.15s;
     }
     .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent); }
-    .form-group input[type="datetime-local"] { font-size: 1rem; }
+    .form-group input[type="datetime-local"] { font-size: 0.84rem; }
     .form-group.full { grid-column: 1 / -1; }
 
     /* live preview */
     #bp-preview-display {
-      text-align: center; font-size: 2.6rem; font-weight: 800; letter-spacing: -1.5px;
+      text-align: center; font-size: 2.3rem; font-weight: 800; letter-spacing: -1.5px;
       color: var(--text); padding: 6px 0 2px; min-height: 50px;
     }
     #bp-preview-display .sep { color: var(--muted); font-weight: 300; }
-    #bp-preview-display .unit { font-size: 1.1rem; color: var(--muted); font-weight: 400; }
+    #bp-preview-display .unit { font-size: 1rem; color: var(--muted); font-weight: 400; }
     #preview-badge { text-align: center; margin-bottom: 8px; min-height: 20px; }
 
     /* edit bar */
-    #edit-mode-bar { display: none; background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; margin-bottom: 10px; font-size: 0.95rem; color: #1d4ed8; align-items: center; gap: 10px; }
+    #edit-mode-bar { display: none; background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 8px; padding: 8px 14px; margin-bottom: 10px; font-size: 0.82rem; color: #1d4ed8; align-items: center; gap: 10px; }
     #edit-mode-bar.show { display: flex; }
     #edit-mode-bar span { flex: 1; }
-    #cancel-edit { background: none; border: none; cursor: pointer; font-size: 0.95rem; color: #1d4ed8; font-weight: 700; text-decoration: underline; }
+    #cancel-edit { background: none; border: none; cursor: pointer; font-size: 0.82rem; color: #1d4ed8; font-weight: 700; text-decoration: underline; }
 
     /* ── Past data toggle ──────────────────────── */
-    .past-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; color: var(--muted); margin-bottom: 10px; -webkit-user-select: none; user-select: none; }
+    .past-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; -webkit-user-select: none; user-select: none; }
     .past-toggle:hover { color: var(--accent); }
     #past-data-form { display: none; }
     #past-data-form.open { display: block; }
 
     /* ── Buttons ──────────────────────────────── */
-    .btn { padding: 18px 24px; border-radius: 10px; border: none; cursor: pointer; font-size: 1.2rem; font-weight: 700; transition: all 0.15s; }
+    .btn { padding: 16px 22px; border-radius: 10px; border: none; cursor: pointer; font-size: 1.05rem; font-weight: 700; transition: all 0.15s; }
     .btn-primary { background: var(--accent); color: white; width: 100%; }
     .btn-primary:hover { background: #0284c7; }
     .btn-primary.editing { background: #7c3aed; }
     .btn-primary.editing:hover { background: #6d28d9; }
-    .btn-sm { background: none; border: 2px solid var(--border); color: var(--muted); font-size: 1.1rem; padding: 14px 22px; border-radius: 8px; cursor: pointer; min-height: 56px; font-weight: 600; }
+    .btn-sm { background: none; border: 2px solid var(--border); color: var(--muted); font-size: 1rem; padding: 12px 20px; border-radius: 8px; cursor: pointer; min-height: 52px; font-weight: 600; }
     .btn-sm:hover { border-color: var(--accent); color: var(--accent); }
-    .btn-danger { background: none; border: 1.5px solid #fee2e2; color: var(--stage2); font-size: 1.1rem; padding: 14px 22px; border-radius: 8px; cursor: pointer; min-height: 56px; font-weight: 600; }
+    .btn-danger { background: none; border: 1.5px solid #fee2e2; color: var(--stage2); font-size: 1rem; padding: 12px 20px; border-radius: 8px; cursor: pointer; min-height: 52px; font-weight: 600; }
     .btn-danger:hover { background: #fee2e2; }
-    .btn-icon { background: none; border: none; cursor: pointer; padding: 12px; font-size: 1.3rem; border-radius: 8px; color: var(--muted); transition: all 0.12s; min-width: 52px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; }
+    .btn-icon { background: none; border: none; cursor: pointer; padding: 10px; font-size: 1.15rem; border-radius: 8px; color: var(--muted); transition: all 0.12s; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
     .btn-icon:hover { background: var(--bg); color: var(--text); }
     .btn-icon.del:hover { background: #fee2e2; color: var(--stage2); }
 
     /* ── Badges ───────────────────────────────── */
-    .badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+    .badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 0.92rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
     .badge-normal   { background: #dcfce7; color: #166534; }
     .badge-elevated { background: #fef9c3; color: #854d0e; }
     .badge-stage1   { background: #ffedd5; color: #9a3412; }
     .badge-stage2   { background: #fee2e2; color: #991b1b; }
     .badge-crisis   { background: #7f1d1d; color: white; }
-    .slot-pill { display: inline-block; padding: 5px 13px; border-radius: 20px; font-size: 0.95rem; background: #f1f5f9; color: var(--muted); }
+    .slot-pill { display: inline-block; padding: 4px 11px; border-radius: 20px; font-size: 0.88rem; background: #f1f5f9; color: var(--muted); }
 
     /* ── Reading List ─────────────────────────── */
-    .reading-item { display: flex; align-items: center; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .reading-item { display: flex; align-items: center; gap: 14px; padding: 22px 0; border-bottom: 1px solid var(--border); }
     .reading-item:last-child { border-bottom: none; }
     .reading-item.highlight { background: #eff6ff; border-radius: 8px; padding: 10px; margin: 0 -10px; }
     .ri-icon { font-size: 1.8rem; width: 36px; text-align: center; flex-shrink: 0; }
     .ri-body { flex: 1; min-width: 0; }
-    .ri-bp { font-size: 1.7rem; font-weight: 800; }
-    .ri-meta { font-size: 1rem; color: var(--muted); margin-top: 3px; }
+    .ri-bp { font-size: 1.75rem; font-weight: 800; line-height: 1.2; }
+    .ri-meta { font-size: 1rem; color: var(--muted); margin-top: 4px; }
     .ri-right { text-align: right; flex-shrink: 0; }
-    .ri-pp { font-size: 0.95rem; color: var(--muted); margin-top: 4px; }
+    .ri-pp { font-size: 0.9rem; color: var(--muted); margin-top: 5px; }
     .ri-actions { display: flex; gap: 2px; margin-top: 3px; justify-content: flex-end; }
 
     /* ── Chart Controls ───────────────────────── */
     .chart-toggle { display: flex; gap: 0; margin-bottom: 14px; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; width: fit-content; }
-    .chart-toggle button { padding: 9px 20px; font-size: 0.95rem; font-weight: 600; border: none; background: none; cursor: pointer; color: var(--muted); transition: all 0.15s; }
+    .chart-toggle button { padding: 7px 18px; font-size: 0.8rem; font-weight: 600; border: none; background: none; cursor: pointer; color: var(--muted); transition: all 0.15s; }
     .chart-toggle button.active { background: var(--accent); color: white; }
     .chart-canvas-wrap { position: relative; height: 260px; }
-    .legend-row { display: flex; gap: 16px; flex-wrap: wrap; font-size: 1.05rem; margin-top: 12px; }
+    .legend-row { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.95rem; margin-top: 12px; }
     .legend-row label { display: flex; align-items: center; gap: 6px; cursor: pointer; -webkit-user-select: none; user-select: none; }
-    .zone-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; font-size: 0.9rem; }
+    .zone-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; font-size: 0.76rem; }
     .zone-legend-item { display: flex; align-items: center; gap: 7px; }
     .zone-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
 
     /* ── Analysis / AI ────────────────────────── */
     .summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
     .stat-box { background: var(--bg); border-radius: 8px; padding: 12px 14px; }
-    .stat-box .slabel { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 3px; }
-    .stat-box .sval { font-size: 1.6rem; font-weight: 800; line-height: 1; }
-    .stat-box .ssub { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+    .stat-box .slabel { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 3px; }
+    .stat-box .sval { font-size: 1.45rem; font-weight: 800; line-height: 1; }
+    .stat-box .ssub { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
     .trend-up { color: var(--stage2); } .trend-down { color: var(--normal); } .trend-stable { color: var(--muted); }
-    .slot-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    .slot-table th { text-align: left; padding: 8px 6px; font-size: 0.78rem; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
-    .slot-table td { padding: 11px 6px; border-bottom: 1px solid var(--border); }
+    .slot-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .slot-table th { text-align: left; padding: 7px 6px; font-size: 0.66rem; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .slot-table td { padding: 9px 6px; border-bottom: 1px solid var(--border); }
     .slot-table tr:last-child td { border-bottom: none; }
     .slot-highest td { background: #fff7ed; }
-    .advisory { background: #fff7ed; border-left: 4px solid var(--stage1); border-radius: 0 8px 8px 0; padding: 13px 16px; font-size: 0.95rem; color: #7c2d12; margin-top: 12px; line-height: 1.7; }
-    .good-news { background: #f0fdf4; border-left: 4px solid var(--normal); border-radius: 0 8px 8px 0; padding: 13px 16px; font-size: 0.95rem; color: #14532d; margin-top: 12px; line-height: 1.7; }
+    .advisory { background: #fff7ed; border-left: 4px solid var(--stage1); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 0.82rem; color: #7c2d12; margin-top: 12px; line-height: 1.6; }
+    .good-news { background: #f0fdf4; border-left: 4px solid var(--normal); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 0.82rem; color: #14532d; margin-top: 12px; line-height: 1.6; }
     .class-display { display: flex; align-items: center; gap: 14px; padding: 6px 0; }
-    .class-display .big-reading { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+    .class-display .big-reading { font-size: 2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; }
 
     /* AI report block */
     .ai-report {
       background: var(--bg); color: var(--text); border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 16px 18px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9rem;
-      line-height: 1.9; white-space: pre-wrap; overflow-x: auto;
+      padding: 16px 18px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.78rem;
+      line-height: 1.8; white-space: pre-wrap; overflow-x: auto;
     }
-    .ai-report .ai-head { color: #0369a1; font-weight: 700; font-size: 0.98rem; }
+    .ai-report .ai-head { color: #0369a1; font-weight: 700; font-size: 0.85rem; }
     .ai-report .ai-label { color: var(--muted); }
     .ai-report .ai-ok { color: #15803d; font-weight: 600; }
     .ai-report .ai-warn { color: #c2410c; font-weight: 600; }
@@ -253,32 +253,32 @@
     .ai-report .ai-line { color: #cbd5e1; }
 
     /* ── Settings Slot Manager ────────────────── */
-    .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--border); gap: 12px; }
+    .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border); gap: 12px; }
     .setting-row:last-child { border-bottom: none; }
-    .setting-label { font-size: 1.1rem; font-weight: 600; }
-    .setting-sub { font-size: 0.9rem; color: var(--muted); margin-top: 3px; }
-    .slot-row { display: grid; grid-template-columns: 34px 1fr 96px 30px; gap: 8px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); }
+    .setting-label { font-size: 1rem; font-weight: 600; }
+    .setting-sub { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+    .slot-row { display: grid; grid-template-columns: 34px 1fr 96px 30px; gap: 8px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
     .slot-row:last-child { border-bottom: none; }
-    .slot-emoji-input { width: 44px; height: 48px; text-align: center; font-size: 1.2rem; border: 1.5px solid var(--border); border-radius: 7px; background: var(--bg); }
-    .slot-name-input, .slot-time-input { padding: 11px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: 1.05rem; background: var(--bg); color: var(--text); width: 100%; }
+    .slot-emoji-input { width: 40px; height: 44px; text-align: center; font-size: 1.1rem; border: 1.5px solid var(--border); border-radius: 7px; background: var(--bg); }
+    .slot-name-input, .slot-time-input { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: 1rem; background: var(--bg); color: var(--text); width: 100%; }
     .slot-name-input:focus, .slot-time-input:focus, .slot-emoji-input:focus { outline: none; border-color: var(--accent); }
-    .btn-remove-slot { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #fca5a5; padding: 4px 5px; border-radius: 5px; }
+    .btn-remove-slot { background: none; border: none; cursor: pointer; font-size: 0.95rem; color: #fca5a5; padding: 4px 5px; border-radius: 5px; }
     .btn-remove-slot:hover { background: #fee2e2; color: var(--stage2); }
     .count-stepper { display: flex; align-items: center; gap: 10px; }
-    .count-stepper button { width: 40px; height: 40px; border-radius: 7px; border: 1.5px solid var(--border); background: var(--bg); font-size: 1.3rem; cursor: pointer; font-weight: 700; color: var(--text); }
+    .count-stepper button { width: 30px; height: 30px; border-radius: 7px; border: 1.5px solid var(--border); background: var(--bg); font-size: 1.1rem; cursor: pointer; font-weight: 700; color: var(--text); }
     .count-stepper button:hover { border-color: var(--accent); color: var(--accent); }
-    .count-stepper span { font-size: 1.2rem; font-weight: 700; min-width: 20px; text-align: center; }
-    .toggle { position: relative; width: 52px; height: 28px; flex-shrink: 0; }
+    .count-stepper span { font-size: 1.1rem; font-weight: 700; min-width: 20px; text-align: center; }
+    .toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
     .toggle input { opacity: 0; width: 0; height: 0; }
-    .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #cbd5e1; border-radius: 28px; transition: 0.3s; }
-    .toggle-slider:before { position: absolute; content: ""; height: 22px; width: 22px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+    .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #cbd5e1; border-radius: 24px; transition: 0.3s; }
+    .toggle-slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
     .toggle input:checked + .toggle-slider { background: var(--accent); }
-    .toggle input:checked + .toggle-slider:before { transform: translateX(24px); }
+    .toggle input:checked + .toggle-slider:before { transform: translateX(20px); }
 
     .empty-state { text-align: center; padding: 32px 20px; color: var(--muted); }
-    .empty-state .big { font-size: 2.2rem; }
-    .empty-state p { margin-top: 8px; font-size: 0.95rem; line-height: 1.5; }
-    .brand-footer { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 6px; padding-bottom: 6px; letter-spacing: 0.3px; }
+    .empty-state .big { font-size: 2rem; }
+    .empty-state p { margin-top: 8px; font-size: 0.82rem; line-height: 1.5; }
+    .brand-footer { text-align: center; font-size: 0.66rem; color: var(--muted); margin-top: 6px; padding-bottom: 6px; letter-spacing: 0.3px; }
 
     /* ── Print styles ────────────────────────────── */
     #print-report { display: none; }
@@ -306,14 +306,16 @@
       .status-bar { flex-wrap: wrap; }
       .dash-main { grid-template-columns: 1fr; }
       .slot-row { grid-template-columns: 40px 1fr 90px 36px; }
-      .tab { padding: 10px; }
-      .card { padding: 16px; }
-      nav button { font-size: 1.1rem; padding: 18px 4px; }
-      .dg-date { font-size: 1.1rem; }
-      .ri-bp { font-size: 1.7rem; }
-      .reading-item { padding: 18px 0; }
-      .btn-sm, .btn-danger { width: 100%; margin-top: 6px; }
+      .tab { padding: 12px; }
+      .card { padding: 18px; }
+      nav button { font-size: 1rem; padding: 16px 4px; }
+      .dg-date { font-size: 1.15rem; }
+      .ri-bp { font-size: 1.75rem; }
+      .reading-item { padding: 20px 0; }
+      .btn-sm, .btn-danger { width: 100%; margin-top: 8px; }
       .setting-row { flex-wrap: wrap; }
+      .cal-row { padding: 14px 12px; }
+      .date-header { padding: 16px 12px; }
     }
   </style>
 </head>
@@ -357,9 +359,9 @@
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
         <div class="card-title" style="margin:0;">BP Trend</div>
         <div class="chart-toggle" style="margin-bottom:0;">
-          <button type="button" id="dash-btn-7d" class="active" onclick="setDashView('7d',this)" style="padding:7px 13px;font-size:0.85rem;">7D</button>
-          <button type="button" id="dash-btn-4w" onclick="setDashView('4w',this)" style="padding:7px 13px;font-size:0.85rem;">4W</button>
-          <button type="button" id="dash-btn-3m" onclick="setDashView('3m',this)" style="padding:7px 13px;font-size:0.85rem;">3M</button>
+          <button type="button" id="dash-btn-7d" class="active" onclick="setDashView('7d',this)" style="padding:5px 11px;font-size:0.73rem;">7D</button>
+          <button type="button" id="dash-btn-4w" onclick="setDashView('4w',this)" style="padding:5px 11px;font-size:0.73rem;">4W</button>
+          <button type="button" id="dash-btn-3m" onclick="setDashView('3m',this)" style="padding:5px 11px;font-size:0.73rem;">3M</button>
         </div>
       </div>
       <div id="dash-chart-wrap" style="position:relative;height:220px;"><canvas id="dash-chart"></canvas></div>
@@ -376,7 +378,7 @@
   <div class="card">
     <div class="card-title" style="display:flex;justify-content:space-between;align-items:center;">
       <span>All Readings</span>
-      <span id="reading-count" style="font-weight:400;text-transform:none;font-size:0.85rem;color:var(--muted);letter-spacing:0;"></span>
+      <span id="reading-count" style="font-weight:400;text-transform:none;font-size:0.75rem;color:var(--muted);letter-spacing:0;"></span>
     </div>
     <div id="reading-list"></div>
   </div>
@@ -400,20 +402,20 @@
   <!-- Getting Started notice -->
   <div class="card" style="background:#eff6ff;border-color:#bfdbfe;">
     <div class="card-title" style="color:#1d4ed8;">👋 Welcome to RaycoRadar Beta</div>
-    <p style="font-size:0.95rem;color:#1e40af;line-height:1.7;margin-bottom:8px;">
+    <p style="font-size:0.8rem;color:#1e40af;line-height:1.6;margin-bottom:8px;">
       <strong>Your app is pre-loaded with 3 months of sample data</strong> so you can explore all the features right away — the chart, trends, and analysis report.
     </p>
-    <p style="font-size:0.95rem;color:#1e40af;line-height:1.7;margin-bottom:8px;">
+    <p style="font-size:0.8rem;color:#1e40af;line-height:1.6;margin-bottom:8px;">
       When you're ready to track your <em>real</em> BP readings, go to <strong>Your Data → Erase Demo Data</strong> below and start fresh.
     </p>
-    <p style="font-size:0.88rem;color:#3b82f6;line-height:1.6;">
+    <p style="font-size:0.75rem;color:#3b82f6;line-height:1.5;">
       📍 Data is saved on <strong>this device only</strong> — it does not sync to the cloud. Use <strong>Save to Spreadsheet</strong> to back up your readings.
     </p>
   </div>
 
   <div class="card">
     <div class="card-title">My Reading Schedule</div>
-    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:12px;">
+    <p style="font-size:0.76rem;color:var(--muted);margin-bottom:12px;">
       Set the times you normally take your BP each day. RaycoRadar will show a reminder banner when it's time — keep the app open on your phone or browser.
     </p>
     <div class="setting-row" style="padding-bottom:14px;">
@@ -428,9 +430,9 @@
       </div>
     </div>
     <div style="display:grid;grid-template-columns:34px 1fr 96px 30px;gap:8px;padding-bottom:5px;">
-      <span style="font-size:0.75rem;text-transform:uppercase;color:var(--muted);">Icon</span>
-      <span style="font-size:0.75rem;text-transform:uppercase;color:var(--muted);">Name</span>
-      <span style="font-size:0.75rem;text-transform:uppercase;color:var(--muted);">Time</span>
+      <span style="font-size:0.62rem;text-transform:uppercase;color:var(--muted);">Icon</span>
+      <span style="font-size:0.62rem;text-transform:uppercase;color:var(--muted);">Name</span>
+      <span style="font-size:0.62rem;text-transform:uppercase;color:var(--muted);">Time</span>
       <span></span>
     </div>
     <div id="slot-list"></div>
@@ -855,26 +857,26 @@ function showCalInlineForm(panelId, dateISO, readingId) {
   const slotOpts = slots.map(s=>`<option value="${s.id}" ${r?r.slotId===s.id?'selected':'':s===slots[0]?'selected':''}>${s.emoji||''} ${s.name}</option>`).join('');
   panel.insertAdjacentHTML('beforeend',`
     <div class="cal-inline-form" id="${fid}" style="background:#fff;border:2px solid var(--accent);border-radius:10px;padding:12px;margin-top:8px;">
-      <div style="font-size:0.85rem;font-weight:800;color:var(--accent);margin-bottom:8px;">${r?'✏️ Edit Reading':'✚ Add Reading'}</div>
+      <div style="font-size:0.7rem;font-weight:800;color:var(--accent);margin-bottom:8px;">${r?'✏️ Edit Reading':'✚ Add Reading'}</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 70px;gap:8px;margin-bottom:8px;">
-        <div><label style="font-size:0.88rem;color:var(--muted);display:block;">Systolic</label>
-          <input type="number" id="${fid}-sys" value="${r?r.sys:''}" placeholder="120" min="60" max="250" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:1.1rem;font-weight:700;"></div>
-        <div><label style="font-size:0.88rem;color:var(--muted);display:block;">Diastolic</label>
-          <input type="number" id="${fid}-dia" value="${r?r.dia:''}" placeholder="80" min="40" max="150" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:1.1rem;font-weight:700;"></div>
-        <div><label style="font-size:0.88rem;color:var(--muted);display:block;">HR</label>
-          <input type="number" id="${fid}-hr" value="${r&&r.hr?r.hr:''}" placeholder="70" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:1.1rem;"></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Systolic</label>
+          <input type="number" id="${fid}-sys" value="${r?r.sys:''}" placeholder="120" min="60" max="250" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:1rem;font-weight:700;"></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Diastolic</label>
+          <input type="number" id="${fid}-dia" value="${r?r.dia:''}" placeholder="80" min="40" max="150" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:1rem;font-weight:700;"></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">HR</label>
+          <input type="number" id="${fid}-hr" value="${r&&r.hr?r.hr:''}" placeholder="70" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:1rem;"></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
-        <div><label style="font-size:0.88rem;color:var(--muted);display:block;">Date &amp; Time</label>
-          <input type="datetime-local" id="${fid}-dt" value="${defDt}" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:0.9rem;"></div>
-        <div><label style="font-size:0.88rem;color:var(--muted);display:block;">Slot</label>
-          <select id="${fid}-slot" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:0.9rem;">${slotOpts}</select></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Date &amp; Time</label>
+          <input type="datetime-local" id="${fid}-dt" value="${defDt}" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.78rem;"></div>
+        <div><label style="font-size:0.78rem;color:var(--muted);display:block;">Slot</label>
+          <select id="${fid}-slot" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.78rem;">${slotOpts}</select></div>
       </div>
-      <div style="margin-bottom:10px;"><label style="font-size:0.88rem;color:var(--muted);display:block;">Notes</label>
-        <input type="text" id="${fid}-notes" value="${r?r.notes||'':''}" placeholder="e.g. after coffee…" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:1rem;"></div>
+      <div style="margin-bottom:10px;"><label style="font-size:0.78rem;color:var(--muted);display:block;">Notes</label>
+        <input type="text" id="${fid}-notes" value="${r?r.notes||'':''}" placeholder="e.g. after coffee…" style="width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:0.85rem;"></div>
       <div style="display:flex;gap:8px;">
-        <button type="button" class="btn btn-primary" style="font-size:0.88rem;padding:8px 18px;" onclick="saveCalInline('${fid}',${readingId||'null'})">💾 Save</button>
-        <button type="button" style="font-size:0.88rem;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="document.getElementById('${fid}').remove()">Cancel</button>
+        <button type="button" class="btn btn-primary" style="font-size:0.72rem;padding:6px 16px;" onclick="saveCalInline('${fid}',${readingId||'null'})">💾 Save</button>
+        <button type="button" style="font-size:0.72rem;padding:6px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;" onclick="document.getElementById('${fid}').remove()">Cancel</button>
       </div>
     </div>`);
   document.getElementById(`${fid}-sys`).focus();
@@ -960,19 +962,19 @@ function renderDashboard() {
     if (overlayEl) overlayEl.innerHTML = `
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <div style="display:flex;align-items:center;gap:5px;background:${oBg};border-radius:7px;padding:3px 8px;">
-          <span style="font-size:1.2rem;font-weight:900;color:${oColor};line-height:1;">${oIcon}</span>
-          <span style="font-size:0.8rem;font-weight:700;color:${oColor};">${oLabel}</span>
+          <span style="font-size:1.1rem;font-weight:900;color:${oColor};line-height:1;">${oIcon}</span>
+          <span style="font-size:0.68rem;font-weight:700;color:${oColor};">${oLabel}</span>
         </div>
-        <span style="font-size:0.78rem;color:var(--muted);">7-Day Avg: <strong style="color:var(--text);">${avg7Sys}/${avg7Dia}</strong> ${badgeHTML(avg7Sys,avg7Dia)}</span>
+        <span style="font-size:0.65rem;color:var(--muted);">7-Day Avg: <strong style="color:var(--text);">${avg7Sys}/${avg7Dia}</strong> ${badgeHTML(avg7Sys,avg7Dia)}</span>
         <div style="display:flex;gap:2px;margin-left:auto;">
           ${['M','T','W','T','F','S','S'].map((d,i)=>{
             const day=new Date(now); day.setDate(day.getDate()-(6-i));
             const dayR=week7.filter(r=>new Date(r.timestamp).toDateString()===day.toDateString());
-            if(!dayR.length) return `<div style="width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:var(--muted);">${d}</div>`;
+            if(!dayR.length) return `<div style="width:18px;height:18px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:0.48rem;color:var(--muted);">${d}</div>`;
             const avgS=Math.round(dayR.reduce((a,r)=>a+r.sys,0)/dayR.length);
             const avgD=Math.round(dayR.reduce((a,r)=>a+r.dia,0)/dayR.length);
             const key=classify(avgS,avgD).key;
-            return `<div title="${day.toLocaleDateString('en-PH',{month:'short',day:'numeric'})}: ${avgS}/${avgD} · ${dotLabels[key]}" style="width:22px;height:22px;border-radius:50%;background:${dotColors[key]};display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:white;">${d}</div>`;
+            return `<div title="${day.toLocaleDateString('en-PH',{month:'short',day:'numeric'})}: ${avgS}/${avgD} · ${dotLabels[key]}" style="width:18px;height:18px;border-radius:50%;background:${dotColors[key]};display:flex;align-items:center;justify-content:center;font-size:0.48rem;font-weight:700;color:white;">${d}</div>`;
           }).join('')}
         </div>
       </div>
@@ -985,17 +987,17 @@ function renderDashboard() {
         <div style="display:flex;gap:8px;align-items:flex-start;margin-top:2px;">
           <div style="flex-shrink:0;">
             <div class="st-value">${todayReadings.length}</div>
-            <div style="font-size:0.75rem;color:var(--muted);margin-top:3px;">of ${slotsNow.length} slots</div>
+            <div style="font-size:0.6rem;color:var(--muted);margin-top:3px;">of ${slotsNow.length} slots</div>
           </div>
           <div style="flex:1;padding-top:3px;">
             ${upcomingSlots.length
-              ? upcomingSlots.map(sl=>`<div style="display:flex;align-items:center;gap:4px;font-size:0.75rem;margin-bottom:3px;">
+              ? upcomingSlots.map(sl=>`<div style="display:flex;align-items:center;gap:4px;font-size:0.62rem;margin-bottom:3px;">
                   <span>${sl.emoji||'💊'}</span>
                   <span style="font-weight:600;color:var(--text);">${sl.time}</span>
                   <span style="color:var(--muted);">${sl.name}</span>
-                  ${loggedSlotIds.has(sl.id)?`<span style="margin-left:auto;color:#22c55e;font-size:0.82rem;">✓</span>`:''}
+                  ${loggedSlotIds.has(sl.id)?`<span style="margin-left:auto;color:#22c55e;font-size:0.7rem;">✓</span>`:''}
                 </div>`).join('')
-              : `<div style="font-size:0.75rem;color:#22c55e;font-weight:600;padding-top:2px;">All done ✓</div>`
+              : `<div style="font-size:0.62rem;color:#22c55e;font-weight:600;padding-top:2px;">All done ✓</div>`
             }
           </div>
         </div>
@@ -1055,7 +1057,7 @@ function renderDashboard() {
     }).join('');
 
     allEl.innerHTML = accordionHTML
-      + (older.length ? `<div style="font-size:0.82rem;font-weight:700;color:var(--muted);margin:12px 0 6px;padding-left:4px;">OLDER — tap a day to see readings</div><div id="cal-grid-container"></div>` : '');
+      + (older.length ? `<div style="font-size:0.7rem;font-weight:700;color:var(--muted);margin:12px 0 6px;padding-left:4px;">OLDER — tap a day to see readings</div><div id="cal-grid-container"></div>` : '');
 
     if (older.length) {
       // Start calendar on most recent month with older data
@@ -1077,7 +1079,7 @@ function readingItemHTML(r, editingId='') {
   return `<div class="reading-item${isEditing?' highlight':''}">
     <div class="ri-icon" title="${sl.name}">${sl.emoji}</div>
     <div class="ri-body">
-      <span class="ri-bp">${r.sys}/${r.dia}</span>${r.hr?` <span style="color:var(--muted);font-size:0.95rem;">· ${r.hr} bpm</span>`:''}
+      <span class="ri-bp">${r.sys}/${r.dia}</span>${r.hr?` <span style="color:var(--muted);font-size:0.82rem;">· ${r.hr} bpm</span>`:''}
       <div class="ri-meta">${dateStr} ${timeStr}${r.notes?` · <em>${r.notes}</em>`:''}</div>
       <span class="slot-pill">${sl.emoji} ${sl.name}</span>
     </div>
@@ -1100,12 +1102,12 @@ function calRowHTML(r, panelId) {
   const c  = classify(r.sys, r.dia);
   const sl = getSlot(r.slotId);
   return `<div class="cal-row" style="border-left-color:${DOT_C[c.key]};">
-    <span style="font-weight:700;color:var(--muted);min-width:56px;">${ts.toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'})}</span>
+    <span style="font-weight:700;color:var(--muted);min-width:52px;">${ts.toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit'})}</span>
     <span style="font-weight:800;color:var(--text);">${r.sys}/${r.dia}</span>
     ${r.hr?`<span style="color:var(--muted);">❤️ ${r.hr}</span>`:''}
-    <span class="badge ${c.cls}" style="font-size:0.65rem;padding:2px 7px;">${c.label}</span>
-    <span style="font-size:0.72rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 6px;">${sl.emoji||''} ${sl.name}</span>
-    ${r.notes?`<span style="font-size:0.72rem;color:var(--muted);font-style:italic;">· ${r.notes}</span>`:''}
+    <span class="badge ${c.cls}" style="font-size:0.55rem;padding:1px 5px;">${c.label}</span>
+    <span style="font-size:0.6rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;">${sl.emoji||''} ${sl.name}</span>
+    ${r.notes?`<span style="font-size:0.6rem;color:var(--muted);font-style:italic;">· ${r.notes}</span>`:''}
     <span style="margin-left:auto;display:flex;gap:4px;">
       <button type="button" class="btn-icon" onclick="showCalInlineForm('${panelId}',null,${r.id})">✏️</button>
       <button type="button" class="btn-icon del" onclick="deleteReading(${r.id})">🗑️</button>
@@ -1114,7 +1116,7 @@ function calRowHTML(r, panelId) {
 }
 
 function calAddBtn(panelId, dayISO) {
-  return `<button type="button" class="btn btn-primary" style="font-size:0.78rem;padding:6px 12px;margin-top:6px;" onclick="showCalInlineForm('${panelId}','${dayISO}',null)">✚ Add Reading for this day</button>`;
+  return `<button type="button" class="btn btn-primary" style="font-size:0.65rem;padding:4px 10px;margin-top:6px;" onclick="showCalInlineForm('${panelId}','${dayISO}',null)">✚ Add Reading for this day</button>`;
 }
 
 // ── CHART ─────────────────────────────────────────────────
@@ -1168,7 +1170,7 @@ function renderCalendarOnly() {
         <span class="cavg">${avgS}/${avgD}</span>
       </div>
       <div id="${detId}" class="cal-day-detail" style="grid-column:1/-1;">
-        <div style="font-size:0.78rem;font-weight:700;margin-bottom:6px;">${dayLabel}</div>
+        <div style="font-size:0.65rem;font-weight:700;margin-bottom:6px;">${dayLabel}</div>
         ${dr.map(r=>calRowHTML(r,detId)).join('')}
         ${calAddBtn(detId, dayDateISO)}
       </div>`;
@@ -1177,8 +1179,8 @@ function renderCalendarOnly() {
         <span class="cday">${d}</span>
       </div>
       <div id="${detId}" class="cal-day-detail" style="grid-column:1/-1;">
-        <div style="font-size:0.78rem;font-weight:700;margin-bottom:6px;">${dayLabel}</div>
-        <div style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">No readings logged this day.</div>
+        <div style="font-size:0.65rem;font-weight:700;margin-bottom:6px;">${dayLabel}</div>
+        <div style="font-size:0.68rem;color:var(--muted);margin-bottom:6px;">No readings logged this day.</div>
         ${calAddBtn(detId, dayDateISO)}
       </div>`;
     }
@@ -1209,7 +1211,7 @@ function renderDashChart() {
   if (!wrap) return;
   const readings = loadReadings();
   if (!readings.length) {
-    wrap.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:0.95rem;">No data yet</div>';
+    wrap.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:0.8rem;">No data yet</div>';
     return;
   }
   if (!wrap.querySelector('canvas')) wrap.innerHTML = '<canvas id="dash-chart"></canvas>';
@@ -1260,8 +1262,8 @@ function renderDashChart() {
         }}}
       },
       scales:{
-        x:{ ticks:{ maxTicksLimit: dashView==='4w'?8:dashView==='3m'?13:7, maxRotation:40, font:{size:12} }, grid:{display:false} },
-        y:{ min:50, max:200, ticks:{font:{size:12}, stepSize:20},
+        x:{ ticks:{ maxTicksLimit: dashView==='4w'?8:dashView==='3m'?13:7, maxRotation:40, font:{size:10} }, grid:{display:false} },
+        y:{ min:50, max:200, ticks:{font:{size:10}, stepSize:20},
           grid:{ color: c=>{ const v=c.tick?.value; return v===120?'rgba(34,197,94,0.35)':v===130?'rgba(234,179,8,0.35)':v===140?'rgba(249,115,22,0.35)':'rgba(0,0,0,0.05)'; }, lineWidth:1.5 }
         }
       }
@@ -1417,8 +1419,8 @@ function renderChart() {
         }
       },
       scales:{
-        x:{ ticks:{maxTicksLimit:8, maxRotation:40, font:{size:12}}, grid:{color:'#f1f5f9'} },
-        y:{ min:50, max:200, ticks:{font:{size:12}, stepSize:20}, grid:{color:'#f1f5f9'} }
+        x:{ ticks:{maxTicksLimit:8, maxRotation:40, font:{size:10}}, grid:{color:'#f1f5f9'} },
+        y:{ min:50, max:200, ticks:{font:{size:10}, stepSize:20}, grid:{color:'#f1f5f9'} }
       }
     },
     plugins:[{
@@ -1564,7 +1566,7 @@ function renderAnalysis() {
   el.innerHTML = `
     <div class="card">
       <div class="card-title">🤖 Analysis Report</div>
-      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:10px;">Rule-based clinical pattern analysis · AHA 2017 Guidelines</p>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Rule-based clinical pattern analysis · AHA 2017 Guidelines</p>
       <div class="ai-report">${report}</div>
     </div>`;
 }
