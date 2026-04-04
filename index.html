@@ -15,6 +15,43 @@
       --muted:    #4b5563;  --accent:   #0ea5e9;
       --radius:   12px;
     }
+    /* ── Dark mode ───────────────────────────── */
+    [data-theme="dark"] {
+      --bg:     #0f172a; --card:   #1e293b;
+      --border: #334155; --text:   #f1f5f9;
+      --muted:  #94a3b8; --accent: #38bdf8;
+    }
+    [data-theme="dark"] .advisory  { background:#431407; color:#fed7aa; }
+    [data-theme="dark"] .good-news { background:#052e16; color:#bbf7d0; }
+    [data-theme="dark"] .stat-box  { background:#0f172a; }
+    [data-theme="dark"] #beta-bar  { background: linear-gradient(90deg,#4c1d95,#0369a1); }
+    [data-theme="dark"] .date-header { background:#1e293b; }
+    [data-theme="dark"] .date-header:hover { background:#334155; }
+    [data-theme="dark"] .cal-row   { background:#1e293b; }
+    [data-theme="dark"] .cal-day-detail { background:#0f172a; }
+    [data-theme="dark"] .month-card { background:#1e293b; }
+    [data-theme="dark"] #slot-time-sheet { background:#1e293b; }
+    [data-theme="dark"] .drum-wrap::after { background: linear-gradient(to bottom,#1e293b 0%,rgba(30,41,59,0.75) 22%,transparent 38%,transparent 62%,rgba(30,41,59,0.75) 78%,#1e293b 100%); }
+    [data-theme="dark"] nav { background:#1e293b; }
+    [data-theme="dark"] #inline-form { background:#1e293b; }
+    [data-theme="dark"] .slot-time-btn { background:#0f172a; color:#f1f5f9; border-color:#334155; }
+    [data-theme="dark"] .slot-name-input,.slot-emoji-input { background:#0f172a; color:#f1f5f9; }
+
+    /* ── SC Large-text mode ──────────────────── */
+    [data-large="1"] body, [data-large="1"] { font-size: 21px; }
+    [data-large="1"] .stat-box .slabel { font-size: 0.82rem; }
+    [data-large="1"] .stat-box .ssub   { font-size: 0.84rem; }
+    [data-large="1"] .slot-table       { font-size: 0.95rem; }
+    [data-large="1"] .slot-table th    { font-size: 0.8rem; }
+    [data-large="1"] .advisory,
+    [data-large="1"] .good-news        { font-size: 0.95rem; }
+    [data-large="1"] .card-title       { font-size: 1rem; }
+    [data-large="1"] .badge            { font-size: 1rem; padding: 7px 16px; }
+    [data-large="1"] nav button        { font-size: 1.15rem; }
+
+    /* ── Theme toggle button ─────────────────── */
+    #theme-btn { background:none; border:none; cursor:pointer; font-size:1.4rem; padding:6px; border-radius:8px; color:white; margin-left:auto; min-width:44px; min-height:44px; }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 18px; line-height: 1.6; }
 
@@ -285,17 +322,17 @@
     /* ── Analysis / AI ────────────────────────── */
     .summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
     .stat-box { background: var(--bg); border-radius: 8px; padding: 12px 14px; }
-    .stat-box .slabel { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 3px; }
-    .stat-box .sval { font-size: 1.45rem; font-weight: 800; line-height: 1; }
-    .stat-box .ssub { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+    .stat-box .slabel { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 3px; }
+    .stat-box .sval { font-size: 1.5rem; font-weight: 800; line-height: 1; }
+    .stat-box .ssub { font-size: 0.84rem; color: var(--muted); margin-top: 3px; }
     .trend-up { color: var(--stage2); } .trend-down { color: var(--normal); } .trend-stable { color: var(--muted); }
-    .slot-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
-    .slot-table th { text-align: left; padding: 7px 6px; font-size: 0.66rem; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
-    .slot-table td { padding: 9px 6px; border-bottom: 1px solid var(--border); }
+    .slot-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .slot-table th { text-align: left; padding: 8px 6px; font-size: 0.78rem; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .slot-table td { padding: 10px 6px; border-bottom: 1px solid var(--border); }
     .slot-table tr:last-child td { border-bottom: none; }
     .slot-highest td { background: #fff7ed; }
-    .advisory { background: #fff7ed; border-left: 4px solid var(--stage1); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 0.82rem; color: #7c2d12; margin-top: 12px; line-height: 1.6; }
-    .good-news { background: #f0fdf4; border-left: 4px solid var(--normal); border-radius: 0 8px 8px 0; padding: 11px 14px; font-size: 0.82rem; color: #14532d; margin-top: 12px; line-height: 1.6; }
+    .advisory { background: #fff7ed; border-left: 4px solid var(--stage1); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 0.95rem; color: #7c2d12; margin-top: 12px; line-height: 1.7; }
+    .good-news { background: #f0fdf4; border-left: 4px solid var(--normal); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 0.95rem; color: #14532d; margin-top: 12px; line-height: 1.7; }
     .class-display { display: flex; align-items: center; gap: 14px; padding: 6px 0; }
     .class-display .big-reading { font-size: 2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; }
 
@@ -399,6 +436,7 @@
       <h1>Rayco<span>Radar</span></h1>
       <p>BLOOD PRESSURE MONITOR &nbsp;·&nbsp; by Doc Kalodski</p>
     </div>
+    <button id="theme-btn" onclick="toggleTheme()" title="Dark / Light mode">🌙</button>
   </div>
 </header>
 
@@ -483,6 +521,18 @@
     </div>
     <div id="slot-list"></div>
     <button type="button" class="btn-sm" id="add-slot-btn" onclick="addSlot()" style="width:100%;margin-top:8px;text-align:center;">+ Add Slot</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Display</div>
+    <div class="setting-row">
+      <div><div class="setting-label">🌙 Dark Mode</div><div class="setting-sub">Dark background — easier on eyes at night</div></div>
+      <label class="toggle"><input type="checkbox" id="s-dark" onchange="toggleTheme()"><span class="toggle-slider"></span></label>
+    </div>
+    <div class="setting-row">
+      <div><div class="setting-label">🔠 Large Text</div><div class="setting-sub">Bigger fonts throughout the app</div></div>
+      <label class="toggle"><input type="checkbox" id="s-large" onchange="toggleLargeText()"><span class="toggle-slider"></span></label>
+    </div>
   </div>
 
   <div class="card">
@@ -641,6 +691,10 @@ function saveSlots() {
 
 function renderSlotList() {
   const s = loadSettings();
+  const dkCb = document.getElementById('s-dark');
+  if (dkCb) dkCb.checked = document.documentElement.getAttribute('data-theme') === 'dark';
+  const lgCb = document.getElementById('s-large');
+  if (lgCb) lgCb.checked = document.documentElement.getAttribute('data-large') === '1';
   document.getElementById('slot-list').innerHTML = s.slots.map(sl => `
     <div class="slot-row" data-id="${sl.id}">
       <input class="slot-emoji-input" type="text" value="${sl.emoji}" maxlength="2" oninput="saveSlots()">
@@ -700,6 +754,21 @@ function autoDetectSlot() {
 
 function getSlot(id) {
   return loadSettings().slots.find(s=>s.id===id) || { id:'other', emoji:'💊', name:'Manual', time:'00:00' };
+}
+
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('rr_theme', next);
+  document.getElementById('theme-btn').textContent = next === 'dark' ? '☀️' : '🌙';
+  const cb = document.getElementById('s-dark');
+  if (cb) cb.checked = next === 'dark';
+}
+function toggleLargeText() {
+  const on = document.getElementById('s-large').checked;
+  document.documentElement.setAttribute('data-large', on ? '1' : '0');
+  localStorage.setItem('rr_large', on ? '1' : '0');
 }
 
 function toggleNotifications() {
@@ -1196,6 +1265,11 @@ function renderDashSummary() {
     if (avg > critAvg) { critAvg = avg; critSlot = sl; }
   });
 
+  const hrReadings = week7.filter(r => r.hr);
+  const avgHr   = hrReadings.length ? Math.round(hrReadings.reduce((a,r) => a+r.hr, 0) / hrReadings.length) : null;
+  const highHr  = hrReadings.length ? Math.max(...hrReadings.map(r => r.hr)) : null;
+  const lowHr   = hrReadings.length ? Math.min(...hrReadings.map(r => r.hr)) : null;
+
   const fmtDate = d => d.toLocaleDateString('en-PH', {month:'short', day:'numeric'});
   const fmtTime = d => d.toLocaleTimeString('en-PH', {hour:'2-digit', minute:'2-digit'});
 
@@ -1203,17 +1277,18 @@ function renderDashSummary() {
     <div class="card-title">Last 7 Days</div>
     <div style="text-align:center;margin-bottom:14px;">
       <div style="font-size:3.2rem;font-weight:800;letter-spacing:-2px;line-height:1;color:var(--text);">${avgSys}<span style="font-size:2rem;font-weight:300;color:var(--muted);margin:0 6px;">/</span>${avgDia}</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin:4px 0 10px;">mmHg · 7-day average · ${week7.length} readings</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin:4px 0 6px;">mmHg · 7-day average · ${week7.length} readings</div>
+      ${avgHr ? `<div style="font-size:1rem;color:#8b5cf6;font-weight:700;margin-bottom:8px;">❤️ avg ${avgHr} bpm &nbsp;·&nbsp; <span style="color:#ef4444;">↑${highHr}</span> &nbsp;·&nbsp; <span style="color:#22c55e;">↓${lowHr}</span></div>` : ''}
       ${badgeHTML(avgSys, avgDia)}
     </div>
     <div class="summary-grid" style="margin-bottom:12px;">
       <div class="stat-box" style="border-left:4px solid #ef4444;">
-        <div class="slabel">Highest</div>
+        <div class="slabel">Highest BP</div>
         <div class="sval" style="color:#ef4444;">${highest.sys}/${highest.dia}</div>
         <div class="ssub">${fmtDate(highDt)} · ${fmtTime(highDt)}</div>
       </div>
       <div class="stat-box" style="border-left:4px solid #22c55e;">
-        <div class="slabel">Lowest</div>
+        <div class="slabel">Lowest BP</div>
         <div class="sval" style="color:#22c55e;">${lowest.sys}/${lowest.dia}</div>
         <div class="ssub">${fmtDate(lowDt)} · ${fmtTime(lowDt)}</div>
       </div>
@@ -1761,6 +1836,13 @@ function renderAll() {
       ]});
     } catch(e){}
   }
+
+  // Restore theme + large-text prefs
+  const savedTheme = localStorage.getItem('rr_theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.getElementById('theme-btn').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  const savedLarge = localStorage.getItem('rr_large') || '0';
+  document.documentElement.setAttribute('data-large', savedLarge);
 
   document.getElementById('s-notif').checked = loadSettings().notifications;
   populateSlotDropdown();
