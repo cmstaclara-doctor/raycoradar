@@ -384,6 +384,38 @@
     .empty-state p { margin-top: 8px; font-size: 0.82rem; line-height: 1.5; }
     .brand-footer { text-align: center; font-size: 0.66rem; color: var(--muted); margin-top: 6px; padding-bottom: 6px; letter-spacing: 0.3px; }
 
+    /* ── License Lock Overlay ───────────────────── */
+    #lock-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: linear-gradient(135deg, #0c1445 0%, #1a2875 50%, #0e3a6e 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #lock-overlay.hidden { display: none; }
+    .lock-box {
+      background: white; border-radius: 16px; padding: 32px 28px;
+      max-width: 340px; width: 90%; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .lock-box .lock-icon { font-size: 2.4rem; margin-bottom: 10px; }
+    .lock-box h2 { font-size: 1.2rem; font-weight: 800; color: #0c1445; margin-bottom: 4px; }
+    .lock-box .lock-sub { font-size: 0.78rem; color: #64748b; margin-bottom: 20px; line-height: 1.5; }
+    .lock-box input {
+      width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0;
+      border-radius: 10px; font-size: 1rem; font-family: monospace;
+      letter-spacing: 2px; text-align: center; text-transform: uppercase;
+      outline: none; margin-bottom: 10px;
+    }
+    .lock-box input:focus { border-color: #0ea5e9; }
+    .lock-box input.error { border-color: #ef4444; }
+    .lock-box .lock-err { font-size: 0.75rem; color: #ef4444; min-height: 18px; margin-bottom: 8px; }
+    .lock-box .lock-btn {
+      width: 100%; padding: 13px; background: #0ea5e9; color: white;
+      border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .lock-box .lock-btn:hover { background: #0284c7; }
+    .lock-box .lock-licensee { font-size: 0.7rem; color: #94a3b8; margin-top: 16px; }
+
     /* ── Print styles ────────────────────────────── */
     #print-report { display: none; }
     @media print {
@@ -428,13 +460,28 @@
 <!-- ── Beta Banner ──────────────────────────────── -->
 <div id="beta-bar">🧪 RaycoRadar Beta &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; Ends April 30</div>
 
+<!-- ── License Lock Overlay ──────────────────────── -->
+<div id="lock-overlay">
+  <div class="lock-box">
+    <div class="lock-icon">🔐</div>
+    <h2>RaycoRadar</h2>
+    <div class="lock-sub">Enter your license key to activate.<br>You only need to do this once on this device.</div>
+    <input type="text" id="lock-input" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19"
+      oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').replace(/(.{4})(?=.)/g,'$1-').slice(0,19)"
+      onkeydown="if(event.key==='Enter')activateLicense()">
+    <div class="lock-err" id="lock-err"></div>
+    <button class="lock-btn" onclick="activateLicense()">Activate</button>
+    <div class="lock-licensee">Licensed copy · RaycoRadar by Doc Kalodski</div>
+  </div>
+</div>
+
 <!-- ── Header ────────────────────────────────────── -->
 <header>
   <div class="header-inner">
     <div class="radar-icon">📡</div>
     <div class="header-text">
       <h1>Rayco<span>Radar</span></h1>
-      <p>BLOOD PRESSURE MONITOR &nbsp;·&nbsp; by Doc Kalodski</p>
+      <p>BLOOD PRESSURE MONITOR &nbsp;·&nbsp; <span id="licensee-name">__LICENSEE__</span></p>
     </div>
     <button id="theme-btn" onclick="toggleTheme()" title="Dark / Light mode">🌙</button>
   </div>
@@ -554,6 +601,15 @@
       <button type="button" class="btn-sm" onclick="exportCSV()">Download</button>
     </div>
     <div class="setting-row">
+      <div><div class="setting-label">📤 Export Data Backup</div><div class="setting-sub">Downloads all readings + settings as a backup file — use this to transfer to another device</div></div>
+      <button type="button" class="btn-sm" onclick="exportBackup()">Export</button>
+    </div>
+    <div class="setting-row">
+      <div><div class="setting-label">📲 Load Data from Another Device</div><div class="setting-sub">Import a backup file exported from another device — merges readings, keeps your newest settings</div></div>
+      <button type="button" class="btn-sm" onclick="document.getElementById('import-file').click()">Import</button>
+      <input type="file" id="import-file" accept=".json" style="display:none;" onchange="importBackup(this)">
+    </div>
+    <div class="setting-row">
       <div><div class="setting-label">🔄 Reload Sample Data</div><div class="setting-sub">Restores the 3-month demo dataset — replaces your current readings</div></div>
       <button type="button" class="btn-sm" onclick="loadDemoData()">Reload Demo</button>
     </div>
@@ -647,6 +703,43 @@
 ════════════════════════════════════════════════ -->
 <script>
 'use strict';
+
+// ── LICENSE ───────────────────────────────────────────────
+const _LK = '__KEY_HASH__';   // baked in per buyer by generator script
+const _LN = '__LICENSEE__';   // baked in per buyer by generator script
+
+async function _sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function activateLicense() {
+  const raw = document.getElementById('lock-input').value.replace(/-/g,'').toUpperCase();
+  const errEl = document.getElementById('lock-input');
+  const errMsg = document.getElementById('lock-err');
+  if (raw.length < 16) { errEl.classList.add('error'); errMsg.textContent = 'Key too short — check your key and try again.'; return; }
+  const hash = await _sha256(raw + 'rr_kalodski_2026');
+  if (hash !== _LK) {
+    errEl.classList.add('error');
+    errMsg.textContent = 'Invalid key. Contact Doc Kalodski to get your key.';
+    return;
+  }
+  localStorage.setItem('rr_license', hash);
+  document.getElementById('lock-overlay').classList.add('hidden');
+  errEl.classList.remove('error');
+  errMsg.textContent = '';
+}
+
+function checkLicense() {
+  const stored = localStorage.getItem('rr_license');
+  if (stored && stored === _LK) {
+    document.getElementById('lock-overlay').classList.add('hidden');
+    return true;
+  }
+  // Show lock, block app
+  document.getElementById('lock-overlay').classList.remove('hidden');
+  return false;
+}
 
 // ── CLASSIFICATION ────────────────────────────────────────
 function classify(sys, dia) {
@@ -839,6 +932,46 @@ function loadDemoData() {
 function clearAllData() {
   if (!confirm('Delete ALL readings? Cannot be undone.')) return;
   localStorage.removeItem('rr_readings'); renderAll();
+}
+
+function exportBackup() {
+  const readings = loadReadings();
+  if (!readings.length) { alert('No data to export.'); return; }
+  const backup = {
+    version: 1,
+    exported: new Date().toISOString(),
+    readings: readings,
+    settings: JSON.parse(localStorage.getItem('rr_settings2') || 'null')
+  };
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(backup,null,2)],{type:'application/json'}));
+  a.download = 'RaycoRadar_backup_'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+}
+
+function importBackup(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const backup = JSON.parse(e.target.result);
+      if (!backup.readings || !Array.isArray(backup.readings)) { alert('Invalid backup file.'); return; }
+      // Merge readings — deduplicate by id, incoming wins on conflict
+      const existing = loadReadings();
+      const existingIds = new Set(existing.map(r => r.id));
+      const merged = [...existing, ...backup.readings.filter(r => !existingIds.has(r.id))];
+      saveReadings(merged);
+      // Import settings only if this device has none yet
+      if (backup.settings && !localStorage.getItem('rr_settings2')) {
+        localStorage.setItem('rr_settings2', JSON.stringify(backup.settings));
+      }
+      renderAll();
+      alert(`Imported ${backup.readings.length} readings. Total now: ${merged.length}.`);
+    } catch { alert('Could not read backup file — make sure it\'s a valid RaycoRadar export.'); }
+  };
+  reader.readAsText(file);
+  input.value = ''; // reset so same file can be re-imported if needed
 }
 
 function exportCSV() {
@@ -1824,6 +1957,9 @@ function renderAll() {
 
 // ── INIT ──────────────────────────────────────────────────
 (function init() {
+  // License check — block app if not activated
+  if (!checkLicense()) return;
+
   // Migrate old settings
   const old = localStorage.getItem('rr_settings');
   if (old && !localStorage.getItem('rr_settings2')) {
