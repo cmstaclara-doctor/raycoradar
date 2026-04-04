@@ -466,8 +466,8 @@
     <div class="lock-icon">🔐</div>
     <h2>RaycoRadar</h2>
     <div class="lock-sub">Enter your license key to activate.<br>You only need to do this once on this device.</div>
-    <input type="text" id="lock-input" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19"
-      oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').replace(/(.{4})(?=.)/g,'$1-').slice(0,19)"
+    <input type="text" id="lock-input" placeholder="Enter your license key" maxlength="30"
+      oninput="this.value=this.value.toUpperCase()"
       onkeydown="if(event.key==='Enter')activateLicense()">
     <div class="lock-err" id="lock-err"></div>
     <button class="lock-btn" onclick="activateLicense()">Activate</button>
@@ -617,6 +617,10 @@
       <div><div class="setting-label">🗑️ Erase All &amp; Start Fresh</div><div class="setting-sub">Deletes everything — use this when you're ready to log your real BP readings</div></div>
       <button type="button" class="btn-danger" onclick="clearAllData()">Erase All</button>
     </div>
+    <div class="setting-row" style="border-top:1px solid var(--border);margin-top:8px;padding-top:16px;">
+      <div><div class="setting-label">🔑 License</div><div class="setting-sub" id="settings-licensed-to">—</div></div>
+      <button type="button" class="btn-sm" style="background:#fef2f2;color:#dc2626;border-color:#fecaca;" onclick="deactivateLicense()">Deactivate</button>
+    </div>
   </div>
 
   <div class="brand-footer">RaycoRadar Beta v1.1 · by Doc Kalodski · Beta ends April 30, 2026</div>
@@ -705,40 +709,69 @@
 'use strict';
 
 // ── LICENSE ───────────────────────────────────────────────
-const _LK = '__KEY_HASH__';   // baked in per buyer by generator script
-const _LN = '__LICENSEE__';   // baked in per buyer by generator script
+// ╔══════════════════════════════════════════════════════════╗
+// ║  ASSIGN KEYS HERE — add  'KEY': 'Full Name'  pairs     ║
+// ║  Key can be any string (no spaces). 007 = developer.   ║
+// ╚══════════════════════════════════════════════════════════╝
+const LICENSES = {
+  '007':                'Developer',        // developer key — always works
+  'RR-2026-RAYCO-0101': 'Rayco Clarabal',
+  'RR-2026-LORIE-0202': 'Lorie Clarabal',
+  'RR-2026-DOCS-0303':  'Doc Kalodski',
+  // Add more:  'RR-2026-XXXX-NNNN': 'Full Name',
+};
 
-async function _sha256(str) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+function _matchKey(input) {
+  const clean = input.trim().toUpperCase().replace(/-/g, '');
+  for (const [k, name] of Object.entries(LICENSES)) {
+    if (k.replace(/-/g, '').toUpperCase() === clean) return name;
+  }
+  return null;
 }
 
-async function activateLicense() {
-  const raw = document.getElementById('lock-input').value.replace(/-/g,'').toUpperCase();
-  const errEl = document.getElementById('lock-input');
-  const errMsg = document.getElementById('lock-err');
-  if (raw.length < 16) { errEl.classList.add('error'); errMsg.textContent = 'Key too short — check your key and try again.'; return; }
-  const hash = await _sha256(raw + 'rr_kalodski_2026');
-  if (hash !== _LK) {
-    errEl.classList.add('error');
-    errMsg.textContent = 'Invalid key. Contact Doc Kalodski to get your key.';
+function activateLicense() {
+  const raw  = document.getElementById('lock-input').value;
+  const inEl = document.getElementById('lock-input');
+  const errEl = document.getElementById('lock-err');
+  const name  = _matchKey(raw);
+  if (!name) {
+    inEl.classList.add('error');
+    errEl.innerHTML = '⛔ Illegal Access — Invalid License Key.<br><span style="font-size:0.7rem">Contact Doc Kalodski to get your personal key.</span>';
     return;
   }
-  localStorage.setItem('rr_license', hash);
+  localStorage.setItem('rr_license_key',  raw.trim().toUpperCase());
+  localStorage.setItem('rr_license_name', name);
   document.getElementById('lock-overlay').classList.add('hidden');
-  errEl.classList.remove('error');
-  errMsg.textContent = '';
+  inEl.classList.remove('error');  errEl.innerHTML = '';
+  _applyLicensedTo(name);
 }
 
 function checkLicense() {
-  const stored = localStorage.getItem('rr_license');
-  if (stored && stored === _LK) {
+  const key  = localStorage.getItem('rr_license_key');
+  const name = key ? _matchKey(key) : null;
+  if (name) {
     document.getElementById('lock-overlay').classList.add('hidden');
+    _applyLicensedTo(name);
     return true;
   }
-  // Show lock, block app
+  localStorage.removeItem('rr_license_key');
+  localStorage.removeItem('rr_license_name');
   document.getElementById('lock-overlay').classList.remove('hidden');
   return false;
+}
+
+function _applyLicensedTo(name) {
+  const el = document.getElementById('licensee-name');
+  if (el) el.textContent = name;
+  const sl = document.getElementById('settings-licensed-to');
+  if (sl) sl.textContent = 'Licensed to ' + name;
+}
+
+function deactivateLicense() {
+  if (!confirm('Deactivate this license on this device?\nYou will need to enter a key again.')) return;
+  localStorage.removeItem('rr_license_key');
+  localStorage.removeItem('rr_license_name');
+  location.reload();
 }
 
 // ── CLASSIFICATION ────────────────────────────────────────
