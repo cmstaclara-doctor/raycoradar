@@ -321,8 +321,14 @@
     .slot-row { display: grid; grid-template-columns: 36px 1fr 140px 40px; gap: 8px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
     .slot-row:last-child { border-bottom: none; }
     .slot-emoji-input { width: 40px; height: 44px; text-align: center; font-size: 1.1rem; border: 1.5px solid var(--border); border-radius: 7px; background: var(--bg); }
-    .slot-name-input, .slot-time-input { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: 1rem; background: var(--bg); color: var(--text); width: 100%; }
-    .slot-name-input:focus, .slot-time-input:focus, .slot-emoji-input:focus { outline: none; border-color: var(--accent); }
+    .slot-name-input { padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: 1rem; background: var(--bg); color: var(--text); width: 100%; }
+    .slot-name-input:focus, .slot-emoji-input:focus { outline: none; border-color: var(--accent); }
+    .slot-time-btn { width: 100%; padding: 9px 10px; border: 1.5px solid var(--border); border-radius: 7px; font-size: 1rem; background: var(--bg); color: var(--text); cursor: pointer; text-align: left; font-weight: 600; }
+    .slot-time-btn:hover { border-color: var(--accent); }
+    /* ── Slot Time Picker Modal ── */
+    #slot-time-modal { display: none; position: fixed; inset: 0; z-index: 300; }
+    #slot-time-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+    #slot-time-sheet { position: absolute; bottom: 0; left: 0; right: 0; background: var(--card); border-radius: 20px 20px 0 0; padding: 20px 20px 36px; }
     .btn-remove-slot { background: none; border: none; cursor: pointer; font-size: 0.95rem; color: #fca5a5; padding: 4px 5px; border-radius: 5px; }
     .btn-remove-slot:hover { background: #fee2e2; color: var(--stage2); }
     .count-stepper { display: flex; align-items: center; gap: 10px; }
@@ -513,6 +519,21 @@
 <!-- hidden print container -->
 <div id="print-report"></div>
 
+<!-- ── Slot Time Picker Modal ── -->
+<div id="slot-time-modal">
+  <div id="slot-time-overlay" onclick="closeSlotTimePicker()"></div>
+  <div id="slot-time-sheet">
+    <div style="font-size:0.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px;" id="slot-time-label">Set Time</div>
+    <div class="drum-row" style="margin-bottom:16px;">
+      <div class="drum-col"><div class="drum-label">Hour</div><div class="drum-wrap"><div class="drum-scroll" id="st-drum-hour"></div></div></div>
+      <div class="drum-sep" style="padding-top:170px;font-size:2rem;font-weight:300;">:</div>
+      <div class="drum-col"><div class="drum-label">Min</div><div class="drum-wrap"><div class="drum-scroll" id="st-drum-min"></div></div></div>
+      <div class="drum-col"><div class="drum-label">AM/PM</div><div class="drum-wrap"><div class="drum-scroll" id="st-drum-ampm"></div></div></div>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="confirmSlotTime()">✓ Confirm Time</button>
+  </div>
+</div>
+
 <!-- ── Inline Log Form (moved in DOM by JS to below clicked button) ── -->
 <div id="inline-form">
   <div id="edit-mode-bar" style="display:none;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:0.95rem;color:#1d4ed8;align-items:center;gap:10px;">
@@ -624,7 +645,8 @@ function renderSlotList() {
     <div class="slot-row" data-id="${sl.id}">
       <input class="slot-emoji-input" type="text" value="${sl.emoji}" maxlength="2" oninput="saveSlots()">
       <input class="slot-name-input" type="text" value="${sl.name}" placeholder="Name" oninput="saveSlots()">
-      <input class="slot-time-input" type="time" value="${sl.time}" onchange="saveSlots()">
+      <button type="button" class="slot-time-btn" onclick="openSlotTimePicker('${sl.id}','${sl.time}')">${fmt12(sl.time)}</button>
+      <input type="hidden" class="slot-time-input" value="${sl.time}">
       <button class="btn-remove-slot" onclick="removeSlot('${sl.id}')" title="Remove">✕</button>
     </div>`).join('');
   document.getElementById('slot-count-display').textContent = s.slots.length;
@@ -1627,6 +1649,54 @@ function renderAnalysis() {
 // ── REMINDERS ─────────────────────────────────────────────
 const _dismissed = {};
 function toMin(hhmm) { const [h,m]=hhmm.split(':').map(Number); return h*60+m; }
+function fmt12(hhmm) {
+  const [h,m] = hhmm.split(':').map(Number);
+  const ap = h>=12?'PM':'AM', h12 = h%12||12;
+  return `${h12}:${String(m).padStart(2,'0')} ${ap}`;
+}
+
+// ── SLOT TIME PICKER ──────────────────────────────────────
+let stDrumHour = null, stDrumMin = null, stDrumAmpm = null;
+let _stSlotId = null;
+
+function openSlotTimePicker(slotId, currentTime) {
+  _stSlotId = slotId;
+  const [h24, m] = currentTime.split(':').map(Number);
+  const ap  = h24>=12 ? 1 : 0;
+  const h12 = h24%12 || 12;
+  document.getElementById('slot-time-modal').style.display = 'block';
+  if (!stDrumHour) {
+    stDrumHour  = initDrumArr('st-drum-hour',  DT_HOURS, h12-1, null);
+    stDrumMin   = initDrumArr('st-drum-min',   DT_MINS,  m,     null);
+    stDrumAmpm  = initDrumArr('st-drum-ampm',  DT_AMPM,  ap,    null);
+  } else {
+    stDrumHour.setIdx(h12-1);
+    stDrumMin.setIdx(m);
+    stDrumAmpm.setIdx(ap);
+  }
+}
+
+function confirmSlotTime() {
+  const h12 = stDrumHour.getIdx()+1;
+  const m   = stDrumMin.getIdx();
+  const ap  = stDrumAmpm.getIdx();
+  let h24 = h12;
+  if (ap===1 && h12<12) h24 = h12+12;
+  if (ap===0 && h12===12) h24 = 0;
+  const pad = n => String(n).padStart(2,'0');
+  const timeStr = `${pad(h24)}:${pad(m)}`;
+  const row = document.querySelector(`.slot-row[data-id="${_stSlotId}"]`);
+  if (row) {
+    row.querySelector('.slot-time-input').value = timeStr;
+    row.querySelector('.slot-time-btn').textContent = fmt12(timeStr);
+    saveSlots();
+  }
+  closeSlotTimePicker();
+}
+
+function closeSlotTimePicker() {
+  document.getElementById('slot-time-modal').style.display = 'none';
+}
 
 function checkReminders() {
   const s    = loadSettings();
