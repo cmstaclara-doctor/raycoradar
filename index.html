@@ -741,9 +741,11 @@ function activateLicense() {
   }
   localStorage.setItem('rr_license_key',  raw.trim().toUpperCase());
   localStorage.setItem('rr_license_name', name);
-  document.getElementById('lock-overlay').classList.add('hidden');
+  if (!localStorage.getItem('rr_activated')) {
+    localStorage.setItem('rr_activated', new Date().toISOString());
+  }
   inEl.classList.remove('error');  errEl.innerHTML = '';
-  _applyLicensedTo(name);
+  location.reload();
 }
 
 function checkLicense() {
@@ -916,9 +918,11 @@ function saveReadings(arr) { localStorage.setItem('rr_readings', JSON.stringify(
 // Demo arc: Jan 1 2026 → today — Stage 2 → Normal trend
 function buildDemoReadings() {
   const s = loadSettings();
-  const now = new Date();
+  // End at activation day (the day they first entered their key), not today
+  const activatedStr = localStorage.getItem('rr_activated');
+  const now = activatedStr ? new Date(activatedStr) : new Date();
   const start = new Date(2026, 0, 1); // Jan 1 2026
-  const totalDays = Math.floor((now - start) / 86400000);
+  const totalDays = Math.max(0, Math.floor((now - start) / 86400000));
   const out = [];
 
   for (let d = totalDays; d >= 0; d--) {
